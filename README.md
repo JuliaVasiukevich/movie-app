@@ -1,4 +1,4 @@
-<a href='https://juliavasiukevich.github.io/movie-app/'> </a>
+ <a href="https://juliavasiukevich.github.io/movie-app/"> Watch 👀 </a>
 
 # Getting Started with Create React App
 
