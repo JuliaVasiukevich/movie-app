@@ -6,7 +6,6 @@ import { Button, Form, Wrapper } from "./styles";
 
 export const SignInPage = () => {
   return (
-    <>
       <Wrapper>
         <Form>
           <Input></Input>
@@ -16,6 +15,5 @@ export const SignInPage = () => {
           <Link to={`/${ROUTE.SIGN_UP}`}>Sign Up</Link>
         </Form>
       </Wrapper>
-    </>
   );
 };

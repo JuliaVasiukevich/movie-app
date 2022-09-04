@@ -4,4 +4,8 @@ const Wrapper = styled.ul`
   
 `;
 
-export { Wrapper };
+const Item = styled.li`
+  list-style: none;
+`;
+
+export { Wrapper, Item };

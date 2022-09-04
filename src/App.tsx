@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import { MainTemplate } from "./components/index";
+import { MainTemplate, AuthTemplate } from "./components";
 import {
   HomePage,
   TrendsPage,
@@ -8,7 +8,7 @@ import {
   SettingsPage,
   SignInPage,
   SignUpPage,
-  NotFoundPage
+  NotFoundPage,
 } from "./pages";
 import { ROUTE } from "./routes/index";
 
@@ -22,10 +22,12 @@ function App() {
         <Route path={ROUTE.SETTINGS} element={<SettingsPage />} />
         <Route path={ROUTE.NOT_FOUND} element={<NotFoundPage />} />
       </Route>
-      <Route path={ROUTE.SIGN_IN} element={<SignInPage />} />
-      <Route path={ROUTE.SIGN_UP} element={<SignUpPage />} />
+      <Route path={ROUTE.HOME} element={<AuthTemplate />}>
+        <Route path={ROUTE.SIGN_IN} element={<SignInPage />} />
+        <Route path={ROUTE.SIGN_UP} element={<SignUpPage />} />
+        <Route path={`/${ROUTE.NOT_FOUND}`} element={<NotFoundPage />} />
+      </Route>
     </Routes>
-
   );
 }
 

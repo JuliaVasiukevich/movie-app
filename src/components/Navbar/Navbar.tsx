@@ -1,23 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { ROUTE } from "../../routes";
-import { Wrapper } from "./styles";
+import { Item, Wrapper } from "./styles";
 
 export const Navbar = () => {
   return (
     <Wrapper>
-      <li>
+      <Item>
         <Link to={ROUTE.HOME}>Home</Link>
-      </li>
-      <li>
+      </Item>
+      <Item>
         <Link to={ROUTE.FAVORITES}>Favorites</Link>
-      </li>
-      <li>
+      </Item>
+      <Item>
         <Link to={ROUTE.TRENDS}>Trends</Link>
-      </li>
-      <li>
+      </Item>
+      <Item>
         <Link to={ROUTE.SETTINGS}>Settings</Link>
-      </li>
+      </Item>
     </Wrapper>
   );
 };
