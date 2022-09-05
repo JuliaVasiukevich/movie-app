@@ -1,6 +1,5 @@
-import logo from './images/logo.svg'
-import authBackground from './images/auth-background.jpg'
+import {ReactComponent as LogoIcon} from "./icons/logo.svg";
+import authBackground from "./images/auth-background.jpg";
 
-
-export {logo} 
-export {authBackground} 
+export { LogoIcon };
+export { authBackground };

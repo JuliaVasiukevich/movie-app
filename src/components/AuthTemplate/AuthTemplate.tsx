@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
-import { logo } from "../../assets";
+import { LogoIcon } from "../../assets";
 import { ROUTE } from "../../routes";
 import { Footer, Wrapper, WrapperLink } from "./styles";
 
@@ -9,7 +9,7 @@ export const AuthTemplate = () => {
     <Wrapper>
       <WrapperLink>
         <Link to={ROUTE.HOME}>
-          <img src={logo} alt="logo" />
+          <LogoIcon />
         </Link>
       </WrapperLink>
       <Outlet />

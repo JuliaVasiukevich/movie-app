@@ -22,10 +22,9 @@ function App() {
         <Route path={ROUTE.SETTINGS} element={<SettingsPage />} />
         <Route path={ROUTE.NOT_FOUND} element={<NotFoundPage />} />
       </Route>
-      <Route path={ROUTE.HOME} element={<AuthTemplate />}>
+      <Route element={<AuthTemplate />}>
         <Route path={ROUTE.SIGN_IN} element={<SignInPage />} />
         <Route path={ROUTE.SIGN_UP} element={<SignUpPage />} />
-        <Route path={`/${ROUTE.NOT_FOUND}`} element={<NotFoundPage />} />
       </Route>
     </Routes>
   );

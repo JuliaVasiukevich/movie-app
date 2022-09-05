@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
-const Wrapper = styled.ul`
+const NavbarList = styled.ul`
   
 `;
 
-const Item = styled.li`
+const NavbarItem = styled.li`
   list-style: none;
 `;
 
-export { Wrapper, Item };
+export { NavbarList, NavbarItem };
