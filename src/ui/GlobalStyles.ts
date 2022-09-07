@@ -40,6 +40,6 @@ body {
 
 a {
     text-decoration: none; 
-    color: gray;
+    color: ${Color.Secondary};
    }
 `;

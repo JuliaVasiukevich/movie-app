@@ -1,15 +1,20 @@
 import styled from "styled-components";
+import { Color } from "../../ui/colors";
+
+const NavigationConteiner = styled.div`
+`;
 
 const NavbarList = styled.ul`
-  grid-area: navbar;
+  position: sticky;
+  top: 60px;
+  left: 0;
+  right: 0;
+  width: 200px;
 `;
 
 const NavbarItem = styled.li`
   list-style: none;
   margin-bottom: 40px;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  grid-gap: 23px;
 `;
 
-export { NavbarList, NavbarItem };
+export { NavbarList, NavbarItem, NavigationConteiner };

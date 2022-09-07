@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Color } from "../../ui/colors";
 
 const Wrapper = styled.div`
   display: grid;
@@ -7,6 +8,10 @@ const Wrapper = styled.div`
   align-items: center;
   grid-area: header;
   margin-bottom: 56px;
+  position: sticky;
+  top: 0;
+  padding: 10px;
+  background-color: ${Color.Background_primary}
 `;
 
 export { Wrapper };

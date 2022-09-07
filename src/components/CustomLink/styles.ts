@@ -2,9 +2,21 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Color } from "../../ui/colors";
 
-const ActiveLink = styled(Link) `&&& {
-    color: ${Color.Primary}
-}
+const BasicLink = styled(Link)`
+  &&& {
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 600;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-gap: 23px;
+    fill: ${Color.Secondary}
+  }
 `;
 
-export {ActiveLink}
+const ActiveLink = styled(BasicLink)`
+  color: ${Color.Primary};
+  fill: ${Color.Primary};
+`;
+
+export { ActiveLink, BasicLink };

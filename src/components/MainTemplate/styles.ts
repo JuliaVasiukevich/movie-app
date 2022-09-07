@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
 const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
   padding: 40px;
-  display: grid;
-  grid-template-areas:
-    "header header"
-    "navbar content";
-  grid-template-columns: 200px auto;
-  grid-column-gap: 1em;
 `;
 
-export { Wrapper };
+const ContentWrapper = styled.div`
+display: flex;
+`;
+
+export { Wrapper, ContentWrapper };
