@@ -2,21 +2,27 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { ROUTE } from "../../routes";
 import { NavbarItem, NavbarList } from "./styles";
+import { FavoriteIcon, HomeIcon, SettingsIcon, TrendsIcon } from "../../assets";
+import { CustomLink } from "../CustomLink/CustomLink";
 
 export const Navbar = () => {
   return (
     <NavbarList>
       <NavbarItem>
-        <Link to={ROUTE.HOME}>Home</Link>
+        <HomeIcon />
+        <CustomLink to={ROUTE.HOME}> Home </CustomLink>
       </NavbarItem>
       <NavbarItem>
-        <Link to={ROUTE.FAVORITES}>Favorites</Link>
+        <FavoriteIcon />
+        <CustomLink to={ROUTE.FAVORITES}> Favorites</CustomLink>
       </NavbarItem>
       <NavbarItem>
-        <Link to={ROUTE.TRENDS}>Trends</Link>
+        <TrendsIcon />
+        <CustomLink to={ROUTE.TRENDS}> Trends</CustomLink>
       </NavbarItem>
       <NavbarItem>
-        <Link to={ROUTE.SETTINGS}>Settings</Link>
+        <SettingsIcon />
+        <CustomLink to={ROUTE.SETTINGS}> Settings</CustomLink>
       </NavbarItem>
     </NavbarList>
   );

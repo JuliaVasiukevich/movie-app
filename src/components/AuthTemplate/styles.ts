@@ -6,17 +6,15 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   padding: 40px;
-  background-image: ${authBackground};
-  background-size: contain;
+  background: black;
+  background-image: url(${authBackground});
   background-repeat: no-repeat;
-`;
-
-const WrapperLink = styled.div`
+  background-size: cover;
 
 `;
 
-const Footer = styled.div`
+const WrapperLink = styled.div``;
 
-`;
+const Footer = styled.div``;
 
 export { Wrapper, WrapperLink, Footer };

@@ -8,7 +8,7 @@ export const MainTemplate = () => {
     <Wrapper>
       <Header />
       <Navbar />
-      <Outlet />
+      <Outlet grid-area="content" />
     </Wrapper>
   );
 };

@@ -6,7 +6,6 @@ const InputStyled = styled.input`
   border-radius: 10px;
   border: none;
   width: 100%;
-  margin-bottom: 10px;
 
   :active,
   :hover,
