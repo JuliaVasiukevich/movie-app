@@ -6,5 +6,7 @@ export enum Color {
   Background_primary_dark = "var(--background_primary_dark)",
   Graphite = "var(--background_graphite)",
   Error = "var(--error)",
+  Light = "var(--light)",
   Text_primary = "var(--text_primary)",
+  White = "white"
 }

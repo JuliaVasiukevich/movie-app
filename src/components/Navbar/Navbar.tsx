@@ -33,5 +33,3 @@ export const Navbar = () => {
     </NavigationConteiner>
   );
 };
-
-const Routes = [{ path: "/home", title: "Home" }];

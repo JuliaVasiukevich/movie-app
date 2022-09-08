@@ -19,6 +19,7 @@ html[data-theme="dark"] {
 --background_graphite: #323537;
 --error: #FF5154;
 --text_primary: #FFFFFF;
+--light: #AFB2B6;
 }
 
 html[data-theme="light"] {
@@ -30,6 +31,7 @@ html[data-theme="light"] {
 --background_graphite: #323537;
 --error: #FF5154;
 --text_primary: #000000;
+--light: #AFB2B6;
 }
 
 body {

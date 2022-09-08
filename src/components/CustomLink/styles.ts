@@ -10,13 +10,13 @@ const BasicLink = styled(Link)`
     display: grid;
     grid-template-columns: auto 1fr;
     grid-gap: 23px;
-    fill: ${Color.Secondary}
+    fill: ${Color.Secondary};
   }
 `;
 
 const ActiveLink = styled(BasicLink)`
   color: ${Color.Primary};
-  fill: ${Color.Primary};
+  fill: ${Color.Primary} !important;
 `;
 
 export { ActiveLink, BasicLink };
