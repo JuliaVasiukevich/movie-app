@@ -5,7 +5,7 @@ import { CustomLink } from "../CustomLink/CustomLink";
 import { Route } from "react-router-dom";
 
 export const Navbar = () => {
-  const items = [
+  const navigationItems = [
     { text: "Home", route: ROUTE.HOME, img: <HomeIcon /> },
     { text: "Favorites", route: ROUTE.FAVORITES, img: <FavoriteIcon /> },
     { text: "Trends", route: ROUTE.TRENDS, img: <TrendsIcon /> },
@@ -15,11 +15,11 @@ export const Navbar = () => {
   return (
     <NavigationConteiner>
       <NavbarList>
-        {items.map((item) => {
+        {navigationItems.map((navigationItem) => {
           return (
             <NavbarItem>
-              <CustomLink to={item.route}>
-                {item.img} {item.text}
+              <CustomLink to={navigationItem.route}>
+                {navigationItem.img} {navigationItem.text}
               </CustomLink>
             </NavbarItem>
           );
