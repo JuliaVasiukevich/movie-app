@@ -10,11 +10,13 @@ const Wrapper = styled.div`
   background-image: url(${authBackground});
   background-repeat: no-repeat;
   background-size: cover;
-
 `;
 
 const WrapperLink = styled.div``;
 
-const Footer = styled.div``;
+const Footer = styled.div`
+  text-align: center;
+  margin-top: 64px;
+`;
 
 export { Wrapper, WrapperLink, Footer };

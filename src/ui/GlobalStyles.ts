@@ -27,8 +27,8 @@ html[data-theme="light"] {
 --primary_light:#917CFF;
 --secondary: #80858B;
 --background_primary:#FFFFFF;
---background_primary_dark: #242426;
---background_graphite: #323537;
+--background_primary_dark: #AFB2B6;
+--background_graphite: #AFB2B6;
 --error: #FF5154;
 --text_primary: #000000;
 --light: #AFB2B6;
@@ -38,6 +38,7 @@ body {
     font-family: 'Exo 2', sans-serif;
     background-color: ${Color.Background_primary};
     color: ${Color.Text_primary};
+    transition: 0.3s;
 }
 
 a {

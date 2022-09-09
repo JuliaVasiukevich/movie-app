@@ -1,8 +1,9 @@
 import styled from "styled-components";
+import { Color } from "../../ui/colors";
 
 const InputStyled = styled.input`
   padding: 16px 20px;
-  background: #323537;
+  background: ${Color.Background_primary_dark};
   border-radius: 10px;
   border: none;
   width: 100%;
