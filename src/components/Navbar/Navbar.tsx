@@ -2,7 +2,6 @@ import { ROUTE } from "../../routes";
 import { NavbarItem, NavbarList, NavigationConteiner } from "./styles";
 import { FavoriteIcon, HomeIcon, SettingsIcon, TrendsIcon } from "../../assets";
 import { CustomLink } from "../CustomLink/CustomLink";
-import { Route } from "react-router-dom";
 
 export const Navbar = () => {
   const navigationItems = [

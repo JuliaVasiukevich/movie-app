@@ -1,18 +1,24 @@
+import { ArrowRight } from "assets";
+import { useElementWidth } from "hooks";
 import React, { useEffect, useState } from "react";
 import { Loading, MovieTile } from "..";
 import { fetchMovies } from "../../store/features/moviesSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks/hooks";
-import { MovieList } from "./styles";
+import { MovieList, NextButton } from "./styles";
 
-export const MainMovies = () => {
+export const MainMovies = ({ movie }: any) => {
   const dispatch = useAppDispatch();
   const { isLoading, error, movies } = useAppSelector((state) => state.movies);
-  const clickHandler = () => {
-   
-  };
+
+  const clickHandler = () => {};
+
+  // Это я хочу триггернуть для того, чтобы прокручивать дальше для конкретной категории, но пока как-то слабо, попробую сделать, присоеденив свайпер вместо кнопки
+
+  //   const [ref, width] = useElementWidth();
+  //   console.log("current width: ", width);
 
   useEffect(() => {
-    dispatch(fetchMovies());
+    dispatch(fetchMovies(movie));
   }, [dispatch]);
 
   if (isLoading) {
@@ -22,12 +28,10 @@ export const MainMovies = () => {
   if (error) {
     return <h1>Error</h1>;
   }
-
   return (
     <>
-      <h1>About Batman</h1>
       <MovieList>
-        {movies.Search.map((movie) => {
+        {movies?.[movie]?.Search.map((movie) => {
           return (
             <MovieTile
               key={movie.imdbID}
@@ -38,10 +42,10 @@ export const MainMovies = () => {
             ></MovieTile>
           );
         })}
+        <NextButton type="button" onClick={clickHandler}>
+          <ArrowRight />
+        </NextButton>
       </MovieList>
-      <button type="button" onClick={clickHandler}>
-        next
-      </button>
     </>
   );
 };

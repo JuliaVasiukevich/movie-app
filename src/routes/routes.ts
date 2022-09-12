@@ -1,9 +1,9 @@
 export enum ROUTE {
-    HOME = '/',
-    FAVORITES = 'favorites',
-    TRENDS = 'trends',
-    SETTINGS = 'settings',
-    SIGN_IN = 'sign-in',
-    SIGN_UP = 'sign-up',
-    NOT_FOUND = '*',
+  HOME = "/",
+  FAVORITES = "favorites",
+  TRENDS = "trends",
+  SETTINGS = "settings",
+  SIGN_IN = "sign-in",
+  SIGN_UP = "sign-up",
+  NOT_FOUND = "*",
 }

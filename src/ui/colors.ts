@@ -8,5 +8,5 @@ export enum Color {
   Error = "var(--error)",
   Light = "var(--light)",
   Text_primary = "var(--text_primary)",
-  White = "white"
+  White = "white",
 }

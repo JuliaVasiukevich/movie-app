@@ -11,7 +11,7 @@ const Wrapper = styled.div`
   position: sticky;
   top: 0;
   padding: 10px;
-  background-color: ${Color.Background_primary}
+  background-color: ${Color.Background_primary};
 `;
 
 export { Wrapper };

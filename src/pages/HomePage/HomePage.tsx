@@ -1,10 +1,10 @@
 import React from "react";
-import { MainMovies } from "../../components";
+import { MainCategories } from "../../components";
 
 export const HomePage = () => {
   return (
-    <div>
-      <MainMovies></MainMovies>
-    </div>
+    <ul>
+      <MainCategories></MainCategories>
+    </ul>
   );
 };

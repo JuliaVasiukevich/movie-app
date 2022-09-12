@@ -1,4 +1,7 @@
+import { SignUpValues } from "components";
+import { FormValuesKeys } from "config/authFormValues";
 import { ChangeEvent } from "react";
+import { UseFormRegister, ValidationRule } from "react-hook-form";
 import { InputStyled, Wrapper } from "./styles";
 
 interface IProps {
@@ -6,9 +9,27 @@ interface IProps {
   type?: string;
   value?: string;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
+  label?: FormValuesKeys;
+  register?: UseFormRegister<SignUpValues>;
+  rules?: IRules;
 }
 
-export const Input = ({ placeholder, type, value, onChange }: IProps) => {
+interface IRules {
+  required?: boolean;
+  maxLength?: ValidationRule<number>;
+  minLength?: ValidationRule<number>;
+  pattern?: ValidationRule<RegExp>;
+}
+
+export const Input = ({
+  placeholder,
+  type,
+  value,
+  onChange,
+  label,
+  register,
+  rules,
+}: IProps) => {
   return (
     <Wrapper>
       <InputStyled
@@ -16,6 +37,7 @@ export const Input = ({ placeholder, type, value, onChange }: IProps) => {
         onChange={onChange}
         placeholder={placeholder}
         type={type}
+        {...(register && label && { ...register(label, { ...rules }) })}
       />
     </Wrapper>
   );

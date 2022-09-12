@@ -7,7 +7,7 @@ const Wrapper = styled.div`
 `;
 
 const ContentWrapper = styled.div`
-display: flex;
+  display: flex;
 `;
 
 export { Wrapper, ContentWrapper };

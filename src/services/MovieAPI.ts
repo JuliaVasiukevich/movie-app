@@ -7,9 +7,9 @@ class MovieAPI {
     baseURL: this.BASE_URL,
   });
 
-  public async getByTitle() {
+  public async getByTitle(title: string) {
     const params = {
-      s: "batman",
+      s: title,
       page: 1,
     };
 

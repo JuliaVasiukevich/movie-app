@@ -19,8 +19,8 @@ const Title = styled.p`
 const Subtitle = styled.p``;
 
 const Switch = styled.div`
-display: flex;
-align-items: center
+  display: flex;
+  align-items: center;
 `;
 
 const SLabel = styled.label`

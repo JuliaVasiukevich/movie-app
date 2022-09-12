@@ -1,6 +1,5 @@
 import React from "react";
-import { Loading } from "..";
-import { MovieItem } from "./styles";
+import { MovieItem, Poster } from "./styles";
 
 interface IProps {
   title: string;
@@ -8,14 +7,14 @@ interface IProps {
   type: string;
   year: string;
 }
-
+//TODO сделать через стайлд-компонентс
 export const MovieTile = ({ title, poster, type, year }: IProps) => {
   return (
     <MovieItem>
-      <img src={poster} alt="poster" height="257px" />
+      <Poster src={poster} alt="poster" />
       <h4>{title}</h4>
       <p>
-        {type}*{year}
+        {type} ☉ {year}
       </p>
     </MovieItem>
   );

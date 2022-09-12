@@ -8,19 +8,11 @@ export const SignInForm = () => {
   return (
     <Form>
       <Label>
-        Name
-        <Input></Input>
-      </Label>
-      <Label>
         Email
         <Input></Input>
       </Label>
       <Label>
         Password
-        <Input></Input>
-      </Label>
-      <Label>
-        Confirm password
         <Input></Input>
       </Label>
       <Button type="submit">Sign in</Button>

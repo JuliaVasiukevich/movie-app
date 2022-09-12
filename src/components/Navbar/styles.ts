@@ -1,8 +1,6 @@
 import styled from "styled-components";
-import { Color } from "../../ui/colors";
 
-const NavigationConteiner = styled.div`
-`;
+const NavigationConteiner = styled.div``;
 
 const NavbarList = styled.ul`
   position: sticky;

@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { useTheme } from "../../hooks/useTheme";
 
 import {
@@ -12,7 +11,7 @@ import {
 } from "./styles";
 
 export const ColorMode = () => {
-  const {theme, setTheme} = useTheme();
+  const { theme, setTheme } = useTheme();
 
   const themeToggler = () => {
     theme === "dark" ? setTheme("light") : setTheme("dark");

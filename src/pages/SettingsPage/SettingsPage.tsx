@@ -23,7 +23,6 @@ export const SettingsPage = () => {
           <ColorMode />
         </SettingWrapper>
       </Setting>
-
     </Form>
   ) : (
     <Navigate to={`/${ROUTE.SIGN_UP} `} />

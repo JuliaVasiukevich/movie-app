@@ -7,17 +7,17 @@ const InputStyled = styled.input`
   border-radius: 10px;
   border: none;
   width: 100%;
+  color: ${Color.White};
 
-  :active,
+//TODO раскомментить, сделать что-то
+  /* :active,
   :hover,
   :focus {
     outline: 0;
     outline-offset: 0;
-  }
+  } */
 `;
 
-const Wrapper = styled.div`
-  
-`;
+const Wrapper = styled.div``;
 
 export { InputStyled, Wrapper };

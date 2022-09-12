@@ -7,5 +7,5 @@ export const useTheme = () => {
     document.documentElement.setAttribute("data-theme", theme);
   }, [theme]);
 
-  return {theme, setTheme}
+  return { theme, setTheme };
 };

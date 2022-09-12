@@ -2,7 +2,7 @@ import { movieAPI } from "./../../services/MovieAPI";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 interface MoviesState {
-  movies: IMovie;
+  movies: { [title: string]: IMovie };
   isLoading: boolean;
   error: null | string;
 }
@@ -22,14 +22,14 @@ export interface IMovieSearch {
 }
 
 const initialState: MoviesState = {
-  movies: { Response: false, Search: [], totalResults: 0 },
+  movies: {},
   isLoading: false,
   error: null,
 };
 
-const fetchMovies = createAsyncThunk<IMovie, undefined>(
+const fetchMovies = createAsyncThunk<IMovie, string>(
   "movies/fetchMovies",
-  async () => movieAPI.getByTitle()
+  async (title: string) => movieAPI.getByTitle(title)
 );
 
 const moviesSlice = createSlice({
@@ -41,9 +41,9 @@ const moviesSlice = createSlice({
       state.isLoading = true;
       state.error = null;
     });
-    builder.addCase(fetchMovies.fulfilled, (state, { payload }) => {
+    builder.addCase(fetchMovies.fulfilled, (state, { payload, meta }) => {
       state.isLoading = false;
-      state.movies = payload;
+      state.movies[meta.arg] = payload;
     });
     builder.addCase(fetchMovies.rejected, (state) => {
       state.isLoading = false;
