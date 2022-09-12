@@ -17,7 +17,7 @@ export const Navbar = () => {
       <NavbarList>
         {navigationItems.map((navigationItem) => {
           return (
-            <NavbarItem>
+            <NavbarItem key={navigationItem.text}>
               <CustomLink to={navigationItem.route}>
                 {navigationItem.img} {navigationItem.text}
               </CustomLink>
