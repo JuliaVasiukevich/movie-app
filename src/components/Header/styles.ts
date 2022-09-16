@@ -12,6 +12,10 @@ const Wrapper = styled.div`
   top: 0;
   padding: 10px;
   background-color: ${Color.Background_primary};
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr; 
+  }
 `;
 
 export { Wrapper };

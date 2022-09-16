@@ -4,17 +4,20 @@ import { ColorMode } from "../../components";
 import { ROUTE } from "../../routes";
 import { useSelector } from "react-redux";
 import { Form, Setting, SettingName, SettingWrapper } from "./styles";
+import { getAuth } from "firebase/auth";
 
 export const SettingsPage = () => {
-  const { isAuth } = useSelector((state: any) => {
+  const { isAuth, email } = useSelector((state: any) => {
     return state.user;
   });
-
+//TODO: сделать адекватно
   return isAuth ? (
     <Form>
       <Setting>
         <SettingName>Profile</SettingName>
-        <SettingWrapper></SettingWrapper>
+        <SettingWrapper>
+          <p>{email}</p>
+        </SettingWrapper>
       </Setting>
       <Setting>
         <SettingName>Password</SettingName>

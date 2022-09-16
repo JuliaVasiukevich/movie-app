@@ -1,10 +1,9 @@
-import { UserState } from "components/UserState/UserState";
+import { Input, UserState } from "components";
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { LogoIcon } from "../../assets";
 import { ROUTE } from "../../routes";
-import { Input } from "../index";
 import { Wrapper } from "./styles";
 
 export const Header = () => {

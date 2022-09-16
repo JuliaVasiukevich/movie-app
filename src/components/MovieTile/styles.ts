@@ -17,6 +17,7 @@ const Poster = styled.img`
   object-fit: cover;
   border-radius: 10px;
   margin-bottom: 10px;
+
 `;
 
 const Title = styled.h4`

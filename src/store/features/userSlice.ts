@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { getAuth } from "firebase/auth";
 
 interface UserState {
   id: null | string;
@@ -20,6 +21,12 @@ const userSlice = createSlice({
   reducers: {
     signIn(state) {
       state.isAuth = true;
+      const auth = getAuth();
+      const user = auth.currentUser;
+      if (user !== null) {
+        state.email = user.email;
+        state.id = user.uid;
+      }
     },
     signOut(state) {
       state.isAuth = false;
