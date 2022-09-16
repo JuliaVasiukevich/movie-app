@@ -13,11 +13,30 @@ const Form = styled.form`
 const Button = styled.button`
   background-color: ${Color.Primary};
   color: ${Color.White};
+  width: 100%;
   border: none;
   padding: 16px;
   border-radius: 10px;
+  margin-bottom: 32px;
 `;
 
-const Label = styled.label``;
+const SignIn = styled.div`
+  text-align: center;
+`;
+const Label = styled.label`
+  margin-bottom: 40px;
+`;
 
-export { Form, Button, Label };
+const Error = styled.p`
+  position: absolute;
+  color: ${Color.Error};
+  margin: 10px;
+`;
+const CommonError = styled(Error)`
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export { Form, Button, Label, SignIn, Error, CommonError };

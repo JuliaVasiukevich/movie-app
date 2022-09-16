@@ -10,14 +10,25 @@ const Form = styled.form`
   border-radius: 10px;
 `;
 
-const Label = styled.label``;
-
 const Button = styled.button`
   background-color: ${Color.Primary};
   color: ${Color.White};
-  padding: 16px;
+  width: 100%;
   border: none;
+  padding: 16px;
   border-radius: 10px;
+  margin-bottom: 32px;
 `;
 
-export { Form, Button, Label };
+const SignUp = styled.div`
+  text-align: center;
+`;
+const Label = styled.label`
+  margin-bottom: 20px;
+`;
+
+const Error = styled.p`
+  color: ${Color.Error};
+`;
+
+export { Form, Button, Label, SignUp, Error };

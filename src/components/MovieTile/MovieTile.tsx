@@ -1,5 +1,5 @@
 import React from "react";
-import { MovieItem, Poster } from "./styles";
+import { Description, MovieItem, Poster, Title } from "./styles";
 
 interface IProps {
   title: string;
@@ -11,11 +11,11 @@ interface IProps {
 export const MovieTile = ({ title, poster, type, year }: IProps) => {
   return (
     <MovieItem>
-      <Poster src={poster} alt="poster" />
-      <h4>{title}</h4>
-      <p>
+      <Poster src={poster} alt={`poster ${title}`} />
+      <Title>{title}</Title>
+      <Description>
         {type} ☉ {year}
-      </p>
+      </Description>
     </MovieItem>
   );
 };

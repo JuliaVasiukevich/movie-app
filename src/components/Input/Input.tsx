@@ -1,5 +1,5 @@
-import { SignUpValues } from "components";
-import { FormValuesKeys } from "config/authFormValues";
+import { SignUpValuesKeys, SignUpValues } from "components";
+import { SignInValues, SignInValuesKeys } from "components/SignInForm/SignInForm";
 import { ChangeEvent } from "react";
 import { UseFormRegister, ValidationRule } from "react-hook-form";
 import { InputStyled, Wrapper } from "./styles";
@@ -9,8 +9,8 @@ interface IProps {
   type?: string;
   value?: string;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
-  label?: FormValuesKeys;
-  register?: UseFormRegister<SignUpValues>;
+  label?: SignUpValuesKeys | SignInValuesKeys;
+  register?: UseFormRegister<SignUpValues | SignInValues>;
   rules?: IRules;
 }
 
@@ -21,15 +21,7 @@ interface IRules {
   pattern?: ValidationRule<RegExp>;
 }
 
-export const Input = ({
-  placeholder,
-  type,
-  value,
-  onChange,
-  label,
-  register,
-  rules,
-}: IProps) => {
+export const Input = ({ placeholder, type, value, onChange, label, register, rules }: IProps) => {
   return (
     <Wrapper>
       <InputStyled

@@ -13,15 +13,15 @@ export const MainCategories = () => {
   ];
   const [scrollY, setScrollY] = useState(0);
 
-  //Это я триггерю, когда доходит до конца страницы. Идея такая: сразу буду доставать 2 элемента из массива, после того, как дойду до конца страницы еще 2, пока не дойду до конца массива с темами
+  //Это я триггерю, когда доходит до конца страницы. 
+  //Идея такая: сразу буду доставать 2 элемента из массива,
+  //после того, как дойду до конца страницы еще 2, пока не дойду до конца массива с темами
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const handleScroll = (e: any) => {
-    setScrollY(window.scrollY);
-
     if (
       e.target.documentElement.scrollHeight -
         e.target.documentElement.scrollTop -

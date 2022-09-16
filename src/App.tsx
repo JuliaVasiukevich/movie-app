@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import { MainTemplate, AuthTemplate } from "./components";
-import { useTheme } from "./hooks/useTheme";
 
 import {
   HomePage,
@@ -14,9 +12,7 @@ import {
 } from "./pages";
 import { ROUTE } from "./routes/index";
 
-function App() {
-  const { theme, setTheme } = useTheme();
-
+export const App = () => {
   return (
     <Routes>
       <Route path={ROUTE.HOME} element={<MainTemplate />}>
@@ -32,6 +28,6 @@ function App() {
       </Route>
     </Routes>
   );
-}
+};
 
 export default App;

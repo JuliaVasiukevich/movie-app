@@ -2,10 +2,13 @@ import React from "react";
 import { Navigate } from "react-router-dom";
 import { ColorMode } from "../../components";
 import { ROUTE } from "../../routes";
+import { useSelector } from "react-redux";
 import { Form, Setting, SettingName, SettingWrapper } from "./styles";
 
 export const SettingsPage = () => {
-  const isAuth = true;
+  const { isAuth } = useSelector((state: any) => {
+    return state.user;
+  });
 
   return isAuth ? (
     <Form>

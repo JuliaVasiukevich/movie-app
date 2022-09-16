@@ -1,24 +1,11 @@
-import { movieAPI } from "./../../services/MovieAPI";
+import { movieAPI } from "../../services/movieAPI";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { IMovieAPI } from "types/movieTypes";
 
 interface MoviesState {
-  movies: { [title: string]: IMovie };
+  movies: { [title: string]: IMovieAPI };
   isLoading: boolean;
   error: null | string;
-}
-
-interface IMovie {
-  Response: boolean;
-  Search: IMovieSearch[];
-  totalResults: number;
-}
-
-export interface IMovieSearch {
-  Poster: string;
-  Title: string;
-  Type: string;
-  Year: string;
-  imdbID: string;
 }
 
 const initialState: MoviesState = {
@@ -27,9 +14,11 @@ const initialState: MoviesState = {
   error: null,
 };
 
-const fetchMovies = createAsyncThunk<IMovie, string>(
+const fetchMovies = createAsyncThunk<IMovieAPI, string>(
   "movies/fetchMovies",
-  async (title: string) => movieAPI.getByTitle(title)
+  async (title: string) => {
+    return await movieAPI.getByTitle(title);
+  },
 );
 
 const moviesSlice = createSlice({

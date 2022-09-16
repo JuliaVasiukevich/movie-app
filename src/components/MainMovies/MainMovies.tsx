@@ -1,6 +1,5 @@
 import { ArrowRight } from "assets";
-import { useElementWidth } from "hooks";
-import React, { useEffect, useState } from "react";
+import { useEffect} from "react";
 import { Loading, MovieTile } from "..";
 import { fetchMovies } from "../../store/features/moviesSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks/hooks";
@@ -12,14 +11,15 @@ export const MainMovies = ({ movie }: any) => {
 
   const clickHandler = () => {};
 
-  // Это я хочу триггернуть для того, чтобы прокручивать дальше для конкретной категории, но пока как-то слабо, попробую сделать, присоеденив свайпер вместо кнопки
+  // Это я хочу триггернуть для того, чтобы прокручивать дальше для конкретной категории, 
+  //но пока как-то слабо, попробую сделать, присоеденив свайпер вместо кнопки
 
   //   const [ref, width] = useElementWidth();
   //   console.log("current width: ", width);
 
   useEffect(() => {
     dispatch(fetchMovies(movie));
-  }, [dispatch]);
+  }, [dispatch, movie]);
 
   if (isLoading) {
     return <Loading />;
@@ -39,7 +39,7 @@ export const MainMovies = ({ movie }: any) => {
               poster={movie.Poster}
               type={movie.Type}
               year={movie.Year}
-            ></MovieTile>
+            />
           );
         })}
         <NextButton type="button" onClick={clickHandler}>

@@ -37,6 +37,10 @@ export const resetCSS = css`
     text-decoration: underline dotted;
   }
 
+  ul {
+    list-style: none;
+  }
+
   code,
   kbd,
   samp,
@@ -80,7 +84,6 @@ export const resetCSS = css`
   [type="reset"],
   [type="submit"] {
     -webkit-appearance: button;
-    padding: 1px 6px;
   }
 
   input {

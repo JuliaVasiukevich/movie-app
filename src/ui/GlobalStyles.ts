@@ -4,8 +4,8 @@ import { Color } from "./colors";
 import { theme } from "./theme";
 
 export const GlobalStyles = createGlobalStyle`
-${theme}
 ${resetCSS}
+${theme}
 
 @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700;900&display=swap');
 

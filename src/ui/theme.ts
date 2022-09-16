@@ -1,5 +1,7 @@
 import { css } from "styled-components";
 
+export type Theme = "dark" | "light";
+
 export const theme = css`
   html[data-theme="dark"] {
     --primary: #7b61ff;
@@ -16,8 +18,8 @@ export const theme = css`
   html[data-theme="light"] {
     --primary: #7b61ff;
     --primary_light: #917cff;
-    --secondary: #80858b;
-    --background_primary: #ffffff;
+    --secondary: #333333;
+    --background_primary: #dedede;
     --background_primary_dark: #afb2b6;
     --background_graphite: #afb2b6;
     --error: #ff5154;

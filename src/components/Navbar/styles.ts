@@ -11,8 +11,8 @@ const NavbarList = styled.ul`
 `;
 
 const NavbarItem = styled.li`
-  list-style: none;
   margin-bottom: 40px;
+  list-style: none;
 `;
 
 export { NavbarList, NavbarItem, NavigationConteiner };

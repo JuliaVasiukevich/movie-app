@@ -5,7 +5,7 @@ const Spinner = styled.div`
   width: 75px;
   height: 75px;
   border: 1px solid ${Color.Primary};
-  border-top: 4px solid ${Color.Primary_Light};
+  border-top: 4px solid ${Color.Primary_light};
   border-right: 4px solid transparent;
   border-radius: 50%;
   animation: 1s spin linear infinite;
