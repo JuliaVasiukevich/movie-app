@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getAuth } from "firebase/auth";
+import { getAuth, signOut } from "firebase/auth";
 
 interface UserState {
   id: null | string;
@@ -28,12 +28,14 @@ const userSlice = createSlice({
         state.id = user.uid;
       }
     },
-    signOut(state) {
+    logOut(state) {
       state.isAuth = false;
+      const auth = getAuth();
+      signOut(auth);
     },
   },
 });
 
 export default userSlice.reducer;
 
-export const { signIn, signOut } = userSlice.actions;
+export const { signIn, logOut } = userSlice.actions;

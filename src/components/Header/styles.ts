@@ -14,7 +14,7 @@ const Wrapper = styled.div`
   background-color: ${Color.Background_primary};
 
   @media (max-width: 768px) {
-    grid-template-columns: 1fr; 
+    grid-template-columns: 200px 1fr; 
   }
 `;
 

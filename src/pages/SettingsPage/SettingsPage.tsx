@@ -5,18 +5,19 @@ import { ROUTE } from "../../routes";
 import { useSelector } from "react-redux";
 import { Form, Setting, SettingName, SettingWrapper } from "./styles";
 import { getAuth } from "firebase/auth";
+import { useAppSelector } from "store/hooks/hooks";
 
 export const SettingsPage = () => {
-  const { isAuth, email } = useSelector((state: any) => {
+  const { isAuth, email } = useAppSelector((state: any) => {
     return state.user;
   });
-//TODO: сделать адекватно
+  //TODO: сделать адекватно
   return isAuth ? (
     <Form>
       <Setting>
         <SettingName>Profile</SettingName>
         <SettingWrapper>
-          <p>{email}</p>
+          <p>email: {email}</p>
         </SettingWrapper>
       </Setting>
       <Setting>

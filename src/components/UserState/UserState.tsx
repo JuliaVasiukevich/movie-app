@@ -1,12 +1,12 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { signOut } from "store/features/userSlice";
-import { SignOutButton } from "./styles";
+import { logOut } from "store/features/userSlice";
+import { LogOutButton } from "./styles";
 
 export const UserState = () => {
   const dispatch = useDispatch();
   const handleClick = () => {
-    dispatch(signOut());
+    dispatch(logOut());
   };
   const { email } = useSelector((state: any) => {
     return state.user;
@@ -15,7 +15,7 @@ export const UserState = () => {
   return (
     <div>
       Hi, {email}
-      <SignOutButton onClick={handleClick}> Sign out</SignOutButton>
+      <LogOutButton onClick={handleClick}> Sign out</LogOutButton>
     </div>
   );
 };
