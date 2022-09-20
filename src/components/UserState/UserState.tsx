@@ -1,16 +1,12 @@
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { logOut } from "store/features/userSlice";
+import { useAppSelector } from "store/hooks/hooks";
+import { getUserInfo } from "store/selectors/userSelectors";
 import { LogOutButton } from "./styles";
 
 export const UserState = () => {
-  const dispatch = useDispatch();
+
   const handleClick = () => {
-    dispatch(logOut());
   };
-  const { email } = useSelector((state: any) => {
-    return state.user;
-  });
+  const { email } = useAppSelector(getUserInfo);
 
   return (
     <div>

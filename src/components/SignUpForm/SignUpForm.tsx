@@ -6,6 +6,9 @@ import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { Input } from "components";
 import { useState } from "react";
 import { getFirebaseMessage } from "utils/fireBaseError";
+import { useAppDispatch, useAppSelector } from "store/hooks/hooks";
+import { getUserInfo } from "store/selectors/userSelectors";
+import { fetchSignUpUser } from "store/features/userSlice";
 
 export type SignUpValues = {
   email: string;
@@ -17,34 +20,48 @@ export enum SignUpValuesKeys {
   PASSWORD = "password",
 }
 
+const validateRules = {
+  password: {
+    requared: "Password is requared !",
+    minLength: {
+      value: 6,
+      message: "Password must be at least 6 characters",
+    },
+    maxLength: {
+      value: 20,
+      message: "Password must be at most 20 characters",
+    },
+  },
+  email: {
+    requared: "Email is requared !",
+    pattern: {
+      value: /^[\w-\\.]+@([\w-]+\.)+[\w-]{2,4}$/g,
+      message: "Please enter a valid email",
+    },
+  },
+};
+
 export const SignUpForm = () => {
+  const { isPendingAuth, error } = useAppSelector(getUserInfo);
+  const dispatch = useAppDispatch();
+
   const {
-    register,
     handleSubmit,
-    reset,
-    control,
     formState: { errors },
-  } = useForm<SignUpValues>();
+    control,
+    reset,
+  } = useForm<SignUpValues>({
+    defaultValues: { email: "", password: "" },
+  });
 
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate();
-
-  const onSubmit: SubmitHandler<SignUpValues> = ({ email, password }) => {
-    setIsLoading(true);
-    setErrorMessage(null);
-    const auth = getAuth();
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((_) => {
-        navigate("/");
-      })
-      .catch((err) => {
-        setErrorMessage(getFirebaseMessage(err.code));
+  const onSubmit: SubmitHandler<SignUpValues> = (userInfo) => {
+    dispatch(fetchSignUpUser(userInfo))
+      .then(() => {
+        
       })
       .finally(() => {
-        setIsLoading(false);
+        reset();
       });
-    reset();
   };
 
   return (
@@ -54,23 +71,9 @@ export const SignUpForm = () => {
         <Controller
           name={"email"}
           control={control}
+          rules={validateRules.email}
           render={({ field: { onChange, value } }) => {
-            return (
-              <Input
-                type={"text"}
-                register={register}
-                label={SignUpValuesKeys.EMAIL}
-                onChange={onChange}
-                value={value}
-                rules={{
-                  required: true,
-                  pattern: {
-                    value: /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/,
-                    message: "Please, enter correct email",
-                  },
-                }}
-              />
-            );
+            return <Input type={"text"} onChange={onChange} value={value} />;
           }}
         />
         {errors.email && <Error>{errors.email.message}</Error>}
@@ -80,33 +83,19 @@ export const SignUpForm = () => {
         <Controller
           name={"password"}
           control={control}
+          rules={validateRules.password}
           render={({ field: { onChange, value } }) => {
-            return (
-              <Input
-                type={"password"}
-                register={register}
-                label={SignUpValuesKeys.PASSWORD}
-                onChange={onChange}
-                value={value}
-                rules={{
-                  required: true,
-                  minLength: {
-                    value: 6,
-                    message: "Password must be more than 6 characters long",
-                  },
-                }}
-              />
-            );
+            return <Input value={value} onChange={onChange} type="password" />;
           }}
         />
         {errors.password && <Error>{errors.password.message}</Error>}
       </Label>
       <Button type="submit">Sign up</Button>
-      
+
       <SignIn>
         Already have an account?
         <Link to={`/${ROUTE.SIGN_IN}`}> Sign in</Link>
-        {errorMessage && <CommonError>{errorMessage}</CommonError>}
+        {/* {errorMessage && <CommonError>{errorMessage}</CommonError>} */}
       </SignIn>
     </Form>
   );

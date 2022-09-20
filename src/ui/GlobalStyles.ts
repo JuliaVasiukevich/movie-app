@@ -13,11 +13,9 @@ body {
     font-family: 'Exo 2', sans-serif;
     background-color: ${Color.Background_primary};
     color: ${Color.Text_primary};
-    transition: 0.3s;
 }
 
 a {
-    text-decoration: none; 
     color: ${Color.Secondary};
    }
 `;

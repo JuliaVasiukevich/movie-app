@@ -4,7 +4,7 @@ export type FirebaseErrorCode =
   | "auth/wrong-password"
   | "auth/user-not-found";
 
-enum FirebaseError {
+export enum FirebaseError {
   EMAIL_ALREADY_IN_USE = "It`s email used",
   WRONG_PASSWORD = "Invalid password",
   NOT_FOUND = "User not found, please enter correct email",

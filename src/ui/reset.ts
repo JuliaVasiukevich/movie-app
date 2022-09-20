@@ -30,6 +30,7 @@ export const resetCSS = css`
 
   a {
     background-color: transparent;
+    text-decoration: none; 
   }
 
   abbr[title] {
@@ -129,6 +130,7 @@ export const resetCSS = css`
   [type="color"] {
     background: inherit;
   }
+
 
   ::-webkit-inner-spin-button,
   ::-webkit-outer-spin-button {

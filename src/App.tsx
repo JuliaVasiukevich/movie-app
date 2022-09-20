@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { MainTemplate, AuthTemplate } from "./components";
+import { MainTemplate, AuthTemplate, RequareAuth } from "./components";
 
 import {
   HomePage,
@@ -18,9 +18,11 @@ export const App = () => {
       <Route path={ROUTE.HOME} element={<MainTemplate />}>
         <Route index element={<HomePage />} />
         <Route path={ROUTE.TRENDS} element={<TrendsPage />} />
-        <Route path={ROUTE.FAVORITES} element={<FavoritesPage />} />
-        <Route path={ROUTE.SETTINGS} element={<SettingsPage />} />
         <Route path={ROUTE.NOT_FOUND} element={<NotFoundPage />} />
+        <Route element={<RequareAuth />}>
+          <Route path={ROUTE.FAVORITES} element={<FavoritesPage />} />
+          <Route path={ROUTE.SETTINGS} element={<SettingsPage />} />
+        </Route>
       </Route>
       <Route element={<AuthTemplate />}>
         <Route path={ROUTE.SIGN_IN} element={<SignInPage />} />

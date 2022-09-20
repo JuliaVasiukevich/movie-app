@@ -1,15 +1,14 @@
 import { Input, UserState } from "components";
 import React from "react";
-import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { useAppSelector } from "store/hooks/hooks";
+import { getUserInfo } from "store/selectors/userSelectors";
 import { LogoIcon } from "../../assets";
 import { ROUTE } from "../../routes";
 import { Wrapper } from "./styles";
 
 export const Header = () => {
-  const { isAuth } = useSelector((state: any) => {
-    return state.user;
-  });
+  const { isAuth } = useAppSelector(getUserInfo);
 
   return (
     <Wrapper>

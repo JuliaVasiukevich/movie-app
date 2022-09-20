@@ -11,3 +11,4 @@ export * from "./MovieTile/MovieTile";
 export * from "./Loading/Loading";
 export * from "./MainCategories/MainCategories";
 export * from "./UserState/UserState";
+export * from "./RequareAuth/RequareAuth"

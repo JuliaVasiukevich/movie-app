@@ -1,13 +1,13 @@
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ROUTE } from "../../routes";
 import { Button, Form, SignUp, Error, Label } from "./styles";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { Input } from "components";
 import { useState } from "react";
-import { getFirebaseMessage } from "utils/fireBaseError";
 import { useDispatch } from "react-redux";
-import { signIn } from "store/features/userSlice";
+import { useAppDispatch, useAppSelector } from "store/hooks/hooks";
+import { getUserInfo } from "store/selectors/userSelectors";
+import { fetchSignInUser } from "store/features/userSlice";
 
 export type SignInValues = {
   email: string;
@@ -20,35 +20,25 @@ export enum SignInValuesKeys {
 }
 
 export const SignInForm = () => {
-  const {
-    register,
-    handleSubmit,
-    reset,
-    control,
-    formState: { errors },
-  } = useForm<SignInValues>();
-
+  const { isPendingAuth, error } = useAppSelector(getUserInfo);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
-  const onSubmit: SubmitHandler<SignInValues> = ({ email, password }) => {
-    dispatch(signIn());
-    setIsLoading(true);
-    setErrorMessage(null);
-    const auth = getAuth();
-    signInWithEmailAndPassword(auth, email, password)
-      .then((_) => {
-        navigate("/");
-      })
-      .catch((err) => {
-        setErrorMessage(getFirebaseMessage(err.code));
-      })
+  const {
+    handleSubmit,
+    formState: { errors },
+    control,
+    reset,
+  } = useForm<SignInValues>({
+    defaultValues: { email: "", password: "" },
+  });
+
+  const onSubmit: SubmitHandler<SignInValues> = (userInfo) => {
+    dispatch(fetchSignInUser(userInfo))
+      .then(() => {})
       .finally(() => {
-        setIsLoading(false);
+        reset();
       });
-    reset();
   };
 
   return (
@@ -59,18 +49,7 @@ export const SignInForm = () => {
           name={"email"}
           control={control}
           render={({ field: { onChange, value } }) => {
-            return (
-              <Input
-                type={"text"}
-                register={register}
-                label={SignInValuesKeys.EMAIL}
-                onChange={onChange}
-                value={value}
-                rules={{
-                  required: true,
-                }}
-              />
-            );
+            return <Input type={"text"} onChange={onChange} value={value} />;
           }}
         />
         {errors.email && <Error>{errors.email.message}</Error>}
@@ -81,22 +60,7 @@ export const SignInForm = () => {
           name={"password"}
           control={control}
           render={({ field: { onChange, value } }) => {
-            return (
-              <Input
-                type={"password"}
-                register={register}
-                label={SignInValuesKeys.PASSWORD}
-                onChange={onChange}
-                value={value}
-                rules={{
-                  required: true,
-                  minLength: {
-                    value: 6,
-                    message: "Password must be more than 6 characters long",
-                  },
-                }}
-              />
-            );
+            return <Input type={"password"} onChange={onChange} value={value} />;
           }}
         />
         {errors.password && <Error>{errors.password.message}</Error>}

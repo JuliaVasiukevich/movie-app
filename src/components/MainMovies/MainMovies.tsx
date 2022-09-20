@@ -1,5 +1,6 @@
 import { ArrowRight } from "assets";
 import { useEffect} from "react";
+import { getMovies } from "store/selectors/movieSelectors";
 import { Loading, MovieTile } from "..";
 import { fetchMovies } from "../../store/features/moviesSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks/hooks";
@@ -7,7 +8,7 @@ import { MovieList, NextButton } from "./styles";
 
 export const MainMovies = ({ movie }: any) => {
   const dispatch = useAppDispatch();
-  const { isLoading, error, movies } = useAppSelector((state) => state.movies);
+  const { isLoading, error, movies } = useAppSelector(getMovies);
 
   const clickHandler = () => {};
 
@@ -31,7 +32,7 @@ export const MainMovies = ({ movie }: any) => {
   return (
     <>
       <MovieList>
-        {movies?.[movie]?.Search.map((movie) => {
+        {movies?.[movie]?.Search.map((movie: any) => {
           return (
             <MovieTile
               key={movie.imdbID}

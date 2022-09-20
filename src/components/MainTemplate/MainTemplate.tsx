@@ -1,9 +1,9 @@
-import { useWindowSize } from "hooks/useWindowSize";
 import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
 import { Navbar, Header } from "../index";
 import { Wrapper, ContentWrapper } from "./styles";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+import { useWindowSize } from "hooks";
 
 export const MainTemplate = () => {
   const { width } = useWindowSize();

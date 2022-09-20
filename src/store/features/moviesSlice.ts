@@ -1,11 +1,16 @@
-import { movieAPI } from "../../services/movieAPI";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { AxiosError } from "axios";
+import { movieAPI } from "services/movieAPI";
 import { IMovieAPI } from "types/movieTypes";
 
 interface MoviesState {
-  movies: { [title: string]: IMovieAPI };
+  movies: IMovie;
   isLoading: boolean;
   error: null | string;
+}
+
+interface IMovie {
+  [title: string]: IMovieAPI;
 }
 
 const initialState: MoviesState = {
@@ -16,9 +21,16 @@ const initialState: MoviesState = {
 
 const fetchMovies = createAsyncThunk<IMovieAPI, string>(
   "movies/fetchMovies",
-  async (title: string) => {
-    return await movieAPI.getByTitle(title);
-  },
+
+  async (title: string, { rejectWithValue }) => {
+    try {
+      return await movieAPI.getByTitle(title);
+    } catch (error) {
+      const axiosError = error as AxiosError;
+
+      return rejectWithValue(axiosError.message);
+    }
+  }
 );
 
 const moviesSlice = createSlice({
