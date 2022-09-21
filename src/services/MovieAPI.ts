@@ -1,4 +1,5 @@
 import axios from "axios";
+import { IMovieDetails } from "types/movieTypes";
 
 class MovieAPI {
   private readonly BASE_URL = process.env.REACT_APP_MOVIE_BASE_URL as string;
@@ -14,6 +15,17 @@ class MovieAPI {
     };
 
     const { data } = await this.API.get("", { params });
+
+    return data;
+  }
+
+  public async getDetailsByID(imdbID: string) {
+    const params = {
+      i: imdbID
+    };
+    const { data } = await this.API.get<IMovieDetails>("", {
+      params
+    });
 
     return data;
   }

@@ -27,5 +27,8 @@ const NextButton = styled.button`
   cursor: pointer;
   border-radius: 10px;
 `;
+const Error = styled.h3`
+color: ${Color.Error}
+`
 
-export { MovieList, NextButton };
+export { MovieList, NextButton, Error };

@@ -4,7 +4,7 @@ import { getMovies } from "store/selectors/movieSelectors";
 import { Loading, MovieTile } from "..";
 import { fetchMovies } from "../../store/features/moviesSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks/hooks";
-import { MovieList, NextButton } from "./styles";
+import { MovieList, NextButton, Error } from "./styles";
 
 export const MainMovies = ({ movie }: any) => {
   const dispatch = useAppDispatch();
@@ -27,8 +27,9 @@ export const MainMovies = ({ movie }: any) => {
   }
 
   if (error) {
-    return <h1>Error</h1>;
+    return <Error> Sorry :( </Error>;
   }
+
   return (
     <>
       <MovieList>
@@ -40,6 +41,7 @@ export const MainMovies = ({ movie }: any) => {
               poster={movie.Poster}
               type={movie.Type}
               year={movie.Year}
+              imdbID={movie.imdbID}
             />
           );
         })}

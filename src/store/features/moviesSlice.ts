@@ -24,7 +24,11 @@ const fetchMovies = createAsyncThunk<IMovieAPI, string>(
 
   async (title: string, { rejectWithValue }) => {
     try {
-      return await movieAPI.getByTitle(title);
+      const response = await movieAPI.getByTitle(title);
+      if (response.Response === "False") {
+        throw new Error(response.Error);
+      }
+      return response;
     } catch (error) {
       const axiosError = error as AxiosError;
 

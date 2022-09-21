@@ -12,6 +12,8 @@ import {
 } from "redux-persist";
 import moviesReducer from "./features/moviesSlice";
 import userReducer from "./features/userSlice";
+import movieDetailsReducer from "./features/moviesDetailsSlice";
+import favoritesReducer from "./features/favoritesSlice"
 
 const persistConfig = {
   key: "root",
@@ -19,7 +21,12 @@ const persistConfig = {
   whitelist: ["favorites", "user"],
 };
 
-const rootReducer = combineReducers({ movies: moviesReducer, user: userReducer });
+const rootReducer = combineReducers({
+  movies: moviesReducer,
+  user: userReducer,
+  movieDetails: movieDetailsReducer,
+  favorites: favoritesReducer,
+});
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
