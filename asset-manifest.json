@@ -1,17 +1,21 @@
 {
   "files": {
-    "main.js": "/movie-app/static/js/main.2d678451.js",
+    "main.css": "/movie-app/static/css/main.a21a5a66.css",
+    "main.js": "/movie-app/static/js/main.0607cd22.js",
     "static/media/auth-background.jpg": "/movie-app/static/media/auth-background.1c307d0b55bb182bf805.jpg",
     "static/media/logo.svg": "/movie-app/static/media/logo.ef69f378f7796fa43e7162952fc3af4f.svg",
     "static/media/settings.svg": "/movie-app/static/media/settings.48a9974e8a9908524d1d63b646d42091.svg",
+    "static/media/imdbLogo.svg": "/movie-app/static/media/imdbLogo.58444fd8d2f8f69876ca64b6261dde9a.svg",
+    "index.html": "/movie-app/index.html",
     "static/media/trends.svg": "/movie-app/static/media/trends.20d3ce865a8bbb4f62a84948e944fd6f.svg",
     "static/media/home.svg": "/movie-app/static/media/home.f26a9bd3fe398b7bdbdf8f69983a7229.svg",
-    "index.html": "/movie-app/index.html",
     "static/media/favorite.svg": "/movie-app/static/media/favorite.d40145d7bb12d981caad1d2191d3f0a4.svg",
     "static/media/arrow-right.svg": "/movie-app/static/media/arrow-right.e4cf957dcd210fd9ce59f6c64bc2b001.svg",
-    "main.2d678451.js.map": "/movie-app/static/js/main.2d678451.js.map"
+    "main.a21a5a66.css.map": "/movie-app/static/css/main.a21a5a66.css.map",
+    "main.0607cd22.js.map": "/movie-app/static/js/main.0607cd22.js.map"
   },
   "entrypoints": [
-    "static/js/main.2d678451.js"
+    "static/css/main.a21a5a66.css",
+    "static/js/main.0607cd22.js"
   ]
 }
