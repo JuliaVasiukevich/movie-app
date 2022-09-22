@@ -3,9 +3,10 @@ import { Loading, MainMovies } from "components";
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { movieAPI } from "services/movieAPI";
-import { addToFavotires } from "store/features/favoritesSlice";
+import { addToFavotires, removeFavorite } from "store/features/favoritesSlice";
 import { fetchMovieByDetails } from "store/features/moviesDetailsSlice";
 import { useAppDispatch, useAppSelector } from "store/hooks/hooks";
+import { getFavorites } from "store/selectors/favoritesSelectors";
 import { getDetailsMovie } from "store/selectors/movieDetailsSelectors";
 import { IMovieDetails, IMovieSearchAPI } from "types/movieTypes";
 import {
@@ -20,12 +21,16 @@ import {
   BadgeIMDB,
   Description,
   DataGrid,
+  MovieWrapper,
+  DisFavoritesButton,
 } from "./styles";
 
 export const DetailsMoviePage = () => {
   const { imdbID = "" } = useParams();
   const dispatch = useAppDispatch();
   const { isLoading, error, details } = useAppSelector(getDetailsMovie);
+  const { favorites } = useAppSelector(getFavorites);
+
   const {
     Title,
     Year,
@@ -52,7 +57,8 @@ export const DetailsMoviePage = () => {
     Year: Year,
     imdbID: imdbID,
   };
-//TODO флгоритм для рекомендаций
+  //TODO lдоделать алгоритм для рекомендаций
+
   // Promise.allSettled([
   //   movieAPI.getByTitle("The"),
   //   movieAPI.getByTitle("Lego"),
@@ -71,9 +77,12 @@ export const DetailsMoviePage = () => {
   //         return Math.random() > 0.5 ? 1 : -1;
   //       });
   //   })
-  //   .then((res) => {});
+  //   .then((res) => {return res.length = 10});
 
-  const recommended = Title?.split(" ")[0];
+  const recommended =
+    Title?.split(" ").length !== 1
+      ? `${Title?.split(" ")[0]} ${Title?.split(" ")[0]}`
+      : Title?.split(" ")[0];
 
   useEffect(() => {
     dispatch(fetchMovieByDetails(imdbID));
@@ -86,45 +95,59 @@ export const DetailsMoviePage = () => {
   if (error) {
     return <div>{error}</div>;
   }
-  console.log(movie);
+
+  const result = favorites.find((move) => move.imdbID === movie.imdbID);
 
   return (
     <Wrapper>
-      <ImgWrapper>
-        <PosterImg src={Poster} alt={`poster ${Title}`} />
-        <FavoritesButton
-          onClick={(e) => {
-            e.preventDefault();
-            dispatch(addToFavotires(movie));
-            console.log(movie);
-          }}
-        >
-          like
-        </FavoritesButton>
-      </ImgWrapper>
-      <DescriptionWrapper>
-        <TypeMovie>{Genre?.split(", ").join(" • ")}</TypeMovie>
-        <TitleMovie>{Title}</TitleMovie>
-        <Badges>
-          <BadgeIMDB>
-            <IMDbLogo /> {imdbRating}
-          </BadgeIMDB>
-          <BadgeIMDB>{Runtime}</BadgeIMDB>
-        </Badges>
-        <Description>{Plot}</Description>
-        <DataGrid>
-          <p></p> <p></p>
-          <p>Year</p> <p>{Year}</p>
-          <p>Released</p> <p>{Released}</p>
-          <p>BoxOffice</p> <p>{BoxOffice}</p>
-          <p>Country</p> <p>{Country}</p>
-          <p>Actors</p> <p>{Actors}</p>
-          <p>Director</p> <p>{Director}</p>
-          <p>Writer</p> <p>{Writer}</p>
-        </DataGrid>
-        <h2>Recommended:</h2>
-        <MainMovies movie={`${recommended}`}></MainMovies>
-      </DescriptionWrapper>
+      <MovieWrapper>
+        <ImgWrapper>
+          <PosterImg src={Poster} alt={`poster ${Title}`} />
+
+          {result ? (
+            <DisFavoritesButton
+              onClick={(e) => {
+                e.preventDefault();
+                dispatch(removeFavorite(movie?.imdbID));
+              }}
+            >
+              dislike
+            </DisFavoritesButton>
+          ) : (
+            <FavoritesButton
+              onClick={(e) => {
+                e.preventDefault();
+                dispatch(addToFavotires(movie));
+              }}
+            >
+              like
+            </FavoritesButton>
+          )}
+        </ImgWrapper>
+        <DescriptionWrapper>
+          <TypeMovie>{Genre?.split(", ").join(" • ")}</TypeMovie>
+          <TitleMovie>{Title}</TitleMovie>
+          <Badges>
+            <BadgeIMDB>
+              <IMDbLogo /> {imdbRating}
+            </BadgeIMDB>
+            <BadgeIMDB>{Runtime}</BadgeIMDB>
+          </Badges>
+          <Description>{Plot}</Description>
+          <DataGrid>
+            <p></p> <p></p>
+            <p>Year</p> <p>{Year}</p>
+            <p>Released</p> <p>{Released}</p>
+            <p>BoxOffice</p> <p>{BoxOffice}</p>
+            <p>Country</p> <p>{Country}</p>
+            <p>Actors</p> <p>{Actors}</p>
+            <p>Director</p> <p>{Director}</p>
+            <p>Writer</p> <p>{Writer}</p>
+          </DataGrid>
+        </DescriptionWrapper>
+      </MovieWrapper>
+      <h2>Recommended:</h2>
+      <MainMovies movie={`${recommended}`}></MainMovies>
     </Wrapper>
   );
 };

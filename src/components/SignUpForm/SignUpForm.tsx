@@ -44,6 +44,7 @@ const validateRules = {
 export const SignUpForm = () => {
   const { isPendingAuth, error } = useAppSelector(getUserInfo);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const {
     handleSubmit,
@@ -56,8 +57,9 @@ export const SignUpForm = () => {
 
   const onSubmit: SubmitHandler<SignUpValues> = (userInfo) => {
     dispatch(fetchSignUpUser(userInfo))
+      .unwrap()
       .then(() => {
-        
+        navigate(ROUTE.HOME);
       })
       .finally(() => {
         reset();

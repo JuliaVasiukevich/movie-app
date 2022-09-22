@@ -14,7 +14,8 @@ const favoritesSlice = createSlice({
   initialState,
   reducers: {
     addToFavotires(state, { payload }: PayloadAction<IMovieSearchAPI>) {
-      state.favorites.push(payload);
+      const result = state.favorites.find((movie) => movie.imdbID === payload.imdbID);
+      if (!result) state.favorites.push(payload);
     },
     removeFavorite(state, { payload }: PayloadAction<string>) {
       state.favorites = state.favorites.filter((movie) => {

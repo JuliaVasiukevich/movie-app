@@ -3,6 +3,11 @@ import styled from "styled-components";
 
 const Wrapper = styled.div`
 display: flex;
+flex-direction: column;
+`
+
+const MovieWrapper = styled.div`
+display: flex;
 `
 
 const ImgWrapper = styled.div`
@@ -21,6 +26,9 @@ const PosterImg = styled.img`
 
 const FavoritesButton = styled.button`
 `
+const DisFavoritesButton = styled.button`
+`
+
 const DescriptionWrapper = styled.div`
 display: flex;
 flex-direction: column;
@@ -63,5 +71,6 @@ export {
     FavoritesButton, DescriptionWrapper,
     TypeMovie, TitleMovie,
     Badges, BadgeIMDB,
-    Description, DataGrid
+    Description, DataGrid,
+    MovieWrapper, DisFavoritesButton
 };

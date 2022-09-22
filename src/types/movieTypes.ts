@@ -9,7 +9,7 @@ export interface IMovieSearchAPI {
   Title: string | undefined;
   Type: string | undefined;
   Year: string | undefined;
-  imdbID: string | undefined;
+  imdbID: string;
 }
 
 

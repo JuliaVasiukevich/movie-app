@@ -12,6 +12,7 @@ const Wrapper = styled.div`
   top: 0;
   padding: 10px;
   background-color: ${Color.Background_primary};
+  z-index: 900;
 
   @media (max-width: 768px) {
     grid-template-columns: 200px 1fr; 

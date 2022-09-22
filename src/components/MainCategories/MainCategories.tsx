@@ -1,5 +1,7 @@
 import { MainMovies } from "components/MainMovies/MainMovies";
+import { MovieWrapper } from "pages/DetailsMoviePage/styles";
 import React, { useEffect, useState } from "react";
+import { StyledList } from "./styles";
 
 export const MainCategories = () => {
   const movieArray = [
@@ -10,36 +12,58 @@ export const MainCategories = () => {
     "ted",
     "myths",
     "adventure",
+    "story",
+    "legend",
+    "star wars",
+    "money",
+    "family",
+    "simpsons",
+    "USA",
+    "galaxy",
+    "ring",
+    "sport",
   ];
-  const [scrollY, setScrollY] = useState(0);
+  const [categories, setCategories] = useState<string[]>([]);
+  const [count, setCount] = useState(0);
+  const [fetching, setFetching] = useState(true);
 
-  //Это я триггерю, когда доходит до конца страницы. 
-  //Идея такая: сразу буду доставать 2 элемента из массива,
-  //после того, как дойду до конца страницы еще 2, пока не дойду до конца массива с темами
+  useEffect(() => {
+    if (fetching) {
+      setCategories([...categories, movieArray[count], movieArray[count + 1]]);
+      setCount((prevState) => prevState + 2);
+      setFetching(false);
+    }
+  }, [fetching]);
+
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    return function () {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  });
 
-  const handleScroll = (e: any) => {
+  const handleScroll = function (e: any) {
     if (
       e.target.documentElement.scrollHeight -
         e.target.documentElement.scrollTop -
         window.innerHeight <
-      1
+        1 &&
+      categories.length < movieArray.length - 1
     ) {
-      console.log("Bottom");
+      setFetching(true);
     }
   };
 
   return (
     <>
-      {movieArray.map((movie) => {
+      {categories.map((category) => {
         return (
-          <li>
-            <h1> About {movie}</h1>
-            <MainMovies movie={movie}></MainMovies>
-          </li>
+          <StyledList>
+            <li key={category}>
+              <h1> About {category}</h1>
+              <MainMovies movie={category}></MainMovies>
+            </li>
+          </StyledList>
         );
       })}
     </>

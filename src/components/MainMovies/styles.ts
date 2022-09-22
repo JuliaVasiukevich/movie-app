@@ -3,7 +3,8 @@ import { Color } from "ui/colors";
 
 const MovieList = styled.ul`
   display: flex;
-  max-width: calc(100vw - 350px);
+  width: calc(100vw - 350px);
+  /* max-width: 80%; */
   overflow-x: auto;
   padding-bottom: 10px;
 

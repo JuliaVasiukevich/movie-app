@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ROUTE } from "../../routes";
 import { Button, Form, SignUp, Error, Label } from "./styles";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
@@ -23,6 +23,7 @@ export const SignInForm = () => {
   const { isPendingAuth, error } = useAppSelector(getUserInfo);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const {
     handleSubmit,
@@ -35,7 +36,8 @@ export const SignInForm = () => {
 
   const onSubmit: SubmitHandler<SignInValues> = (userInfo) => {
     dispatch(fetchSignInUser(userInfo))
-      .then(() => {})
+      .unwrap()
+      .then(() => {navigate(ROUTE.HOME)})
       .finally(() => {
         reset();
       });
