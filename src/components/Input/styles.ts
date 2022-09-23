@@ -2,11 +2,11 @@ import styled from "styled-components";
 import { Color } from "../../ui/colors";
 
 const InputStyled = styled.input`
+  width: 100%;
   padding: 16px 20px;
   background: ${Color.Background_primary_dark};
   border-radius: 10px;
   border: none;
-  width: 100%;
   color: ${Color.White};
 
 //TODO раскомментить, сделать что-то

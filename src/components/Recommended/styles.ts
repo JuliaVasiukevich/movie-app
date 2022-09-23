@@ -1,6 +1,6 @@
-import { Screen } from "./../../ui/breakpoints";
 import styled from "styled-components";
 import { Color } from "ui/colors";
+import { H4 } from "ui/typography";
 
 const MovieList = styled.ul`
   display: flex;
@@ -20,18 +20,10 @@ const MovieList = styled.ul`
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     background-color: ${Color.Background_primary_dark};
   }
-
-  ${Screen.MD}{
-    width: 90vw;
-  }
 `;
 
-
-const NextButton = styled.button`
-  background-color: rgba(28, 28, 28, 0);
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
+const Error = styled(H4)`
+  color: ${Color.Error};
 `;
 
-export { MovieList, NextButton };
+export { MovieList, Error };

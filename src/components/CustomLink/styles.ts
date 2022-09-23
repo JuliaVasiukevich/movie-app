@@ -4,12 +4,12 @@ import { Color } from "../../ui/colors";
 
 const BasicLink = styled(Link)`
   &&& {
-    font-size: 18px;
-    line-height: 24px;
-    font-weight: 600;
     display: grid;
     grid-template-columns: auto 1fr;
     grid-gap: 23px;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 600;
     fill: ${Color.Secondary};
   }
 `;

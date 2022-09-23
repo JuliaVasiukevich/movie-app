@@ -11,13 +11,13 @@ const Form = styled.form`
 `;
 
 const Button = styled.button`
+  width: 100%;
+  padding: 16px;
+  margin-bottom: 32px;
   background-color: ${Color.Primary};
   color: ${Color.White};
-  width: 100%;
   border: none;
-  padding: 16px;
   border-radius: 10px;
-  margin-bottom: 32px;
 `;
 
 const SignUp = styled.div`

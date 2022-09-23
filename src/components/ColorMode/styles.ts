@@ -24,13 +24,13 @@ const Switch = styled.div`
 `;
 
 const SLabel = styled.label`
-  cursor: pointer;
+  position: relative;
+  display: block;
   width: 32px;
   height: 20px;
   background: ${Color.Light};
-  display: block;
   border-radius: 10px;
-  position: relative;
+  cursor: pointer;
 
   :after {
     content: "";

@@ -11,32 +11,24 @@ const Form = styled.form`
 `;
 
 const Button = styled.button`
+  width: 100%;
+  padding: 16px;
+  margin-bottom: 32px;
   background-color: ${Color.Primary};
   color: ${Color.White};
-  width: 100%;
   border: none;
-  padding: 16px;
   border-radius: 10px;
-  margin-bottom: 32px;
 `;
 
 const SignIn = styled.div`
   text-align: center;
 `;
 const Label = styled.label`
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 `;
 
 const Error = styled.p`
-  position: absolute;
   color: ${Color.Error};
-  margin: 10px;
-`;
-const CommonError = styled(Error)`
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 `;
 
-export { Form, Button, Label, SignIn, Error, CommonError };
+export { Form, Button, Label, SignIn, Error };

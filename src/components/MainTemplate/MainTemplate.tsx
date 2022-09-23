@@ -4,6 +4,7 @@ import { Navbar, Header } from "../index";
 import { Wrapper, ContentWrapper } from "./styles";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { useWindowSize } from "hooks";
+import { breakpoint } from "../../ui/breakpoints"
 
 export const MainTemplate = () => {
   const { width } = useWindowSize();
@@ -13,7 +14,7 @@ export const MainTemplate = () => {
     <Wrapper>
       <Header />
       <ContentWrapper>
-        {width && width < 768 ? (
+        {width && width < breakpoint.MD ? (
           <div>
             <div onClick={() => setNav(!nav)}>
               {nav ? (

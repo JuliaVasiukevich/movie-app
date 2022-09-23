@@ -1,7 +1,7 @@
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
 import { ROUTE } from "../../routes";
-import { Button, Form, SignIn, Error, Label, CommonError } from "./styles";
+import { Button, Form, SignIn, Error, Label } from "./styles";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { Input } from "components";
 import { useState } from "react";
@@ -42,7 +42,8 @@ const validateRules = {
 };
 
 export const SignUpForm = () => {
-  const { isPendingAuth, error } = useAppSelector(getUserInfo);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -61,7 +62,11 @@ export const SignUpForm = () => {
       .then(() => {
         navigate(ROUTE.HOME);
       })
+      .catch((err) => {
+        setErrorMessage(getFirebaseMessage(err.code));
+      })
       .finally(() => {
+        setIsLoading(false);
         reset();
       });
   };
@@ -78,8 +83,8 @@ export const SignUpForm = () => {
             return <Input type={"text"} onChange={onChange} value={value} />;
           }}
         />
-        {errors.email && <Error>{errors.email.message}</Error>}
       </Label>
+      {errors.email && <Error>{errors.email.message}</Error>}
       <Label>
         Password
         <Controller
@@ -90,15 +95,18 @@ export const SignUpForm = () => {
             return <Input value={value} onChange={onChange} type="password" />;
           }}
         />
-        {errors.password && <Error>{errors.password.message}</Error>}
       </Label>
+      {errors.password && <Error>{errors.password.message}</Error>}
       <Button type="submit">Sign up</Button>
 
       <SignIn>
         Already have an account?
         <Link to={`/${ROUTE.SIGN_IN}`}> Sign in</Link>
-        {/* {errorMessage && <CommonError>{errorMessage}</CommonError>} */}
+        {/* TODO: Portal
+        {errorMessage && <Error>{errorMessage}</Error>} */}
       </SignIn>
     </Form>
   );
 };
+
+

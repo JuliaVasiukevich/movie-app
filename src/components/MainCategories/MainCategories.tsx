@@ -1,7 +1,11 @@
+import { Loading } from "components";
 import { MainMovies } from "components/MainMovies/MainMovies";
 import { MovieWrapper } from "pages/DetailsMoviePage/styles";
 import React, { useEffect, useState } from "react";
-import { StyledList } from "./styles";
+import { fetchMovies } from "store/features/moviesSlice";
+import { useAppDispatch, useAppSelector } from "store/hooks/hooks";
+import { getMovies } from "store/selectors/movieSelectors";
+import { StyledList, Error } from "./styles";
 
 export const MainCategories = () => {
   const movieArray = [
@@ -27,9 +31,14 @@ export const MainCategories = () => {
   const [count, setCount] = useState(0);
   const [fetching, setFetching] = useState(true);
 
+  const dispatch = useAppDispatch();
+  const { isLoading, error, movies } = useAppSelector(getMovies);
+
   useEffect(() => {
     if (fetching) {
       setCategories([...categories, movieArray[count], movieArray[count + 1]]);
+      dispatch(fetchMovies(movieArray[count]));
+      dispatch(fetchMovies(movieArray[count + 1]));
       setCount((prevState) => prevState + 2);
       setFetching(false);
     }
@@ -54,6 +63,14 @@ export const MainCategories = () => {
     }
   };
 
+  // if (isLoading) {
+  //   return <Loading />;
+  // }
+
+  if (error) {
+    return <Error> Sorry :( </Error>;
+  }
+
   return (
     <>
       {categories.map((category) => {
@@ -61,7 +78,7 @@ export const MainCategories = () => {
           <StyledList>
             <li key={category}>
               <h1> About {category}</h1>
-              <MainMovies movie={category}></MainMovies>
+              <MainMovies movies={movies?.[category]?.Search} />
             </li>
           </StyledList>
         );

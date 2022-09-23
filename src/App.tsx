@@ -11,6 +11,7 @@ import {
   SignUpPage,
   NotFoundPage,
   DetailsMoviePage,
+  SearchPage
 } from "./pages";
 import { ROUTE } from "./routes/index";
 
@@ -21,7 +22,8 @@ export const App = () => {
         <Route index element={<HomePage />} />
         <Route path={ROUTE.TRENDS} element={<TrendsPage />} />
         <Route path={ROUTE.NOT_FOUND} element={<NotFoundPage />} />
-        <Route path="/movies/:imdbID" element={<DetailsMoviePage />} />
+        <Route path={ROUTE.SEARCH} element={<SearchPage />} />
+        <Route path={ROUTE.DETAILS} element={<DetailsMoviePage />} />
         <Route element={<RequareAuth />}>
           <Route path={ROUTE.FAVORITES} element={<FavoritesPage />} />
           <Route path={ROUTE.SETTINGS} element={<SettingsPage />} />

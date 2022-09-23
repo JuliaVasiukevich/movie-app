@@ -2,9 +2,9 @@ import styled from "styled-components";
 import { authBackground } from "../../assets";
 
 const Wrapper = styled.div`
-  height: 100vh;
   display: flex;
   flex-direction: column;
+  height: 100vh;
   padding: 40px;
   background: black;
   background-image: url(${authBackground});

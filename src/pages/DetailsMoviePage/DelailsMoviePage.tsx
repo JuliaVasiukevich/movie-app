@@ -1,14 +1,14 @@
 import { IMDbLogo } from "assets";
-import { Loading, MainMovies } from "components";
-import React, { useEffect } from "react";
+import { Loading, Recommended } from "components";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { movieAPI } from "services/movieAPI";
 import { addToFavotires, removeFavorite } from "store/features/favoritesSlice";
 import { fetchMovieByDetails } from "store/features/moviesDetailsSlice";
 import { useAppDispatch, useAppSelector } from "store/hooks/hooks";
 import { getFavorites } from "store/selectors/favoritesSelectors";
 import { getDetailsMovie } from "store/selectors/movieDetailsSelectors";
 import { IMovieDetails, IMovieSearchAPI } from "types/movieTypes";
+import { BookmarkIcon, ShareIcon } from "../../assets";
 import {
   Wrapper,
   ImgWrapper,
@@ -23,6 +23,8 @@ import {
   DataGrid,
   MovieWrapper,
   DisFavoritesButton,
+  MovieButton,
+  ShareButton,
 } from "./styles";
 
 export const DetailsMoviePage = () => {
@@ -41,13 +43,11 @@ export const DetailsMoviePage = () => {
     Writer,
     Actors,
     Plot,
-    Language,
     imdbRating,
     BoxOffice,
     Genre,
     Type,
     Country,
-    Production,
   } = details || ({} as IMovieDetails);
 
   const movie: IMovieSearchAPI = {
@@ -57,7 +57,7 @@ export const DetailsMoviePage = () => {
     Year: Year,
     imdbID: imdbID,
   };
-  //TODO lдоделать алгоритм для рекомендаций
+  //TODO доделать алгоритм для рекомендаций
 
   // Promise.allSettled([
   //   movieAPI.getByTitle("The"),
@@ -103,26 +103,30 @@ export const DetailsMoviePage = () => {
       <MovieWrapper>
         <ImgWrapper>
           <PosterImg src={Poster} alt={`poster ${Title}`} />
-
-          {result ? (
-            <DisFavoritesButton
-              onClick={(e) => {
-                e.preventDefault();
-                dispatch(removeFavorite(movie?.imdbID));
-              }}
-            >
-              dislike
-            </DisFavoritesButton>
-          ) : (
-            <FavoritesButton
-              onClick={(e) => {
-                e.preventDefault();
-                dispatch(addToFavotires(movie));
-              }}
-            >
-              like
-            </FavoritesButton>
-          )}
+          <MovieButton>
+            {result ? (
+              <DisFavoritesButton
+                onClick={(e) => {
+                  e.preventDefault();
+                  dispatch(removeFavorite(movie?.imdbID));
+                }}
+              >
+                <BookmarkIcon />
+              </DisFavoritesButton>
+            ) : (
+              <FavoritesButton
+                onClick={(e) => {
+                  e.preventDefault();
+                  dispatch(addToFavotires(movie));
+                }}
+              >
+                <BookmarkIcon />
+              </FavoritesButton>
+            )}
+            <ShareButton>
+              <ShareIcon />
+            </ShareButton>
+          </MovieButton>
         </ImgWrapper>
         <DescriptionWrapper>
           <TypeMovie>{Genre?.split(", ").join(" • ")}</TypeMovie>
@@ -135,6 +139,7 @@ export const DetailsMoviePage = () => {
           </Badges>
           <Description>{Plot}</Description>
           <DataGrid>
+            {/* TODO: почистить, сделать, чтобы не показывалось N/A */}
             <p></p> <p></p>
             <p>Year</p> <p>{Year}</p>
             <p>Released</p> <p>{Released}</p>
@@ -147,7 +152,7 @@ export const DetailsMoviePage = () => {
         </DescriptionWrapper>
       </MovieWrapper>
       <h2>Recommended:</h2>
-      <MainMovies movie={`${recommended}`}></MainMovies>
+      <Recommended movie={`${recommended}`}></Recommended>
     </Wrapper>
   );
 };

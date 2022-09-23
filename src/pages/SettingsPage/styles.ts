@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { H2 } from "ui/typography";
 import { Color } from "../../ui/colors";
 
 const Form = styled.form`
@@ -11,7 +12,7 @@ const Setting = styled.div`
   margin-bottom: 40px;
 `;
 
-const SettingName = styled.h2``;
+const SettingName = styled(H2)``;
 
 const SettingWrapper = styled.div`
   width: 100%;
