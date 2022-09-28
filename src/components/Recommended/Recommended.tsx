@@ -12,6 +12,7 @@ import "swiper/css/free-mode";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { useWindowSize } from "hooks";
+import { IMovieSearch } from "types/movieTypes";
 
 export const Recommended = ({ movie }: any) => {
   const dispatch = useAppDispatch();
@@ -59,16 +60,16 @@ export const Recommended = ({ movie }: any) => {
           modules={[FreeMode, Navigation]}
           className="mySwiper"
         >
-          {movies?.[movie]?.Search.map((movie: any) => {
+          {movies?.[movie]?.search.map(({ imdbID, title, poster, type, year }: IMovieSearch) => {
             return (
               <SwiperSlide>
                 <MovieTile
-                  key={movie.imdbID}
-                  title={movie.Title}
-                  poster={movie.Poster}
-                  type={movie.Type}
-                  year={movie.Year}
-                  imdbID={movie.imdbID}
+                  key={imdbID}
+                  title={title}
+                  poster={poster}
+                  type={type}
+                  year={year}
+                  imdbID={imdbID}
                 />
               </SwiperSlide>
             );

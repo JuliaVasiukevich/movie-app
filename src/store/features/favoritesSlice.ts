@@ -1,8 +1,8 @@
-import { IMovieSearchAPI } from "./../../types/movieTypes";
+import { IMovieSearch } from "./../../types/movieTypes";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface IFavoritesState {
-  favorites: IMovieSearchAPI[];
+  favorites: IMovieSearch[];
 }
 
 const initialState: IFavoritesState = {
@@ -13,7 +13,7 @@ const favoritesSlice = createSlice({
   name: "favorites",
   initialState,
   reducers: {
-    addToFavotires(state, { payload }: PayloadAction<IMovieSearchAPI>) {
+    addToFavotires(state, { payload }: PayloadAction<IMovieSearch>) {
       const result = state.favorites.find((movie) => movie.imdbID === payload.imdbID);
       if (!result) state.favorites.push(payload);
     },

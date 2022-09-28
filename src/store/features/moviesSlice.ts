@@ -1,17 +1,19 @@
+import { adaptedIMovie } from "mappers/mappers";
+
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { AxiosError } from "axios";
 import { movieAPI } from "services/movieAPI";
-import { IMovieAPI } from "types/movieTypes";
+import { IMovie } from "types/movieTypes";
 
 interface MoviesState {
-  movies: IMovie;
+  movies: { [title: string]: IMovie };
   isLoading: boolean;
   error: null | string;
 }
 
-interface IMovie {
-  [title: string]: IMovieAPI;
-}
+// interface IMovie {
+//   [title: string]: IMovieAPI;
+// }
 
 const initialState: MoviesState = {
   movies: {},
@@ -19,23 +21,23 @@ const initialState: MoviesState = {
   error: null,
 };
 
-const fetchMovies = createAsyncThunk<IMovieAPI, string>(
-  "movies/fetchMovies",
+const fetchMovies = createAsyncThunk<IMovie, string,
+  { rejectValue: string }>(
+    "movies/fetchMovies",
+    async (title: string, { rejectWithValue }) => {
+      try {
+        const response = await movieAPI.getByTitle(title);
+        // if (!response.response) {
+        //   throw new Error(response.Error);
+        // }
+        return adaptedIMovie(response);
+      } catch (error) {
+        const axiosError = error as AxiosError;
 
-  async (title: string, { rejectWithValue }) => {
-    try {
-      const response = await movieAPI.getByTitle(title);
-      if (response.Response === "False") {
-        throw new Error(response.Error);
+        return rejectWithValue(axiosError.message);
       }
-      return response;
-    } catch (error) {
-      const axiosError = error as AxiosError;
-
-      return rejectWithValue(axiosError.message);
     }
-  }
-);
+  );
 
 const moviesSlice = createSlice({
   name: "movies",

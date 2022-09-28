@@ -1,7 +1,7 @@
 import { Loading, MovieTile } from "components";
 import { useEffect } from "react";
 import { getMovies } from "store/selectors/movieSelectors";
-import { IMovieSearchAPI } from "types/movieTypes";
+import { IMovieSearch } from "types/movieTypes";
 import { fetchMovies } from "../../store/features/moviesSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks/hooks";
 import { Error } from "./styles";
@@ -24,15 +24,15 @@ export const SearchPage = ({ movie }: any) => {
 
   return (
     <>
-      {movies?.[movie]?.Search.map((movie: any) => {
+      {movies?.[movie]?.search.map(({imdbID, title, poster, type, year}: IMovieSearch) => {
         return (
           <MovieTile
-            key={movie.imdbID}
-            title={movie.Title}
-            poster={movie.Poster}
-            type={movie.Type}
-            year={movie.Year}
-            imdbID={movie.imdbID}
+            key={imdbID}
+            title={title}
+            poster={poster}
+            type={type}
+            year={year}
+            imdbID={imdbID}
           />
         );
       })}

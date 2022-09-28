@@ -10,16 +10,7 @@ export const FavoritesPage = () => {
   return (
     <FavoritesStyled>
       {favorites.map((movie: any) => {
-        return (
-          <MovieTile
-            key={movie.imdbID}
-            title={movie.Title}
-            poster={movie.Poster}
-            type={movie.Type}
-            year={movie.Year}
-            imdbID={movie.imdbID}
-          ></MovieTile>
-        );
+        return <MovieTile key={movie.imdbID} {...movie}></MovieTile>;
       })}
     </FavoritesStyled>
   );

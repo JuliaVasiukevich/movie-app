@@ -1,28 +1,76 @@
 import { ColorMode } from "../../components";
-import { Form, Setting, SettingName, SettingWrapper } from "./styles";
-import { useAppSelector } from "store/hooks/hooks";
+import { Form, Setting, Name, Wrapper } from "./styles";
+import { useAppDispatch, useAppSelector } from "store/hooks/hooks";
 import { getUserInfo } from "store/selectors/userSelectors";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { resetPassword, updateUserPassword } from "store/features/userSlice";
 
 export const SettingsPage = () => {
   const { email } = useAppSelector(getUserInfo);
   //TODO: добавить кнопки
+
+  type PasswordValues = {
+    password: string;
+  };
+
+  // export const SignInForm = () => {
+  //   const { isPendingAuth, error } = useAppSelector(getUserInfo);
+  //   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  //   const dispatch = useAppDispatch();
+  //   const navigate = useNavigate();
+
+  //   const {
+  //     handleSubmit,
+  //     formState: { errors },
+  //     control,
+  //     reset,
+  //   } = useForm<SignInValues>({
+  //     defaultValues: { email: "", password: "" },
+  //   });
+
+  //   const onSubmit: SubmitHandler<SignInValues> = (userInfo) => {
+  //     dispatch(fetchSignInUser(userInfo))
+  //       .unwrap()
+  //       .then(() => {navigate(ROUTE.HOME)})
+  //       .finally(() => {
+  //         reset();
+  //       });
+  //   };
+  const dispatch = useAppDispatch();
+
+  const {
+    handleSubmit,
+    reset,
+    register,
+    formState: { errors },
+  } = useForm<PasswordValues>();
+
+  const onSubmit: SubmitHandler<PasswordValues> = (formValues) => {
+    dispatch(updateUserPassword({ email: email, newPassword: formValues.password }));
+    reset();
+    console.log("pizda");
+  };
+
   return (
-    <Form>
+    <Form onSubmit={handleSubmit(onSubmit)}>
       <Setting>
-        <SettingName>Profile</SettingName>
-        <SettingWrapper>
+        <Name>Profile</Name>
+        <Wrapper>
           <p>email: {email}</p>
-        </SettingWrapper>
+        </Wrapper>
       </Setting>
       <Setting>
-        <SettingName>Password</SettingName>
-        <SettingWrapper></SettingWrapper>
+        <Name>Password</Name>
+        <Wrapper>
+          <input type="password" {...register("password")}></input>
+          <button type="submit"> submit </button>
+        </Wrapper>
       </Setting>
       <Setting>
-        <SettingName>ColorMode</SettingName>
-        <SettingWrapper>
+        <Name>ColorMode</Name>
+        <Wrapper>
           <ColorMode />
-        </SettingWrapper>
+        </Wrapper>
       </Setting>
     </Form>
   );

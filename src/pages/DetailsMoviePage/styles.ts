@@ -1,4 +1,4 @@
-import { Color } from "./../../ui/colors";
+import { Color, Screen } from "./../../ui";
 import styled from "styled-components";
 import { H1 } from "ui/typography";
 
@@ -9,6 +9,10 @@ const Wrapper = styled.div`
 
 const MovieWrapper = styled.div`
   display: flex;
+
+  ${Screen.MD} {
+    flex-direction: column;
+  }
 `
 
 const ImgWrapper = styled.div`

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Color } from "../../ui/colors";
+import { Color, Screen } from "../../ui";
 
 const Wrapper = styled.div`
   position: sticky;
@@ -14,7 +14,7 @@ const Wrapper = styled.div`
   padding: 10px;
   background-color: ${Color.Background_primary};
 
-  @media (max-width: 768px) {
+  ${Screen.MD} {
     grid-template-columns: 200px 1fr; 
   }
 `;

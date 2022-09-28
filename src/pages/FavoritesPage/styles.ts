@@ -3,7 +3,8 @@ import styled from "styled-components";
 const FavoritesStyled = styled.div`
 display: flex;
 flex-wrap:wrap;
-width: calc(100vw - 350px)
-`
+justify-content: space-between;
+width: calc(100vw - 350px);
+`;
 
-export { FavoritesStyled } 
+export { FavoritesStyled };

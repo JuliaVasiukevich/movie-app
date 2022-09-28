@@ -1,5 +1,4 @@
 import { Route, Routes } from "react-router-dom";
-import { movieAPI } from "services/movieAPI";
 import { MainTemplate, AuthTemplate, RequareAuth } from "./components";
 
 import {
@@ -13,7 +12,7 @@ import {
   DetailsMoviePage,
   SearchPage
 } from "./pages";
-import { ROUTE } from "./routes/index";
+import { ROUTE } from "./routes";
 
 export const App = () => {
   return (

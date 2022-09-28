@@ -6,9 +6,9 @@ import { Subtitle } from "ui/typography";
 const MovieItem = styled.li`
   display: flex;
   flex-direction: column;
-  flex: 1 1 auto;
+  flex: 0 1 auto;
   width: 200px;
-  margin-right: 10px;
+  margin: 15px;
   color: ${Color.Secondary};
 `;
 

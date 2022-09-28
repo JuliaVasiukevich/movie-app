@@ -1,6 +1,4 @@
-import { Loading } from "components";
-import { MainMovies } from "components/MainMovies/MainMovies";
-import { MovieWrapper } from "pages/DetailsMoviePage/styles";
+import { MainMovies } from "components"
 import React, { useEffect, useState } from "react";
 import { fetchMovies } from "store/features/moviesSlice";
 import { useAppDispatch, useAppSelector } from "store/hooks/hooks";
@@ -78,7 +76,7 @@ export const MainCategories = () => {
           <StyledList>
             <li key={category}>
               <h1> About {category}</h1>
-              <MainMovies movies={movies?.[category]?.Search} />
+              <MainMovies movies={movies?.[category]?.search} />
             </li>
           </StyledList>
         );

@@ -12,7 +12,7 @@ import authBackground from "./images/auth-background.jpg";
 
 
 export {
-    LogoIcon, HomeIcon, SettingsIcon, TrendsIcon, FavoriteIcon,
-    BookmarkIcon, ArrowRight, IMDbLogo, ShareIcon
+  LogoIcon, HomeIcon, SettingsIcon, TrendsIcon, FavoriteIcon,
+  BookmarkIcon, ArrowRight, IMDbLogo, ShareIcon
 };
 export { authBackground };

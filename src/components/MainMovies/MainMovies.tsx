@@ -1,8 +1,4 @@
-import { useEffect } from "react";
-import { getMovies } from "store/selectors/movieSelectors";
-import { Loading, MovieTile } from "..";
-import { fetchMovies } from "../../store/features/moviesSlice";
-import { useAppDispatch, useAppSelector } from "../../store/hooks/hooks";
+import { MovieTile } from "..";
 import { MovieList } from "./styles";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Navigation } from "swiper";
@@ -47,14 +43,7 @@ export const MainMovies = ({ movies }: any) => {
         {movies?.map((movie: any) => {
           return (
             <SwiperSlide>
-              <MovieTile
-                key={movie.imdbID}
-                title={movie.Title}
-                poster={movie.Poster}
-                type={movie.Type}
-                year={movie.Year}
-                imdbID={movie.imdbID}
-              />
+              <MovieTile key={movie.imdbID} {...movie} />
             </SwiperSlide>
           );
         })}
