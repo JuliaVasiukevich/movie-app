@@ -13,6 +13,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { useWindowSize } from "hooks";
 import { IMovieSearch } from "types/movieTypes";
+import { getNumderOfSlides } from "utils";
 
 export const Recommended = ({ movie }: any) => {
   const dispatch = useAppDispatch();
@@ -22,21 +23,6 @@ export const Recommended = ({ movie }: any) => {
   useEffect(() => {
     dispatch(fetchMovies(movie));
   }, [dispatch, movie]);
-
-  const slides = () => {
-    if (width) {
-      if (width > 1500) {
-        return 5;
-      } else if (width > 1200) {
-        return 4;
-      } else if (width > 1000) {
-        return 3;
-      } else if (width > 600) {
-        return 2;
-      }
-    }
-    return 1;
-  };
 
   if (isLoading) {
     return <Loading />;
@@ -50,8 +36,8 @@ export const Recommended = ({ movie }: any) => {
     <>
       <MovieList>
         <Swiper
-          slidesPerView={slides()}
-          spaceBetween={30}
+          slidesPerView={getNumderOfSlides(width)}
+          spaceBetween={1}
           freeMode={true}
           navigation={true}
           pagination={{

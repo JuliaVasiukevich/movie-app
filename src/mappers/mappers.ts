@@ -9,7 +9,7 @@ export const adaptedIMovie = (movieAPI: IMovieAPI): IMovie => {
   if (movieAPI.Response === "True") {
     movie.response = true;
     // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-    movie.search = movieAPI.Search.map(item => adaptedIMovieSearch(item));
+    movie.search = movieAPI.Search?.map(item => adaptedIMovieSearch(item));
     movie.totalResults = movieAPI.totalResults;
   } else {
     movie.response = false;

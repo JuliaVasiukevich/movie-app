@@ -27,12 +27,14 @@ import {
   MovieButton,
   ShareButton,
 } from "./styles";
+import { getUserInfo } from "store/selectors/userSelectors";
 
 export const DetailsMoviePage = () => {
   const { imdbID = "" } = useParams();
   const dispatch = useAppDispatch();
   const { isLoading, error, details } = useAppSelector(getDetailsMovie);
   const { favorites } = useAppSelector(getFavorites);
+  const { isAuth } = useAppSelector(getUserInfo);
 
   const {
     title,
@@ -122,7 +124,10 @@ export const DetailsMoviePage = () => {
                 </motion.div>
               </DisFavoritesButton>
             ) : (
-              <FavoritesButton onClick={(e) => handleAddFavorites(e, movie.imdbID)}>
+              <FavoritesButton
+                disabled={!isAuth}
+                onClick={(e) => handleAddFavorites(e, movie.imdbID)}
+              >
                 <BookmarkIcon />
               </FavoritesButton>
             )}

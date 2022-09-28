@@ -6,24 +6,17 @@ const MovieList = styled.ul`
   display: flex;
   width: calc(100vw - 350px);
   padding-bottom: 10px;
-  overflow-x: auto;
-
-  ::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    border-radius: 10px;
-  }
-  ::-webkit-scrollbar {
-    width: 12px;
-  }
-  ::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    background-color: ${Color.Background_primary_dark};
-  }
+  ;
 
   ${Screen.MD}{
-    width: 90vw;
-  }
+    width: 80vw;
+  };
+
+  ${Screen.S}{
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  };
 `;
 
 

@@ -13,3 +13,4 @@ export * from "./MainCategories/MainCategories";
 export * from "./UserState/UserState";
 export * from "./RequareAuth/RequareAuth";
 export * from "./Recommended/Recommended";
+export * from "./BurgerMenu/BurgerMenu";

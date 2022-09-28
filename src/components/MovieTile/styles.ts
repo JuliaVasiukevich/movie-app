@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Color } from "ui/colors";
+import { Color, Screen } from "ui";
 import { Subtitle } from "ui/typography";
 
 
@@ -10,6 +10,11 @@ const MovieItem = styled.li`
   width: 200px;
   margin: 15px;
   color: ${Color.Secondary};
+
+  ${Screen.S} {
+    width: 300px;
+    align-items: center;
+  };
 `;
 
 const Poster = styled.img`
@@ -18,6 +23,11 @@ const Poster = styled.img`
   border-radius: 10px;
   margin-bottom: 10px;
   object-fit: cover;
+
+  ${Screen.S} {
+    height: 400px;
+    width: 270px;
+  };
 `;
 
 const Title = styled(Subtitle)`

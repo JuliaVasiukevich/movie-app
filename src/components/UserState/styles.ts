@@ -19,16 +19,18 @@ const Avatar = styled.div`
   background-color: ${Color.Primary};
   color: ${Color.White};
   border-radius: 10px;
+  margin-right: 0.3rem;
 `;
 
 const User = styled.div`
   display: flex;
   align-items: center;
+  overflow: hidden;
 `;
 
 const UserName = styled.div`
   display: flex;
-  margin-left: 0.3rem;
+  
 `;
 
 export { LogOutButton, Avatar, User, UserName };

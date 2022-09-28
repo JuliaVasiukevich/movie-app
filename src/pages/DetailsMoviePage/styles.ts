@@ -1,6 +1,5 @@
-import { Color, Screen } from "./../../ui";
+import { Color, Screen, H1 } from "./../../ui";
 import styled from "styled-components";
-import { H1 } from "ui/typography";
 
 const Wrapper = styled.div`
   display: flex;
@@ -18,12 +17,11 @@ const MovieWrapper = styled.div`
 const ImgWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 170px;
   margin-right: 42px;
+
 `;
 
 const PosterImg = styled.img`
-  height: 250px;
   object-fit: cover;
   border-radius: 10px;
   margin-bottom: 30px;

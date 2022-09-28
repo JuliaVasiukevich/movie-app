@@ -13,7 +13,8 @@ import {
 import moviesReducer from "./features/moviesSlice";
 import userReducer from "./features/userSlice";
 import movieDetailsReducer from "./features/moviesDetailsSlice";
-import favoritesReducer from "./features/favoritesSlice"
+import favoritesReducer from "./features/favoritesSlice";
+import moviesSearchReducer from "./features/movieSearchSlice";
 
 const persistConfig = {
   key: "root",
@@ -26,6 +27,7 @@ const rootReducer = combineReducers({
   user: userReducer,
   movieDetails: movieDetailsReducer,
   favorites: favoritesReducer,
+  moviesSearch: moviesSearchReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

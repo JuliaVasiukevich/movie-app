@@ -7,12 +7,13 @@ import { ReactComponent as ArrowRight } from "./icons/arrow-right.svg";
 import { ReactComponent as IMDbLogo } from "./icons/imdbLogo.svg";
 import { ReactComponent as BookmarkIcon } from "./icons/bookmark.svg";
 import { ReactComponent as ShareIcon } from "./icons/share.svg";
+import { ReactComponent as UserIcon } from "./icons/user.svg";
 
 import authBackground from "./images/auth-background.jpg";
 
 
 export {
   LogoIcon, HomeIcon, SettingsIcon, TrendsIcon, FavoriteIcon,
-  BookmarkIcon, ArrowRight, IMDbLogo, ShareIcon
+  BookmarkIcon, ArrowRight, IMDbLogo, ShareIcon, UserIcon
 };
 export { authBackground };

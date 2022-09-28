@@ -8,51 +8,44 @@ import "swiper/css/free-mode";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { useWindowSize } from "hooks";
+import { breakpoint } from "ui";
+import { getNumderOfSlides } from "utils";
 
 export const MainMovies = ({ movies }: any) => {
   const { width } = useWindowSize();
 
-  const slides = () => {
-    if (width) {
-      if (width > 1500) {
-        return 5;
-      } else if (width > 1200) {
-        return 4;
-      } else if (width > 1000) {
-        return 3;
-      } else if (width > 600) {
-        return 2;
-      }
-    }
-    return 1;
-  };
-
   return (
     <MovieList>
-      <Swiper
-        slidesPerView={slides()}
-        spaceBetween={30}
-        freeMode={true}
-        navigation={true}
-        pagination={{
-          clickable: true,
-        }}
-        modules={[FreeMode, Navigation]}
-        className="mySwiper"
-      >
-        {movies?.map((movie: any) => {
-          return (
-            <SwiperSlide>
-              <MovieTile key={movie.imdbID} {...movie} />
-            </SwiperSlide>
-          );
-        })}
-        {/* <SwiperSlide>
+      {width && width > breakpoint.S ? (
+        <Swiper
+          slidesPerView={getNumderOfSlides(width)}
+          spaceBetween={1}
+          freeMode={true}
+          navigation={true}
+          pagination={{
+            clickable: true,
+          }}
+          modules={[FreeMode, Navigation]}
+          className="mySwiper"
+        >
+          {movies?.map((movie: any) => {
+            return (
+              <SwiperSlide>
+                <MovieTile key={movie.imdbID} {...movie} />
+              </SwiperSlide>
+            );
+          })}
+          {/* <SwiperSlide>
             <NextButton type="button" onClick={clickHandler}>
               <ArrowRight />
             </NextButton>
           </SwiperSlide> */}
-      </Swiper>
+        </Swiper>
+      ) : (
+        movies?.map((movie: any) => {
+          return <MovieTile key={movie.imdbID} {...movie} />;
+        })
+      )}
     </MovieList>
   );
 };

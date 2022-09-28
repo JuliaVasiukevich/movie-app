@@ -4,33 +4,22 @@ import { Navbar, Header } from "../index";
 import { Wrapper, ContentWrapper } from "./styles";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { useWindowSize } from "hooks";
-import { breakpoint } from "../../ui/breakpoints"
+import { breakpoint } from "../../ui/breakpoints";
 
 export const MainTemplate = () => {
   const { width } = useWindowSize();
-  const [nav, setNav] = useState(false);
 
   return (
     <Wrapper>
       <Header />
       <ContentWrapper>
-        {width && width < breakpoint.MD ? (
-          <div>
-            <div onClick={() => setNav(!nav)}>
-              {nav ? (
-                <>
-                  <AiOutlineClose />
-                  <Navbar />
-                </>
-              ) : (
-                <AiOutlineMenu />
-              )}
-            </div>
-          </div>
+        {width && width > breakpoint.MD ? (
+          <>
+            <Navbar /> <Outlet />
+          </>
         ) : (
-          <Navbar />
+          <Outlet />
         )}
-        <Outlet />
       </ContentWrapper>
     </Wrapper>
   );

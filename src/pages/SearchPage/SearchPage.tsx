@@ -1,17 +1,21 @@
 import { Loading, MovieTile } from "components";
 import { useEffect } from "react";
+import { getMoviesSearch } from "store/selectors/movieSearchSelectors";
 import { getMovies } from "store/selectors/movieSelectors";
 import { IMovieSearch } from "types/movieTypes";
-import { fetchMovies } from "../../store/features/moviesSlice";
+import { fetchMoviesSearch } from "../../store/features/movieSearchSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks/hooks";
-import { Error } from "./styles";
+import { Error, Wrapper, ErrorWrapper } from "./styles";
 
-export const SearchPage = ({ movie }: any) => {
+export const SearchPage = () => {
   const dispatch = useAppDispatch();
-  const { isLoading, error, movies } = useAppSelector(getMovies);
+  const { isLoading, error, moviesSearch, params } = useAppSelector(getMoviesSearch);
+  console.log("movies", params.title);
+
+  const movie = params.title;
 
   useEffect(() => {
-    dispatch(fetchMovies(movie));
+    dispatch(fetchMoviesSearch({ title: movie, page: 1 }));
   }, [dispatch, movie]);
 
   if (isLoading) {
@@ -19,12 +23,18 @@ export const SearchPage = ({ movie }: any) => {
   }
 
   if (error) {
-    return <Error> Sorry :( </Error>;
+    return (
+      <ErrorWrapper>
+        <Error> Sorry :( </Error>
+      </ErrorWrapper>
+    );
   }
 
+console.log(moviesSearch)
+
   return (
-    <>
-      {movies?.[movie]?.search.map(({imdbID, title, poster, type, year}: IMovieSearch) => {
+    <Wrapper>
+      {moviesSearch?.search.map(({ imdbID, title, poster, type, year }: IMovieSearch) => {
         return (
           <MovieTile
             key={imdbID}
@@ -36,6 +46,6 @@ export const SearchPage = ({ movie }: any) => {
           />
         );
       })}
-    </>
+    </Wrapper>
   );
 };

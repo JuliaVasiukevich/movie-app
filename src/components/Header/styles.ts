@@ -1,3 +1,5 @@
+import { LogoIcon } from "assets";
+import { Input } from "components";
 import styled from "styled-components";
 import { Color, Screen } from "../../ui";
 
@@ -15,8 +17,24 @@ const Wrapper = styled.div`
   background-color: ${Color.Background_primary};
 
   ${Screen.MD} {
-    grid-template-columns: 200px 1fr; 
+    grid-template-columns: repeat(2, auto);
+    grid-template-areas: "logo burger"
+    "search search" ; 
+    justify-content: space-between;
   }
 `;
 
-export { Wrapper };
+const LogoIconHeader = styled(LogoIcon)`
+ ${Screen.MD} {
+   width: 200px;
+    grid-area: logo;
+  }
+`;
+
+const Search = styled.div`
+ ${Screen.MD} {
+   grid-area: search;
+  }
+`;
+
+export { Wrapper, LogoIconHeader, Search };

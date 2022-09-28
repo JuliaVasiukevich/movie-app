@@ -9,6 +9,7 @@ interface IProps {
   type?: string;
   value?: string;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
+  onKeyDown?: any;
   label?: SignUpValuesKeys | SignInValuesKeys;
   register?: UseFormRegister<SignUpValues | SignInValues>;
   rules?: IRules;
@@ -21,10 +22,20 @@ interface IRules {
   pattern?: ValidationRule<RegExp>;
 }
 
-export const Input = ({ placeholder, type, value, onChange, label, register, rules }: IProps) => {
+export const Input = ({
+  placeholder,
+  type,
+  value,
+  onChange,
+  onKeyDown,
+  label,
+  register,
+  rules,
+}: IProps) => {
   return (
     <Wrapper>
       <InputStyled
+        onKeyDown={onKeyDown}
         value={value}
         onChange={onChange}
         placeholder={placeholder}
