@@ -88,7 +88,6 @@ export interface IMovieDetails {
 // }
 
 export enum Param {
-  ApiKey = "apikey",
   Id = "i",
   Title = "t",
   Type = "type",

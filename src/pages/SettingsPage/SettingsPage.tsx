@@ -3,7 +3,7 @@ import { Form, Setting, Name, Wrapper } from "./styles";
 import { useAppDispatch, useAppSelector } from "store/hooks/hooks";
 import { getUserInfo } from "store/selectors/userSelectors";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { resetPassword, updateUserPassword } from "store/features/userSlice";
+import { updateUserPassword } from "store/features/userSlice";
 
 export const SettingsPage = () => {
   const { email } = useAppSelector(getUserInfo);
@@ -36,6 +36,8 @@ export const SettingsPage = () => {
   //         reset();
   //       });
   //   };
+
+  
   const dispatch = useAppDispatch();
 
   const {
@@ -48,7 +50,6 @@ export const SettingsPage = () => {
   const onSubmit: SubmitHandler<PasswordValues> = (formValues) => {
     dispatch(updateUserPassword({ email: email, newPassword: formValues.password }));
     reset();
-    console.log("pizda");
   };
 
   return (

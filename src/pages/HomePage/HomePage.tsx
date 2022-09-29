@@ -44,12 +44,12 @@ export const HomePage = () => {
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
-    return function () {
+    return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   });
 
-  const handleScroll = function (e: any) {
+  const handleScroll = (e: any) => {
     if (
       e.target.documentElement.scrollHeight -
         e.target.documentElement.scrollTop -

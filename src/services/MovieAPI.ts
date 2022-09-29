@@ -1,6 +1,5 @@
-import { adaptedIMovie } from "mappers/mappers";
 import axios from "axios";
-import { IMovie, IMovieAPI, IMovieDetailsAPI, Param } from "types/movieTypes";
+import { IMovieAPI, IMovieDetailsAPI, Param } from "types/movieTypes";
 import { IParams } from "store/features/movieSearchSlice";
 
 class MovieAPI {
@@ -20,10 +19,12 @@ class MovieAPI {
     return data;
   }
 
-  public async getByFilters(filters: IParams): Promise<IMovieAPI> {
+  public async getByFilters(param: IParams): Promise<IMovieAPI> {
     const params = {
-      [Param.Search]: filters.title,
-      [Param.Page]: 1,
+      [Param.Search]: param.title,
+      [Param.Page]: param.page,
+      [Param.Type]: param.filters.type,
+      [Param.Year]: param.filters.year,
     };
 
     const { data } = await this.API.get<IMovieAPI>("", { params });

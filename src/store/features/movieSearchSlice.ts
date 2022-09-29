@@ -3,18 +3,30 @@ import { adaptedIMovie } from "mappers/mappers";
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { AxiosError } from "axios";
 import { movieAPI } from "services/movieAPI";
-import { IMovie } from "types/movieTypes";
+import { IMovie, IMovieSearch } from "types/movieTypes";
 
 interface MoviesState {
   moviesSearch: IMovie;
   isLoading: boolean;
   error: null | string;
   params: IParams;
+  movieArray: IMovieSearch[];
 }
 
 export interface IParams {
   title: string;
   page: number;
+  filters: IFilters;
+}
+
+export enum FilterKeys {
+  TYPE = "type",
+  YEAR = "year",
+}
+
+export interface IFilters {
+  [FilterKeys.TYPE]?: string;
+  [FilterKeys.YEAR]?: number;
 }
 
 // interface IMovie {
@@ -31,8 +43,10 @@ const initialState: MoviesState = {
   error: null,
   params: {
     title: "",
-    page: 1
-  }
+    page: 1,
+    filters: {}
+  },
+  movieArray: [],
 };
 
 
@@ -46,8 +60,6 @@ const fetchMoviesSearch = createAsyncThunk<IMovie, IParams,
         if (response.Error) {
           throw new Error(response.Error);
         }
-
-        console.log(response)
         return adaptedIMovie(response);
       } catch (error) {
         const axiosError = error as AxiosError;
@@ -64,6 +76,15 @@ const moviesSearchSlice = createSlice({
     addToSearch(state, { payload }: PayloadAction<any>) {
       state.params.title = payload;
     },
+    clearMovieArray(state) {
+      state.movieArray = [];
+    },
+    addYear(state, { payload }: PayloadAction<any>) {
+      state.params.filters.year = payload;
+    },
+    deleteFilter(state, { payload }: PayloadAction<FilterKeys>) {
+      delete state.params.filters[payload]
+    },
   },
   extraReducers(builder) {
     builder.addCase(fetchMoviesSearch.pending, (state) => {
@@ -73,6 +94,7 @@ const moviesSearchSlice = createSlice({
     builder.addCase(fetchMoviesSearch.fulfilled, (state, { payload, meta }) => {
       state.isLoading = false;
       state.moviesSearch = payload;
+      state.movieArray.push(...payload.search);
     });
     builder.addCase(fetchMoviesSearch.rejected, (state) => {
       state.isLoading = false;
@@ -85,4 +107,4 @@ export default moviesSearchSlice.reducer;
 
 export { fetchMoviesSearch };
 
-export const { addToSearch } = moviesSearchSlice.actions;
+export const { addToSearch, clearMovieArray, addYear, deleteFilter } = moviesSearchSlice.actions;

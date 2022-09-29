@@ -84,7 +84,7 @@ export const DetailsMoviePage = () => {
 
   const recommended =
     title?.split(" ").length !== 1
-      ? `${title?.split(" ")[0]} ${title?.split(" ")[0]}`
+      ? `${title?.split(" ")[0]} ${title?.split(" ")[1]}`
       : title?.split(" ")[0];
 
   const isFavorites = favorites.find((newMovie) => newMovie.imdbID === movie.imdbID);
