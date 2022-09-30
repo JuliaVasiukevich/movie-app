@@ -11,6 +11,7 @@ export const SettingsPage = () => {
 
   type PasswordValues = {
     password: string;
+    currentPassword: string;
   };
 
   // export const SignInForm = () => {
@@ -37,7 +38,6 @@ export const SettingsPage = () => {
   //       });
   //   };
 
-  
   const dispatch = useAppDispatch();
 
   const {
@@ -48,7 +48,13 @@ export const SettingsPage = () => {
   } = useForm<PasswordValues>();
 
   const onSubmit: SubmitHandler<PasswordValues> = (formValues) => {
-    dispatch(updateUserPassword({ email: email, newPassword: formValues.password }));
+    dispatch(
+      updateUserPassword({
+        email: email,
+        newPassword: formValues.password,
+        currentPassword: formValues.currentPassword,
+      }),
+    );
     reset();
   };
 
@@ -63,6 +69,7 @@ export const SettingsPage = () => {
       <Setting>
         <Name>Password</Name>
         <Wrapper>
+          <input type="password" {...register("currentPassword")}></input>
           <input type="password" {...register("password")}></input>
           <button type="submit"> submit </button>
         </Wrapper>

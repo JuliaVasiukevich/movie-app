@@ -19,7 +19,7 @@ export const SearchPage = () => {
     dispatch(clearMovieArray());
     setPage(1);
     setFetching(true);
-  }, [params.title, params.filters.year]);
+  }, [params.title, params.filters.year, params.filters.type]);
 
   useEffect(() => {
     if (fetching) {
@@ -27,7 +27,7 @@ export const SearchPage = () => {
         fetchMoviesSearch({
           title: params.title,
           page: page,
-          filters: { year: params.filters.year },
+          filters: { year: params.filters.year, type: params.filters.type },
         }),
       );
 
@@ -65,15 +65,15 @@ export const SearchPage = () => {
     return (
       <ErrorWrapper>
         <ParamsList />
-        <Error> Sorry :( </Error>
+        <Error> No results :( </Error>
       </ErrorWrapper>
     );
   }
 
   return (
     <>
-      <ParamsList />
       <Wrapper>
+        <ParamsList />
         {movieArray.map(({ imdbID, title, poster, type, year }: IMovieSearch) => {
           return (
             <MovieTile

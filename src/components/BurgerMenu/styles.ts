@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Color } from "ui";
 
 const BurgerIcon = styled.div`
 grid-area: burger;
@@ -10,7 +11,7 @@ const Absolute = styled.div`
 position: absolute;
 top: 120px;
 left: 0;
-background-color: black;
+background-color: ${Color.Background_primary};
 height: 100vh;
 padding: 20px;
 `;

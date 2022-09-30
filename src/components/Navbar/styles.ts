@@ -4,7 +4,7 @@ const NavigationConteiner = styled.div``;
 
 const NavbarList = styled.ul`
   position: sticky;
-  top: 60px;
+  top: 80px;
   left: 0;
   right: 0;
   width: 200px;

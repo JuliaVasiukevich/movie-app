@@ -28,7 +28,7 @@ const SLabel = styled.label`
   display: block;
   width: 32px;
   height: 20px;
-  background: ${Color.Light};
+  background: ${Color.Graphite};
   border-radius: 10px;
   cursor: pointer;
 

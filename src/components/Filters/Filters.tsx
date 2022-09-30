@@ -1,24 +1,29 @@
-import { Link, useNavigate } from "react-router-dom";
-import { ROUTE } from "../../routes";
-import { Button, Form, SignUp, Error, Label } from "./styles";
+import { Button, Form, Error, Label } from "./styles";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { Input } from "components";
 import { useState } from "react";
-import { useAppDispatch, useAppSelector } from "store/hooks/hooks";
-import { getUserInfo } from "store/selectors/userSelectors";
-import { fetchSignInUser } from "store/features/userSlice";
-import { addYear } from "store/features/movieSearchSlice";
+import { useAppDispatch } from "store/hooks/hooks";
+import { addYear, addType } from "store/features/movieSearchSlice";
+import Select from "react-select";
+interface IOption {
+  value: string;
+  label: string;
+}
+
+const options: IOption[] = [
+  { value: "movie", label: "movie" },
+  { value: "series", label: "series" },
+  { value: "episode", label: "episode" },
+];
 
 export type FiltersValues = {
-  type: string;
+  type: IOption;
   year: string;
 };
 
 export const Filters = () => {
-  const { isPendingAuth, error } = useAppSelector(getUserInfo);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
 
   const {
     handleSubmit,
@@ -26,13 +31,19 @@ export const Filters = () => {
     control,
     reset,
   } = useForm<FiltersValues>({
-    defaultValues: { type: "", year: "" },
+    defaultValues: { type: {}, year: "" },
   });
 
-  const onSubmit: SubmitHandler<FiltersValues> = ({year, type}) => {
-    dispatch(addYear(year));
+  const onSubmit: SubmitHandler<FiltersValues> = ({ year, type }) => {
+    if (year) {
+      dispatch(addYear(year));
+    }
+    if (type.value) {
+      dispatch(addType(type.value));
+    }
     reset();
   };
+
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
@@ -48,12 +59,12 @@ export const Filters = () => {
         {errors.year && <Error>{errors.year.message}</Error>}
       </Label>
       <Label>
-        Password
+        Type
         <Controller
-          name={"type"}
+          name="type"
           control={control}
           render={({ field: { onChange, value } }) => {
-            return <Input type={"text"} onChange={onChange} value={value} />;
+            return <Select onChange={onChange} options={options} />;
           }}
         />
         {errors.type && <Error>{errors.type.message}</Error>}
@@ -63,3 +74,4 @@ export const Filters = () => {
     </Form>
   );
 };
+

@@ -1,9 +1,11 @@
+import { TrendsIcon } from "assets";
 import styled from "styled-components";
 import { Color, Screen } from "ui";
 import { Subtitle } from "ui/typography";
 
 
 const MovieItem = styled.li`
+position: relative;
   display: flex;
   flex-direction: column;
   flex: 0 1 auto;
@@ -15,6 +17,19 @@ const MovieItem = styled.li`
     width: 300px;
     align-items: center;
   };
+`;
+
+const MovieTrendsIcon = styled(TrendsIcon)`
+position: absolute;
+left: 10px;
+top: 5px;
+height: 30px;
+width: 20px;
+padding: 5px;
+border-radius: 5px;
+z-index: 3;
+fill: ${Color.White} ;
+background-color: ${Color.Primary};
 `;
 
 const Poster = styled.img`
@@ -42,5 +57,5 @@ const Title = styled(Subtitle)`
 `;
 const Description = styled(Subtitle)``;
 
-export { MovieItem, Poster, Title, Description };
+export { MovieItem, Poster, Title, Description, MovieTrendsIcon };
 

@@ -10,6 +10,7 @@ import { ReactComponent as ShareIcon } from "./icons/share.svg";
 import { ReactComponent as UserIcon } from "./icons/user.svg";
 import { ReactComponent as NotFoundIcon } from "./icons/notFound.svg";
 import { ReactComponent as DeleteIcon } from "./icons/delete.svg";
+import { ReactComponent as EmptyFavorites } from "./icons/emptyFavorites.svg";
 
 import authBackground from "./images/auth-background.jpg";
 
@@ -17,6 +18,6 @@ import authBackground from "./images/auth-background.jpg";
 export {
   LogoIcon, HomeIcon, SettingsIcon, TrendsIcon, FavoriteIcon,
   BookmarkIcon, ArrowRight, IMDbLogo, ShareIcon, UserIcon,
-  NotFoundIcon, DeleteIcon
+  NotFoundIcon, DeleteIcon, EmptyFavorites
 };
 export { authBackground };

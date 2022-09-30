@@ -103,6 +103,12 @@ export const DetailsMoviePage = () => {
     dispatch(fetchMovieByDetails(imdbID));
   }, [dispatch, imdbID]);
 
+  const addDefaultSrc = (ev: any) => {
+    ev.target.src =
+      "https://encrypted-tbn0.gstatic.com/" +
+      "images?q=tbn:ANd9GcRoWcWg0E8pSjBNi0TtiZsqu8uD2PAr_K11DA&usqp=CAU";
+  };
+
   if (isLoading) {
     return <Loading />;
   }
@@ -115,7 +121,7 @@ export const DetailsMoviePage = () => {
     <Wrapper>
       <MovieWrapper>
         <ImgWrapper>
-          <PosterImg src={poster} alt={`poster ${title}`} />
+          <PosterImg src={poster} onError={addDefaultSrc} alt={`poster ${title}`} />
           <MovieButton>
             {isFavorites ? (
               <DisFavoritesButton onClick={(e) => handleDeleteFavorites(e, movie.imdbID)}>

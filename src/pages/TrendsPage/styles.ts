@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-const FavoritesStyled = styled.div`
+const TrendsStyled = styled.div`
 display: flex;
 justify-content: flex-start;
 flex-wrap:wrap;
 `;
 
-export { FavoritesStyled };
+export { TrendsStyled };

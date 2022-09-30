@@ -4,7 +4,10 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   sendPasswordResetEmail,
-  updatePassword
+  updatePassword,
+  reauthenticateWithCredential,
+  EmailAuthProvider,
+  User
 } from "firebase/auth";
 import { getFirebaseMessage } from "utils";
 import { FirebaseError, FirebaseErrorCode } from "utils/fireBaseError";
@@ -80,14 +83,18 @@ export const resetPassword = createAsyncThunk<void, { email: string }, { rejectV
 
 export const updateUserPassword = createAsyncThunk<void, {
   email: string;
+  currentPassword: string;
   newPassword: string;
 }, { rejectValue: string }>(
   "user/updateUserPassword",
-  async ({ newPassword }, { rejectWithValue }) => {
+  async ({ newPassword, currentPassword }, { rejectWithValue }) => {
     const auth = getAuth();
-    if (auth.currentUser)
+    const user = auth.currentUser as User;
+    const credential = EmailAuthProvider.credential(user.email as string, currentPassword);
+    if (user)
       try {
-        await updatePassword(auth.currentUser, newPassword);
+        await reauthenticateWithCredential(user, credential);
+        await updatePassword(user, newPassword);
       } catch (error) {
         const firebaseError = error as { code: FirebaseErrorCode };
 

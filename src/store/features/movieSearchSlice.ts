@@ -82,6 +82,9 @@ const moviesSearchSlice = createSlice({
     addYear(state, { payload }: PayloadAction<any>) {
       state.params.filters.year = payload;
     },
+    addType(state, { payload }: PayloadAction<any>) {
+      state.params.filters.type = payload;
+    },
     deleteFilter(state, { payload }: PayloadAction<FilterKeys>) {
       delete state.params.filters[payload]
     },
@@ -107,4 +110,5 @@ export default moviesSearchSlice.reducer;
 
 export { fetchMoviesSearch };
 
-export const { addToSearch, clearMovieArray, addYear, deleteFilter } = moviesSearchSlice.actions;
+export const { addToSearch, clearMovieArray, addYear, addType,
+  deleteFilter } = moviesSearchSlice.actions;
