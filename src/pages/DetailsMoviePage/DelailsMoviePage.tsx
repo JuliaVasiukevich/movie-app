@@ -1,4 +1,3 @@
-import { IMDbLogo } from "assets";
 import { Loading, Recommended } from "components";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
@@ -8,7 +7,7 @@ import { useAppDispatch, useAppSelector } from "store/hooks/hooks";
 import { getFavorites } from "store/selectors/favoritesSelectors";
 import { getDetailsMovie } from "store/selectors/movieDetailsSelectors";
 import { IMovieDetails, IMovieSearch } from "types/movieTypes";
-import { BookmarkIcon, ShareIcon } from "../../assets";
+import { BookmarkIcon, ShareIcon, IMDbLogo } from "../../assets";
 import { motion } from "framer-motion";
 import {
   Wrapper,
@@ -28,10 +27,13 @@ import {
   MovieButton,
   ShareButton,
   MovieTrendsIcon,
+  DataName,
+  DataValue,
 } from "./styles";
 import { getUserInfo } from "store/selectors/userSelectors";
 import { getTrends } from "store/selectors/trendsSelectors";
 import { addToTrends } from "store/features/trendsSlice";
+import { recommended } from "utils/recommended";
 
 export const DetailsMoviePage = () => {
   const { imdbID = "" } = useParams();
@@ -58,6 +60,16 @@ export const DetailsMoviePage = () => {
     country,
   } = details || ({} as IMovieDetails);
 
+  const dataArray = [
+    { field: "Year", value: year },
+    { field: "Released", value: released },
+    { field: "BoxOffice", value: boxOffice },
+    { field: "Country", value: country },
+    { field: "Actors", value: actors },
+    { field: "Director", value: director },
+    { field: "Writer", value: writer },
+  ];
+
   const movie: IMovieSearch = {
     poster: poster,
     title: title,
@@ -65,32 +77,6 @@ export const DetailsMoviePage = () => {
     year: year,
     imdbID: imdbID,
   };
-  //TODO доделать алгоритм для рекомендаций
-
-  // Promise.allSettled([
-  //   movieAPI.getByTitle("The"),
-  //   movieAPI.getByTitle("Lego"),
-  //   movieAPI.getByTitle("Batman"),
-  //   movieAPI.getByTitle("Movie"),
-  // ])
-  //   .then((res) => {
-  //     return res
-  //       .reduce((acc: any[], item) => {
-  //         if (item.status === "fulfilled" && item.value.Response === "True") {
-  //           acc = [...acc, ...(item.value.Search as Array<any>)];
-  //         }
-  //         return acc;
-  //       }, [])
-  //       .sort(() => {
-  //         return Math.random() > 0.5 ? 1 : -1;
-  //       });
-  //   })
-  //   .then((res) => {return res.length = 10});
-
-  const recommended =
-    title?.split(" ").length !== 1
-      ? `${title?.split(" ")[0]} ${title?.split(" ")[1]}`
-      : title?.split(" ")[0];
 
   const isFavorites = favorites.find((newMovie) => newMovie.imdbID === movie.imdbID);
 
@@ -165,20 +151,20 @@ export const DetailsMoviePage = () => {
           </Badges>
           <Description>{plot}</Description>
           <DataGrid>
-            {/* TODO: почистить, сделать, чтобы не показывалось N/A */}
-            <p></p> <p></p>
-            {year !== "N/A" && <p>Year</p>} {year !== "N/A" && <p>{year}</p>}
-            <p>Released</p> <p>{released}</p>
-            <p>BoxOffice</p> <p>{boxOffice}</p>
-            <p>Country</p> <p>{country}</p>
-            <p>Actors</p> <p>{actors}</p>
-            <p>Director</p> <p>{director}</p>
-            <p>Writer</p> <p>{writer}</p>
+            {dataArray.map(({ value, field }) => {
+              if (value && value !== "N/A") {
+                return (
+                  <>
+                    <DataName>{field}</DataName> <DataValue>{value}</DataValue>
+                  </>
+                );
+              }
+            })}
           </DataGrid>
         </DescriptionWrapper>
       </MovieWrapper>
       <h2>Recommended:</h2>
-      <Recommended movie={`${recommended}`} />
+      <Recommended movie={`${recommended(title)}`} />
     </Wrapper>
   );
 };

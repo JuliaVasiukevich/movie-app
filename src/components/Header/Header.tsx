@@ -1,17 +1,13 @@
-import { Input, UserState, Navbar, BurgerMenu } from "components";
-import { useInput, useWindowSize, useDebounce } from "hooks";
-import React, { useEffect } from "react";
+import { Input, UserState, BurgerMenu } from "components";
+import { useInput, useWindowSize } from "hooks";
 import { Link, useNavigate } from "react-router-dom";
 import { addToSearch } from "store/features/movieSearchSlice";
-import { useAppDispatch, useAppSelector } from "store/hooks/hooks";
-import { getUserInfo } from "store/selectors/userSelectors";
+import { useAppDispatch } from "store/hooks/hooks";
 import { breakpoint } from "ui";
-import { LogoIcon } from "../../assets";
 import { ROUTE } from "../../routes";
 import { Wrapper, LogoIconHeader, Search } from "./styles";
 
 export const Header = () => {
-  const { isAuth } = useAppSelector(getUserInfo);
   const { width } = useWindowSize();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();

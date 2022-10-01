@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Color } from "../../ui/colors";
+import { Color, Screen } from "../../ui";
 
 const Form = styled.form`
   display: flex;
@@ -8,6 +8,15 @@ const Form = styled.form`
   width: 574px;
   background: ${Color.Background_primary};
   border-radius: 10px;
+  margin-top: 20px;
+
+  ${Screen.MD}{
+     width: 80vw;
+  };
+`;
+
+const LabelText = styled.div`
+margin-bottom: 10px;
 `;
 
 const Button = styled.button`
@@ -24,11 +33,14 @@ const SignUp = styled.div`
   text-align: center;
 `;
 const Label = styled.label`
-  margin-bottom: 20px;
+position: relative;
+  margin-bottom: 40px;
 `;
 
 const Error = styled.p`
+position: absolute;
+top: 85px;
   color: ${Color.Error};
 `;
 
-export { Form, Button, Label, SignUp, Error };
+export { Form, Button, Label, SignUp, Error, LabelText };

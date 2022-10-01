@@ -86,7 +86,7 @@ const moviesSearchSlice = createSlice({
       state.params.filters.type = payload;
     },
     deleteFilter(state, { payload }: PayloadAction<FilterKeys>) {
-      delete state.params.filters[payload]
+      delete state.params.filters[payload];
     },
   },
   extraReducers(builder) {

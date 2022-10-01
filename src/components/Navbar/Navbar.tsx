@@ -2,6 +2,7 @@ import { ROUTE } from "../../routes";
 import { NavbarItem, NavbarList, NavigationConteiner } from "./styles";
 import { FavoriteIcon, HomeIcon, SettingsIcon, TrendsIcon } from "../../assets";
 import { CustomLink } from "../CustomLink/CustomLink";
+import { motion } from "framer-motion";
 
 export const Navbar = () => {
   const navigationItems = [
@@ -12,18 +13,24 @@ export const Navbar = () => {
   ];
 
   return (
-    <NavigationConteiner>
-      <NavbarList>
-        {navigationItems.map((navigationItem) => {
-          return (
-            <NavbarItem key={navigationItem.text}>
-              <CustomLink to={navigationItem.route}>
-                {navigationItem.img} {navigationItem.text}
-              </CustomLink>
-            </NavbarItem>
-          );
-        })}
-      </NavbarList>
-    </NavigationConteiner>
+    <motion.div
+      initial={{ opacity: 0, x: -40 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: -40 }}
+    >
+      <NavigationConteiner>
+        <NavbarList>
+          {navigationItems.map((navigationItem) => {
+            return (
+              <NavbarItem key={navigationItem.text}>
+                <CustomLink to={navigationItem.route}>
+                  {navigationItem.img} {navigationItem.text}
+                </CustomLink>
+              </NavbarItem>
+            );
+          })}
+        </NavbarList>
+      </NavigationConteiner>
+    </motion.div>
   );
 };

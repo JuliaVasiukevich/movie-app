@@ -9,7 +9,6 @@ export * from "./SignInForm/SignInForm";
 export * from "./MainMovies/MainMovies";
 export * from "./MovieTile/MovieTile";
 export * from "./Loading/Loading";
-export * from "./MainCategories/MainCategories";
 export * from "./UserState/UserState";
 export * from "./RequareAuth/RequareAuth";
 export * from "./Recommended/Recommended";

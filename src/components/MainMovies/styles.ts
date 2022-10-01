@@ -1,6 +1,5 @@
-import { Screen } from "./../../ui/breakpoints";
 import styled from "styled-components";
-import { Color } from "ui/colors";
+import { Screen } from "./../../ui";
 
 const MovieList = styled.ul`
   display: flex;

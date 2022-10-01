@@ -3,10 +3,9 @@ import { Link } from "react-router-dom";
 import { ROUTE } from "routes";
 import { useAppSelector } from "store/hooks/hooks";
 import { getUserInfo } from "store/selectors/userSelectors";
-import { LogOutButton, Avatar, User, UserName } from "./styles";
+import { Avatar, User, UserName } from "./styles";
 
 export const UserState = () => {
-  const handleClick = () => {};
   const { isAuth, email } = useAppSelector(getUserInfo);
 
   return (

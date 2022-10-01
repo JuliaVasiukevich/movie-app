@@ -23,20 +23,19 @@ const ErrorWrapper = styled.div`
 
 const Wrapper = styled.div`
   position: relative;
-  width: calc(100vw - 500px);
   display: flex;
-  justify-content: flex-start;
-  flex-wrap: wrap;
+  flex-direction: column;
+  width: calc(100vw - 500px);
+  padding-top: 70px;
 `;
 
 const FilterContainer = styled.div`
-background: ${Color.Background_primary}; 
-box-shadow: ${Color.Background_primary_dark} 0px 29px 29px 0px;
+  background: ${Color.Background_primary};
+  box-shadow: ${Color.Background_primary_dark} 0px 29px 29px 0px;
 `;
 
 const ErrorFilterContainer = styled(FilterContainer)`
-height: calc(100vh - 155px);
+  height: calc(100vh - 155px);
 `;
 
-
-export { Error, Wrapper, ErrorWrapper,FilterContainer, ErrorFilterContainer };
+export { Error, ErrorWrapper, FilterContainer, ErrorFilterContainer, Wrapper };

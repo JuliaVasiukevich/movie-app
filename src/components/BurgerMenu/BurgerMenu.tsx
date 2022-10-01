@@ -1,26 +1,26 @@
-import { Navbar, UserState } from "components";
-import React, { useState } from "react";
+import { Navbar } from "components";
+import { useState } from "react";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
-import { useAppSelector } from "store/hooks/hooks";
-import { getUserInfo } from "store/selectors/userSelectors";
-import { BurgerIcon, Absolute } from "./styles";
+import { BurgerIcon, Absolute, Wrapper } from "./styles";
 
 export const BurgerMenu = () => {
   const [nav, setNav] = useState(false);
-  const { email } = useAppSelector(getUserInfo);
   return (
     <div onClick={() => setNav(!nav)}>
       {nav ? (
         <BurgerIcon>
-          <AiOutlineClose />
+          <Wrapper>
+            <AiOutlineClose />
+          </Wrapper>
           <Absolute>
-            {email}
             <Navbar />
           </Absolute>
         </BurgerIcon>
       ) : (
         <BurgerIcon>
-          <AiOutlineMenu />
+          <Wrapper>
+            <AiOutlineMenu />
+          </Wrapper>
         </BurgerIcon>
       )}
     </div>

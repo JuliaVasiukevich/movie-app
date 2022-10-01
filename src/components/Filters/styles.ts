@@ -1,4 +1,3 @@
-import { StylesConfig } from "react-select";
 import styled from "styled-components";
 import { Color, H3 } from "ui";
 

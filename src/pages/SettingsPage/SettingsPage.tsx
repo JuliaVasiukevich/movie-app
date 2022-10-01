@@ -1,14 +1,15 @@
-import { ColorMode, Input } from "../../components";
-import { Form, Setting, Name, Wrapper, Container } from "./styles";
+import { ColorMode, Input, Modal } from "../../components";
+import { Form, Setting, Name, Wrapper, Container, Column, Button, LabelText } from "./styles";
 import { useAppDispatch, useAppSelector } from "store/hooks/hooks";
 import { getUserInfo } from "store/selectors/userSelectors";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { updateUserPassword } from "store/features/userSlice";
-import { stringify } from "querystring";
+import { useState } from "react";
 
 export const SettingsPage = () => {
   const { email } = useAppSelector(getUserInfo);
-  //TODO: добавить кнопки
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [isOpen, toggleModal] = useState(false);
 
   type PasswordValues = {
     newPassword: string;
@@ -18,18 +19,12 @@ export const SettingsPage = () => {
 
   const dispatch = useAppDispatch();
 
-  const {
-    handleSubmit,
-    reset,
-    control,
-    register,
-    formState: { errors },
-  } = useForm<PasswordValues>({
+  const { handleSubmit, reset, control } = useForm<PasswordValues>({
     defaultValues: {
       newPassword: "",
       currentPassword: "",
       repeatPassword: "",
-    }
+    },
   });
 
   const onSubmit: SubmitHandler<PasswordValues> = ({
@@ -44,13 +39,22 @@ export const SettingsPage = () => {
           newPassword: newPassword,
           currentPassword: currentPassword,
         }),
-      ).unwrap().finally(() => {
-        console.log("pep");
-        reset();
-      })
-      
+      )
+        .unwrap()
+        .then(()=> {
+          setErrorMessage("Success!");
+          toggleModal(true);
+        })
+        .catch((err) => {
+          setErrorMessage(err);
+          toggleModal(true);
+        })
+        .finally(() => {
+          reset();
+        });
     } else {
-      console.log(newPassword, repeatPassword);
+      setErrorMessage("Password inputs must be the same!");
+      toggleModal(true);
     }
   };
 
@@ -66,30 +70,35 @@ export const SettingsPage = () => {
         <Name>Password</Name>
         <Wrapper>
           <Form onSubmit={handleSubmit(onSubmit)}>
-            Current password:
-            <Controller
-              name={"currentPassword"}
-              control={control}
-              render={({ field: { onChange, value } }) => {
-                return <Input type={"password"} onChange={onChange} value={value} />;
-              }}
-            />
-            New password:
-            <Controller
-              name={"newPassword"}
-              control={control}
-              render={({ field: { onChange, value } }) => {
-                return <Input type={"password"} onChange={onChange} value={value} />;
-              }}
-            />
-            <Controller
-              name={"repeatPassword"}
-              control={control}
-              render={({ field: { onChange, value } }) => {
-                return <Input type={"password"} onChange={onChange} value={value} />;
-              }}
-            />
-            <button type="submit"> submit </button>
+            <Column>
+              <LabelText> Current password:</LabelText>
+              <Controller
+                name={"currentPassword"}
+                control={control}
+                render={({ field: { onChange, value } }) => {
+                  return <Input type={"password"} onChange={onChange} value={value} />;
+                }}
+              />
+            </Column>
+            <Column>
+              <LabelText> New password:</LabelText>
+              <Controller
+                name={"newPassword"}
+                control={control}
+                render={({ field: { onChange, value } }) => {
+                  return <Input type={"password"} onChange={onChange} value={value} />;
+                }}
+              />
+              <LabelText> Repeat password:</LabelText>
+              <Controller
+                name={"repeatPassword"}
+                control={control}
+                render={({ field: { onChange, value } }) => {
+                  return <Input type={"password"} onChange={onChange} value={value} />;
+                }}
+              />
+              <Button type="submit"> submit </Button>
+            </Column>
           </Form>
         </Wrapper>
       </Setting>
@@ -99,6 +108,7 @@ export const SettingsPage = () => {
           <ColorMode />
         </Wrapper>
       </Setting>
+      {isOpen && <Modal toggleModal={toggleModal} message={errorMessage} />}
     </Container>
   );
 };

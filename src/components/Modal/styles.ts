@@ -30,11 +30,10 @@ const Button = styled.button`
 const BlurWrapper = styled.div`
 position: absolute;
 top: 0;
-
 height: 100vh;
 width: 100vw;
 backdrop-filter: blur(5px);
-background-color(0,0,0,0.1);
+background-color: rgba(0,0,0,0.1);
 `;
 
 export { Container, Title, Button, BlurWrapper };

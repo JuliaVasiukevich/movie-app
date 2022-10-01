@@ -1,5 +1,4 @@
 import { LogoIcon } from "assets";
-import { Input } from "components";
 import styled from "styled-components";
 import { Color, Screen } from "../../ui";
 

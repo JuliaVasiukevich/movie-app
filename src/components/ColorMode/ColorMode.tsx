@@ -5,7 +5,7 @@ import { Wrapper, Description, Title, Subtitle, Switch, SInput, SLabel } from ".
 export const ColorMode = () => {
   const { theme, setTheme } = useTheme();
 
-  const themeToggler = () => {
+  const handleClick = () => {
     theme === "dark" ? setTheme("light") : setTheme("dark");
   };
 
@@ -17,7 +17,7 @@ export const ColorMode = () => {
       </Description>
       <Switch>
         <SInput
-          onClick={() => themeToggler()}
+          onClick={handleClick}
           type="checkbox"
           id="switch"
           checked={theme === "light"}

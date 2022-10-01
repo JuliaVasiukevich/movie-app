@@ -1,13 +1,10 @@
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
 import { ROUTE } from "../../routes";
-import { Button, Form, SignIn, Error, Label } from "./styles";
+import { Button, Form, SignIn, Error, Label, LabelText } from "./styles";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
-import { Input } from "components";
+import { Input, Modal } from "components";
 import { useState } from "react";
-import { getFirebaseMessage } from "utils/fireBaseError";
-import { useAppDispatch, useAppSelector } from "store/hooks/hooks";
-import { getUserInfo } from "store/selectors/userSelectors";
+import { useAppDispatch } from "store/hooks/hooks";
 import { fetchSignUpUser } from "store/features/userSlice";
 
 export type SignUpValues = {
@@ -41,15 +38,12 @@ const validateRules = {
   },
 };
 
-interface IProps {
-  toggleModal: (value: boolean) => void;
-}
-
-export const SignUpForm = ({ toggleModal }: IProps) => {
+export const SignUpForm = () => {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const [isOpen, toggleModal] = useState(false);
 
   const {
     handleSubmit,
@@ -64,11 +58,11 @@ export const SignUpForm = ({ toggleModal }: IProps) => {
     dispatch(fetchSignUpUser(userInfo))
       .unwrap()
       .then(() => {
-        toggleModal(true);
-        setTimeout(()=>navigate(ROUTE.HOME), 3000);
+        navigate(ROUTE.HOME);
       })
       .catch((err) => {
-        setErrorMessage(getFirebaseMessage(err.code));
+        setErrorMessage(err);
+        toggleModal(true);
       })
       .finally(() => {
         setIsLoading(false);
@@ -77,39 +71,40 @@ export const SignUpForm = ({ toggleModal }: IProps) => {
   };
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit)}>
-      <Label>
-        Email
-        <Controller
-          name={"email"}
-          control={control}
-          rules={validateRules.email}
-          render={({ field: { onChange, value } }) => {
-            return <Input type={"text"} onChange={onChange} value={value} />;
-          }}
-        />
-      </Label>
-      {errors.email && <Error>{errors.email.message}</Error>}
-      <Label>
-        Password
-        <Controller
-          name={"password"}
-          control={control}
-          rules={validateRules.password}
-          render={({ field: { onChange, value } }) => {
-            return <Input value={value} onChange={onChange} type="password" />;
-          }}
-        />
-      </Label>
-      {errors.password && <Error>{errors.password.message}</Error>}
-      <Button type="submit">Sign up</Button>
+    <>
+      <Form onSubmit={handleSubmit(onSubmit)}>
+        <Label>
+          <LabelText>Email</LabelText>
+          <Controller
+            name={"email"}
+            control={control}
+            rules={validateRules.email}
+            render={({ field: { onChange, value } }) => {
+              return <Input type={"text"} onChange={onChange} value={value} />;
+            }}
+          />
+          {errors.email && <Error>{errors.email.message}</Error>}
+        </Label>
+        <Label>
+          <LabelText>Password</LabelText>
+          <Controller
+            name={"password"}
+            control={control}
+            rules={validateRules.password}
+            render={({ field: { onChange, value } }) => {
+              return <Input value={value} onChange={onChange} type="password" />;
+            }}
+          />
+          {errors.password && <Error>{errors.password.message}</Error>}
+        </Label>
+        <Button type="submit">Sign up</Button>
 
-      <SignIn>
-        Already have an account?
-        <Link to={`/${ROUTE.SIGN_IN}`}> Sign in</Link>
-        {/* TODO: Portal
-        {errorMessage && <Error>{errorMessage}</Error>} */}
-      </SignIn>
-    </Form>
+        <SignIn>
+          Already have an account?
+          <Link to={`/${ROUTE.SIGN_IN}`}> Sign in</Link>
+        </SignIn>
+      </Form>
+      {isOpen && <Modal toggleModal={toggleModal} message={errorMessage} />}
+    </>
   );
 };

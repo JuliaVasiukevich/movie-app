@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import { Color } from "ui/colors";
 
-const LogOutButton = styled.button`
-  padding: 16px;
-  background-color: rgba(28, 28, 28, 0);
-  color: ${Color.Secondary};
-  border: none;
-`;
+// const LogOutButton = styled.button`
+//   padding: 16px;
+//   background-color: rgba(28, 28, 28, 0);
+//   color: ${Color.Secondary};
+//   border: none;
+// `;
 
 const Avatar = styled.div`
   display: flex;
@@ -33,4 +33,4 @@ const UserName = styled.div`
   
 `;
 
-export { LogOutButton, Avatar, User, UserName };
+export {  Avatar, User, UserName };

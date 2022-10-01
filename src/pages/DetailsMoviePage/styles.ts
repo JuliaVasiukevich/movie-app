@@ -5,6 +5,11 @@ import { TrendsIcon } from "assets";
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+  padding-inline: 40px;
+
+  ${Screen.MD} {
+    padding-inline: 30px;
+  }
 `;
 
 const MovieWrapper = styled.div`
@@ -13,7 +18,7 @@ const MovieWrapper = styled.div`
   ${Screen.MD} {
     flex-direction: column;
   }
-`
+`;
 
 const ImgWrapper = styled.div`
   position: relative;
@@ -21,6 +26,10 @@ const ImgWrapper = styled.div`
   flex-direction: column;
   margin-right: 42px;
 
+  ${Screen.MD} {
+    max-width: 400px;
+    margin: 0 auto;
+  }
 `;
 
 const PosterImg = styled.img`
@@ -34,6 +43,7 @@ const FavoritesButton = styled.button`
   border: none;
   fill: ${Color.Secondary};
 `;
+
 const DisFavoritesButton = styled(FavoritesButton)`
   fill: ${Color.Primary} !important;
 `;
@@ -77,8 +87,17 @@ const Description = styled.p`
 
 const DataGrid = styled.div`
   display: grid;
+  font-size: 16px;
   grid-template-columns: 150px 1fr;
+  grid-row-gap: 5px;
   margin-bottom: 40px;
+`;
+
+const DataName = styled.div`
+color: ${Color.Graphite};
+`;
+
+const DataValue = styled.div`
 `;
 
 const MovieButton = styled.div`
@@ -94,16 +113,16 @@ const ShareButton = styled(FavoritesButton)`
 `;
 
 const MovieTrendsIcon = styled(TrendsIcon)`
-position: absolute;
-left: 10px;
-top: 5px;
-height: 40px;
-width: 30px;
-padding: 5px;
-border-radius: 5px;
-z-index: 3;
-fill: ${Color.White} ;
-background-color: ${Color.Primary};
+  position: absolute;
+  left: 10px;
+  top: 5px;
+  height: 40px;
+  width: 30px;
+  padding: 5px;
+  border-radius: 5px;
+  z-index: 3;
+  fill: ${Color.White} ;
+  background-color: ${Color.Primary};
 `;
 
 
@@ -115,5 +134,6 @@ export {
   Description, DataGrid,
   MovieWrapper, DisFavoritesButton,
   MovieButton, ShareButton,
-  MovieTrendsIcon, Badge
+  MovieTrendsIcon, Badge,
+  DataName, DataValue
 };

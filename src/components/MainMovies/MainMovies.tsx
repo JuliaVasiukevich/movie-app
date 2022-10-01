@@ -10,6 +10,7 @@ import "swiper/css/navigation";
 import { useWindowSize } from "hooks";
 import { breakpoint } from "ui";
 import { getNumderOfSlides } from "utils";
+import { IMovieSearch } from "types/movieTypes";
 
 export const MainMovies = ({ movies }: any) => {
   const { width } = useWindowSize();
@@ -28,7 +29,7 @@ export const MainMovies = ({ movies }: any) => {
           modules={[FreeMode, Navigation]}
           className="mySwiper"
         >
-          {movies?.map((movie: any) => {
+          {movies?.map((movie: IMovieSearch) => {
             return (
               <SwiperSlide>
                 <MovieTile key={movie.imdbID} {...movie} />
@@ -42,7 +43,7 @@ export const MainMovies = ({ movies }: any) => {
           </SwiperSlide> */}
         </Swiper>
       ) : (
-        movies?.map((movie: any) => {
+        movies?.map((movie: IMovieSearch) => {
           return <MovieTile key={movie.imdbID} {...movie} />;
         })
       )}

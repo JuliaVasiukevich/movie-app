@@ -2,7 +2,8 @@ export type FirebaseErrorCode =
   | "auth/email-already-in-use"
   | "auth/invalid-email"
   | "auth/wrong-password"
-  | "auth/user-not-found";
+  | "auth/user-not-found"
+  | "auth/email-already-exists";
 
 
 export enum FirebaseError {

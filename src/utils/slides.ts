@@ -16,7 +16,7 @@ const getNumderOfSlides = (width: number | undefined) => {
       return 2;
     }
   }
-  return 1;
+  return 2;
 };
 
 export { getNumderOfSlides };

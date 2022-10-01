@@ -1,8 +1,6 @@
-import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
 import { Navbar, Header } from "../index";
 import { Wrapper, ContentWrapper } from "./styles";
-import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { useTheme, useWindowSize } from "hooks";
 import { breakpoint } from "../../ui/breakpoints";
 

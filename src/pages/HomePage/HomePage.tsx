@@ -1,9 +1,9 @@
 import { MainMovies } from "components";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { fetchMovies } from "store/features/moviesSlice";
 import { useAppDispatch, useAppSelector } from "store/hooks/hooks";
 import { getMovies } from "store/selectors/movieSelectors";
-import { StyledList, Error } from "./styles";
+import { StyledList, Error, CategoryList, Title } from "./styles";
 
 export const HomePage = () => {
   const movieArray = [
@@ -30,7 +30,7 @@ export const HomePage = () => {
   const [fetching, setFetching] = useState(true);
 
   const dispatch = useAppDispatch();
-  const { isLoading, error, movies } = useAppSelector(getMovies);
+  const { error, movies } = useAppSelector(getMovies);
 
   useEffect(() => {
     if (fetching) {
@@ -61,26 +61,20 @@ export const HomePage = () => {
     }
   };
 
-  // if (isLoading) {
-  //   return <Loading />;
-  // }
-
   if (error) {
     return <Error> Sorry :( </Error>;
   }
 
   return (
-    <ul>
+    <CategoryList>
       {categories.map((category) => {
         return (
-          <StyledList>
-            <li key={category}>
-              <h2> About {category}</h2>
-              <MainMovies movies={movies?.[category]?.search} />
-            </li>
+          <StyledList key={category}>
+            <Title> About {category}</Title>
+            <MainMovies movies={movies?.[category]?.search} />
           </StyledList>
         );
       })}
-    </ul>
+    </CategoryList>
   );
 };
