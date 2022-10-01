@@ -41,7 +41,11 @@ const validateRules = {
   },
 };
 
-export const SignUpForm = () => {
+interface IProps {
+  toggleModal: (value: boolean) => void;
+}
+
+export const SignUpForm = ({ toggleModal }: IProps) => {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useAppDispatch();
@@ -60,7 +64,8 @@ export const SignUpForm = () => {
     dispatch(fetchSignUpUser(userInfo))
       .unwrap()
       .then(() => {
-        navigate(ROUTE.HOME);
+        toggleModal(true);
+        setTimeout(()=>navigate(ROUTE.HOME), 3000);
       })
       .catch((err) => {
         setErrorMessage(getFirebaseMessage(err.code));
@@ -108,5 +113,3 @@ export const SignUpForm = () => {
     </Form>
   );
 };
-
-

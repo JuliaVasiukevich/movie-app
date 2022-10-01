@@ -37,7 +37,7 @@ export const Recommended = ({ movie }: any) => {
       <MovieList>
         <Swiper
           slidesPerView={getNumderOfSlides(width)}
-          spaceBetween={1}
+          spaceBetween={0}
           freeMode={true}
           navigation={true}
           pagination={{

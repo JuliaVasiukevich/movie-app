@@ -21,7 +21,7 @@ export const theme = css`
     --secondary: #333333;
     --background_primary: #dedede;
     --background_primary_dark: #afb2b6;
-    --background_graphite: #afb2b6;
+    --background_graphite: #9c9c9c;
     --error: #ff5154;
     --text_primary: #000000;
     --light: #afb2b6;

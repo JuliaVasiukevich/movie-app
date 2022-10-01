@@ -1,11 +1,11 @@
-import { Button, Form, Error, Label } from "./styles";
+import { Button, Form, Error, Label, Title, LabelText, customStyles } from "./styles";
+import Select from "react-select";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { Input } from "components";
 import { useState } from "react";
 import { useAppDispatch } from "store/hooks/hooks";
 import { addYear, addType } from "store/features/movieSearchSlice";
-import Select from "react-select";
-interface IOption {
+export interface IOption {
   value: string;
   label: string;
 }
@@ -44,11 +44,11 @@ export const Filters = () => {
     reset();
   };
 
-
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
+      <Title> Filters </Title>
       <Label>
-        Year
+        <LabelText>Year</LabelText>
         <Controller
           name={"year"}
           control={control}
@@ -59,12 +59,12 @@ export const Filters = () => {
         {errors.year && <Error>{errors.year.message}</Error>}
       </Label>
       <Label>
-        Type
+        <LabelText>Type</LabelText>
         <Controller
           name="type"
           control={control}
           render={({ field: { onChange, value } }) => {
-            return <Select onChange={onChange} options={options} />;
+            return <Select onChange={onChange} options={options} styles={customStyles} />;
           }}
         />
         {errors.type && <Error>{errors.type.message}</Error>}
@@ -74,4 +74,3 @@ export const Filters = () => {
     </Form>
   );
 };
-

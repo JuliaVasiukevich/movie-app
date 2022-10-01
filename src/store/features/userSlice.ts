@@ -89,8 +89,12 @@ export const updateUserPassword = createAsyncThunk<void, {
   "user/updateUserPassword",
   async ({ newPassword, currentPassword }, { rejectWithValue }) => {
     const auth = getAuth();
+    
     const user = auth.currentUser as User;
+    console.log(auth);
     const credential = EmailAuthProvider.credential(user.email as string, currentPassword);
+    console.log(user);
+    
     if (user)
       try {
         await reauthenticateWithCredential(user, credential);

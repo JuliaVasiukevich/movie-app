@@ -1,65 +1,61 @@
-import { ColorMode } from "../../components";
-import { Form, Setting, Name, Wrapper } from "./styles";
+import { ColorMode, Input } from "../../components";
+import { Form, Setting, Name, Wrapper, Container } from "./styles";
 import { useAppDispatch, useAppSelector } from "store/hooks/hooks";
 import { getUserInfo } from "store/selectors/userSelectors";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { updateUserPassword } from "store/features/userSlice";
+import { stringify } from "querystring";
 
 export const SettingsPage = () => {
   const { email } = useAppSelector(getUserInfo);
   //TODO: добавить кнопки
 
   type PasswordValues = {
-    password: string;
+    newPassword: string;
     currentPassword: string;
+    repeatPassword: string;
   };
-
-  // export const SignInForm = () => {
-  //   const { isPendingAuth, error } = useAppSelector(getUserInfo);
-  //   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  //   const dispatch = useAppDispatch();
-  //   const navigate = useNavigate();
-
-  //   const {
-  //     handleSubmit,
-  //     formState: { errors },
-  //     control,
-  //     reset,
-  //   } = useForm<SignInValues>({
-  //     defaultValues: { email: "", password: "" },
-  //   });
-
-  //   const onSubmit: SubmitHandler<SignInValues> = (userInfo) => {
-  //     dispatch(fetchSignInUser(userInfo))
-  //       .unwrap()
-  //       .then(() => {navigate(ROUTE.HOME)})
-  //       .finally(() => {
-  //         reset();
-  //       });
-  //   };
 
   const dispatch = useAppDispatch();
 
   const {
     handleSubmit,
     reset,
+    control,
     register,
     formState: { errors },
-  } = useForm<PasswordValues>();
+  } = useForm<PasswordValues>({
+    defaultValues: {
+      newPassword: "",
+      currentPassword: "",
+      repeatPassword: "",
+    }
+  });
 
-  const onSubmit: SubmitHandler<PasswordValues> = (formValues) => {
-    dispatch(
-      updateUserPassword({
-        email: email,
-        newPassword: formValues.password,
-        currentPassword: formValues.currentPassword,
-      }),
-    );
-    reset();
+  const onSubmit: SubmitHandler<PasswordValues> = ({
+    repeatPassword,
+    newPassword,
+    currentPassword,
+  }) => {
+    if (newPassword === repeatPassword) {
+      dispatch(
+        updateUserPassword({
+          email: email,
+          newPassword: newPassword,
+          currentPassword: currentPassword,
+        }),
+      ).unwrap().finally(() => {
+        console.log("pep");
+        reset();
+      })
+      
+    } else {
+      console.log(newPassword, repeatPassword);
+    }
   };
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit)}>
+    <Container>
       <Setting>
         <Name>Profile</Name>
         <Wrapper>
@@ -69,9 +65,32 @@ export const SettingsPage = () => {
       <Setting>
         <Name>Password</Name>
         <Wrapper>
-          <input type="password" {...register("currentPassword")}></input>
-          <input type="password" {...register("password")}></input>
-          <button type="submit"> submit </button>
+          <Form onSubmit={handleSubmit(onSubmit)}>
+            Current password:
+            <Controller
+              name={"currentPassword"}
+              control={control}
+              render={({ field: { onChange, value } }) => {
+                return <Input type={"password"} onChange={onChange} value={value} />;
+              }}
+            />
+            New password:
+            <Controller
+              name={"newPassword"}
+              control={control}
+              render={({ field: { onChange, value } }) => {
+                return <Input type={"password"} onChange={onChange} value={value} />;
+              }}
+            />
+            <Controller
+              name={"repeatPassword"}
+              control={control}
+              render={({ field: { onChange, value } }) => {
+                return <Input type={"password"} onChange={onChange} value={value} />;
+              }}
+            />
+            <button type="submit"> submit </button>
+          </Form>
         </Wrapper>
       </Setting>
       <Setting>
@@ -80,6 +99,6 @@ export const SettingsPage = () => {
           <ColorMode />
         </Wrapper>
       </Setting>
-    </Form>
+    </Container>
   );
 };

@@ -12,18 +12,31 @@ const Error = styled(H4)`
 `;
 
 const ErrorWrapper = styled.div`
+  position: relative;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  width: calc(100vw - 350px);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: calc(100vw - 500px);
+  flex-grow: 2;
 `;
 
 const Wrapper = styled.div`
+  position: relative;
+  width: calc(100vw - 500px);
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
-  justify-content: space-between;
-  width: calc(100vw - 350px);
 `;
 
-export { Error, Wrapper, ErrorWrapper };
+const FilterContainer = styled.div`
+background: ${Color.Background_primary}; 
+box-shadow: ${Color.Background_primary_dark} 0px 29px 29px 0px;
+`;
+
+const ErrorFilterContainer = styled(FilterContainer)`
+height: calc(100vh - 155px);
+`;
+
+
+export { Error, Wrapper, ErrorWrapper,FilterContainer, ErrorFilterContainer };

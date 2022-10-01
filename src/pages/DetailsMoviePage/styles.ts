@@ -1,5 +1,6 @@
 import { Color, Screen, H1 } from "./../../ui";
 import styled from "styled-components";
+import { TrendsIcon } from "assets";
 
 const Wrapper = styled.div`
   display: flex;
@@ -15,6 +16,7 @@ const MovieWrapper = styled.div`
 `
 
 const ImgWrapper = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   margin-right: 42px;
@@ -54,7 +56,15 @@ const Badges = styled.div`
   margin-bottom: 40px;
 `;
 
-const BadgeIMDB = styled.div`
+const BadgeIMDB = styled.div<{ $rating: number }>`
+  padding: 8px;
+  margin-right: 20px;
+  background-color: ${({ $rating }) => ($rating > 7 ? `${Color.Green}` :
+    $rating > 5 ? `${Color.Yellow}` : `${Color.Orange}`)};
+  border-radius: 10px;
+`;
+
+const Badge = styled.div`
   padding: 8px;
   margin-right: 20px;
   background-color: ${Color.Graphite};
@@ -83,6 +93,19 @@ const MovieButton = styled.div`
 const ShareButton = styled(FavoritesButton)`
 `;
 
+const MovieTrendsIcon = styled(TrendsIcon)`
+position: absolute;
+left: 10px;
+top: 5px;
+height: 40px;
+width: 30px;
+padding: 5px;
+border-radius: 5px;
+z-index: 3;
+fill: ${Color.White} ;
+background-color: ${Color.Primary};
+`;
+
 
 export {
   Wrapper, ImgWrapper, PosterImg,
@@ -91,5 +114,6 @@ export {
   Badges, BadgeIMDB,
   Description, DataGrid,
   MovieWrapper, DisFavoritesButton,
-  MovieButton, ShareButton
+  MovieButton, ShareButton,
+  MovieTrendsIcon, Badge
 };

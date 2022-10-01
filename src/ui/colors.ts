@@ -9,4 +9,7 @@ export enum Color {
   Light = "var(--light)",
   Text_primary = "var(--text_primary)",
   White = "white",
+  Green = "#00A340",
+  Yellow = "#F3A608",
+  Orange = "#F45D2D",
 }

@@ -6,4 +6,10 @@ justify-content: flex-start;
 flex-wrap:wrap;
 `;
 
-export { FavoritesStyled };
+const FavoritesEmpty = styled.div`
+display: flex;
+justify-content: center;
+flex-grow: 1;
+`;
+
+export { FavoritesStyled, FavoritesEmpty };

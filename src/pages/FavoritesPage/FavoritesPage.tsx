@@ -3,15 +3,15 @@ import { MovieTile } from "components";
 import React from "react";
 import { useAppSelector } from "store/hooks/hooks";
 import { getFavorites } from "store/selectors/favoritesSelectors";
-import { FavoritesStyled } from "./styles";
+import { FavoritesStyled, FavoritesEmpty } from "./styles";
 
 export const FavoritesPage = () => {
   const { favorites } = useAppSelector(getFavorites);
   if (favorites.length === 0) {
     return (
-      <FavoritesStyled>
+      <FavoritesEmpty>
         <EmptyFavorites />
-      </FavoritesStyled>
+      </FavoritesEmpty>
     );
   } else {
     return (

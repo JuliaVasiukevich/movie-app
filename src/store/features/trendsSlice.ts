@@ -8,15 +8,6 @@ interface ITrendsState {
 const initialState: ITrendsState = {
   trends: [
     {
-      poster: "https://m.media-amazon.com/images/M/" +
-        "MV5BMDdmMTBiNTYtMDIzNi00NGVlLWIzMDYtZTk3MTQ3NGQxZGEwXkEyXkFqcGdeQXVyMzMwOTU5MDk@._V1_SX300"
-        + ".jpg",
-      title: "The Batman",
-      type: "movie",
-      year: "2022",
-      imdbID: "tt1877830"
-    },
-    {
       poster: "https://m.media-amazon.com/images/" +
         "M/MV5BNDYxNjQyMjAtNTdiOS00NGYwLWFmNTAtNThmYjU5ZGI2YTI1XkEyXkFqcGdeQXVyMTMxODk2OTU@." +
         "_V1_SX300.jpg",

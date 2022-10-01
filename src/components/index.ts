@@ -15,3 +15,5 @@ export * from "./RequareAuth/RequareAuth";
 export * from "./Recommended/Recommended";
 export * from "./BurgerMenu/BurgerMenu";
 export * from "./Filters/Filters";
+export * from "./Modal/Modal";
+export * from "./Portal/Portal";

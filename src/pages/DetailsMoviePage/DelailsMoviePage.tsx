@@ -20,20 +20,25 @@ import {
   TitleMovie,
   Badges,
   BadgeIMDB,
+  Badge,
   Description,
   DataGrid,
   MovieWrapper,
   DisFavoritesButton,
   MovieButton,
   ShareButton,
+  MovieTrendsIcon,
 } from "./styles";
 import { getUserInfo } from "store/selectors/userSelectors";
+import { getTrends } from "store/selectors/trendsSelectors";
+import { addToTrends } from "store/features/trendsSlice";
 
 export const DetailsMoviePage = () => {
   const { imdbID = "" } = useParams();
   const dispatch = useAppDispatch();
   const { isLoading, error, details } = useAppSelector(getDetailsMovie);
   const { favorites } = useAppSelector(getFavorites);
+  const { trends } = useAppSelector(getTrends);
   const { isAuth } = useAppSelector(getUserInfo);
 
   const {
@@ -89,6 +94,12 @@ export const DetailsMoviePage = () => {
 
   const isFavorites = favorites.find((newMovie) => newMovie.imdbID === movie.imdbID);
 
+  const isTrends = trends.find((trendMovie: any) => trendMovie.imdbID === imdbID);
+
+  if (+imdbRating > 7 && +year > 2017) {
+    dispatch(addToTrends(movie));
+  }
+
   const handleDeleteFavorites = (e: any, ID: any) => {
     e.preventDefault();
     dispatch(removeFavorite(ID));
@@ -121,6 +132,7 @@ export const DetailsMoviePage = () => {
     <Wrapper>
       <MovieWrapper>
         <ImgWrapper>
+          {isTrends && <MovieTrendsIcon />}
           <PosterImg src={poster} onError={addDefaultSrc} alt={`poster ${title}`} />
           <MovieButton>
             {isFavorites ? (
@@ -146,16 +158,16 @@ export const DetailsMoviePage = () => {
           <TypeMovie>{genre?.split(", ").join(" • ")}</TypeMovie>
           <TitleMovie>{title}</TitleMovie>
           <Badges>
-            <BadgeIMDB>
+            <BadgeIMDB $rating={+imdbRating}>
               <IMDbLogo /> {imdbRating}
             </BadgeIMDB>
-            <BadgeIMDB>{runtime}</BadgeIMDB>
+            <Badge>{runtime}</Badge>
           </Badges>
           <Description>{plot}</Description>
           <DataGrid>
             {/* TODO: почистить, сделать, чтобы не показывалось N/A */}
             <p></p> <p></p>
-            <p>Year</p> <p>{year}</p>
+            {year !== "N/A" && <p>Year</p>} {year !== "N/A" && <p>{year}</p>}
             <p>Released</p> <p>{released}</p>
             <p>BoxOffice</p> <p>{boxOffice}</p>
             <p>Country</p> <p>{country}</p>

@@ -32,7 +32,7 @@ export const Header = () => {
         <LogoIconHeader />
       </Link>
       <Search>
-        <Input onKeyDown={onKeyDown} {...searchWord} placeholder="search" />
+        <Input onKeyDown={onKeyDown} {...searchWord} placeholder="search"/>
       </Search>
       {width && width > breakpoint.MD ? <UserState /> : <BurgerMenu />}
     </Wrapper>

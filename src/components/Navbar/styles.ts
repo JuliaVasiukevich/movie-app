@@ -4,10 +4,12 @@ const NavigationConteiner = styled.div``;
 
 const NavbarList = styled.ul`
   position: sticky;
-  top: 80px;
+  top: 100px;
   left: 0;
   right: 0;
   width: 200px;
+  padding-left: 40px;
+  padding-top: 0px;
 `;
 
 const NavbarItem = styled.li`

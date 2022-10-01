@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import { H2 } from "ui/typography";
-import { Color } from "../../ui/colors";
+import { Color, Screen, H2 } from "../../ui";
 
 const Form = styled.form`
   display: flex;
@@ -16,9 +15,19 @@ const Name = styled(H2)``;
 
 const Wrapper = styled.div`
   width: 100%;
-  background-color: ${Color.Background_primary_dark};
+  background-color: ${Color.Graphite};
   border-radius: 10px;
   padding: 24px 40px;
 `;
 
-export { Form, Setting, Name, Wrapper };
+const Container = styled.div`
+width: 100%;
+padding-right: 40px;
+padding-bottom: 40px;
+
+${Screen.MD} {
+  padding: 0 30px;
+  };
+`;
+
+export { Form, Setting, Name, Wrapper, Container };
