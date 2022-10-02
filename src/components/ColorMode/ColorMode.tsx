@@ -1,6 +1,5 @@
 import { useTheme } from "../../hooks/useTheme";
-
-import { Wrapper, Description, Title, Subtitle, Switch, SInput, SLabel } from "./styles";
+import { Wrapper, Description, Title, Subtitle, Switch, Check, CustomLabel } from "./styles";
 
 export const ColorMode = () => {
   const { theme, setTheme } = useTheme();
@@ -16,13 +15,13 @@ export const ColorMode = () => {
         <Subtitle>Use dark thema</Subtitle>
       </Description>
       <Switch>
-        <SInput
+        <Check
           onClick={handleClick}
           type="checkbox"
           id="switch"
           checked={theme === "light"}
         />
-        <SLabel htmlFor="switch" />
+        <CustomLabel htmlFor="switch" />
       </Switch>
     </Wrapper>
   );

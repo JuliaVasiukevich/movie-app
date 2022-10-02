@@ -23,7 +23,7 @@ const Switch = styled.div`
   align-items: center;
 `;
 
-const SLabel = styled.label`
+const CustomLabel = styled.label`
   position: relative;
   display: block;
   width: 32px;
@@ -48,7 +48,7 @@ const SLabel = styled.label`
   }
 `;
 
-const SInput = styled.input`
+const Check = styled.input`
   height: 0;
   width: 0;
   visibility: hidden;
@@ -63,4 +63,4 @@ const SInput = styled.input`
   }
 `;
 
-export { Wrapper, Description, Title, Subtitle, Switch, SInput, SLabel };
+export { Wrapper, Description, Title, Subtitle, Switch, Check, CustomLabel };

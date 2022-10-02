@@ -10,7 +10,7 @@ export const TrendsPage = () => {
   return (
     <TrendsStyled>
       {trends.map((movie: any) => {
-        return <MovieTile key={movie.imdbID} {...movie}></MovieTile>;
+        return <MovieTile key={movie.imdbID} {...movie} />;
       })}
     </TrendsStyled>
   );

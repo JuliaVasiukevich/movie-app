@@ -7,3 +7,4 @@ export * from "./TrendsPage/TrendsPage";
 export * from "./NotFoundPage/NotFoundPage";
 export * from "./DetailsMoviePage/DelailsMoviePage";
 export * from "./SearchPage/SearchPage";
+export * from "./ForgotPasswordPage/ForgotPasswordPage";

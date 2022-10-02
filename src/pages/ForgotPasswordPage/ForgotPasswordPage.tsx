@@ -1,26 +1,22 @@
-import { Link, useNavigate } from "react-router-dom";
-import { ROUTE } from "../../routes";
-import { Button, Form, SignUp, Error, Label, LabelText } from "./styles";
+import { useNavigate } from "react-router-dom";
+import { Button, Form, Error, Label, LabelText, Wrapper } from "./styles";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { Input, Modal } from "components";
 import { useState } from "react";
 import { useAppDispatch } from "store/hooks/hooks";
-import { fetchSignInUser } from "store/features/userSlice";
+import { resetPassword } from "store/features/userSlice";
 
 export type SignInValues = {
   email: string;
-  password: string;
 };
 
 export enum SignInValuesKeys {
   EMAIL = "email",
-  PASSWORD = "password",
 }
 
-export const SignInForm = () => {
+export const ForgotPasswordPage = () => {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
   const [isOpen, toggleModal] = useState(false);
 
   const {
@@ -29,14 +25,15 @@ export const SignInForm = () => {
     control,
     reset,
   } = useForm<SignInValues>({
-    defaultValues: { email: "", password: "" },
+    defaultValues: { email: "" },
   });
 
-  const onSubmit: SubmitHandler<SignInValues> = (userInfo) => {
-    dispatch(fetchSignInUser(userInfo))
+  const onSubmit: SubmitHandler<SignInValues> = ({ email }) => {
+    dispatch(resetPassword({ email }))
       .unwrap()
-      .then(() => {
-        navigate(ROUTE.HOME);
+      .then(()=>{
+        setErrorMessage("Successfully. Check your mail!");
+        toggleModal(true);  
       })
       .catch((err) => {
         setErrorMessage(err);
@@ -48,7 +45,7 @@ export const SignInForm = () => {
   };
 
   return (
-    <>
+    <Wrapper>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Label>
           <LabelText>Email</LabelText>
@@ -61,26 +58,9 @@ export const SignInForm = () => {
           />
           {errors.email && <Error>{errors.email.message}</Error>}
         </Label>
-        <Label>
-          <LabelText>Password</LabelText>
-          <Controller
-            name={"password"}
-            control={control}
-            render={({ field: { onChange, value } }) => {
-              return <Input type={"password"} onChange={onChange} value={value} />;
-            }}
-          />
-          {errors.password && <Error>{errors.password.message}</Error>}
-        </Label>
         <Button type="submit">Sign in</Button>
-        <SignUp>
-          Don’t have an account?
-          <Link to={`/${ROUTE.SIGN_UP}`}> Sign up</Link>
-          <br />
-          <Link to={`/${ROUTE.FORGOT_PASSWORD}`}> Forgot password? </Link>
-        </SignUp>
       </Form>
       {isOpen && <Modal toggleModal={toggleModal} message={errorMessage} />}
-    </>
+    </Wrapper>
   );
 };

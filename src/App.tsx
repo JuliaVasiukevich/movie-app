@@ -10,7 +10,8 @@ import {
   SignUpPage,
   NotFoundPage,
   DetailsMoviePage,
-  SearchPage
+  SearchPage,
+  ForgotPasswordPage
 } from "./pages";
 import { ROUTE } from "./routes";
 
@@ -30,6 +31,7 @@ export const App = () => {
       </Route>
       <Route element={<AuthTemplate />}>
         <Route path={ROUTE.SIGN_IN} element={<SignInPage />} />
+        <Route path={ROUTE.FORGOT_PASSWORD} element={<ForgotPasswordPage />} />
         <Route path={ROUTE.SIGN_UP} element={<SignUpPage />} />
       </Route>
     </Routes>

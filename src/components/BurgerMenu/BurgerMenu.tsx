@@ -5,6 +5,7 @@ import { BurgerIcon, Absolute, Wrapper } from "./styles";
 
 export const BurgerMenu = () => {
   const [nav, setNav] = useState(false);
+  
   return (
     <div onClick={() => setNav(!nav)}>
       {nav ? (
