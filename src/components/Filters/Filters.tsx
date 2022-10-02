@@ -36,7 +36,7 @@ export const Filters = () => {
 
   const onSubmit: SubmitHandler<FiltersValues> = ({ year, type }) => {
     if (year) {
-      dispatch(addYear(year));
+      dispatch(addYear(+year));
     }
     if (type.value) {
       dispatch(addType(type.value));

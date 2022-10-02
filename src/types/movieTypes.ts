@@ -1,7 +1,7 @@
 export interface IMovieAPI {
   Response: string;
-  Search?: IMovieSearchAPI[];
-  totalResults?: number;
+  Search: IMovieSearchAPI[];
+  totalResults: number;
   Error?: string;
 };
 

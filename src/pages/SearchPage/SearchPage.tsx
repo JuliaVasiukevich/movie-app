@@ -48,10 +48,10 @@ export const SearchPage = () => {
 
   const maxPages = +moviesSearch.totalResults / 10;
 
-  const handleScroll = (e: any) => {
+  const handleScroll = () => {
     if (
-      e.target.documentElement.scrollHeight -
-        e.target.documentElement.scrollTop -
+      document.documentElement.scrollHeight -
+        document.documentElement.scrollTop -
         window.innerHeight <
         1 &&
       page < maxPages

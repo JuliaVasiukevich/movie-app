@@ -5,17 +5,11 @@ import {
 } from "types/movieTypes";
 
 export const adaptedIMovie = (movieAPI: IMovieAPI): IMovie => {
-  const movie: any = {};
-  if (movieAPI.Response === "True") {
-    movie.response = true;
-    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-    movie.search = movieAPI.Search?.map(item => adaptedIMovieSearch(item));
-    movie.totalResults = movieAPI.totalResults;
-  } else {
-    movie.response = false;
-    // movie.error = movieAPI.Error;
-  }
-  return movie;
+  return {
+    response: true,
+    search: movieAPI.Search.map(item => adaptedIMovieSearch(item)),
+    totalResults: movieAPI.totalResults,
+  };
 };
 
 export const adaptedIMovieSearch = ({

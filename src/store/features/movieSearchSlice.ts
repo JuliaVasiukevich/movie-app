@@ -73,16 +73,16 @@ const moviesSearchSlice = createSlice({
   name: "moviesSearch",
   initialState,
   reducers: {
-    addToSearch(state, { payload }: PayloadAction<any>) {
+    addToSearch(state, { payload }: PayloadAction<string>) {
       state.params.title = payload;
     },
     clearMovieArray(state) {
       state.movieArray = [];
     },
-    addYear(state, { payload }: PayloadAction<any>) {
+    addYear(state, { payload }: PayloadAction<number>) {
       state.params.filters.year = payload;
     },
-    addType(state, { payload }: PayloadAction<any>) {
+    addType(state, { payload }: PayloadAction<string>) {
       state.params.filters.type = payload;
     },
     deleteFilter(state, { payload }: PayloadAction<FilterKeys>) {

@@ -49,10 +49,10 @@ export const HomePage = () => {
     };
   });
 
-  const handleScroll = (e: any) => {
+  const handleScroll = () => {
     if (
-      e.target.documentElement.scrollHeight -
-        e.target.documentElement.scrollTop -
+      document.documentElement.scrollHeight -
+        document.documentElement.scrollTop -
         window.innerHeight <
         1 &&
       categories.length < movieArray.length - 1
