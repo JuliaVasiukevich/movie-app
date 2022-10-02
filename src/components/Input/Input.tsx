@@ -1,6 +1,6 @@
 import { SignUpValuesKeys, SignUpValues } from "components";
 import { SignInValues, SignInValuesKeys } from "components/SignInForm/SignInForm";
-import { ChangeEvent } from "react";
+import { ChangeEvent, KeyboardEventHandler } from "react";
 import { UseFormRegister, ValidationRule } from "react-hook-form";
 import { InputStyled, Wrapper } from "./styles";
 
@@ -9,7 +9,7 @@ interface IProps {
   type?: string;
   value?: string;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
-  onKeyDown?: any;
+  onKeyDown?: KeyboardEventHandler<HTMLInputElement>;
   label?: SignUpValuesKeys | SignInValuesKeys;
   register?: UseFormRegister<SignUpValues | SignInValues>;
   rules?: IRules;

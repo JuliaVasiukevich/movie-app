@@ -1,6 +1,5 @@
 import { EmptyFavorites } from "assets";
 import { MovieTile } from "components";
-import React from "react";
 import { useAppSelector } from "store/hooks/hooks";
 import { getFavorites } from "store/selectors/favoritesSelectors";
 import { FavoritesStyled, FavoritesEmpty } from "./styles";
@@ -16,7 +15,7 @@ export const FavoritesPage = () => {
   } else {
     return (
       <FavoritesStyled>
-        {favorites.map((movie: any) => {
+        {favorites.map((movie) => {
           return <MovieTile key={movie.imdbID} {...movie} />;
         })}
       </FavoritesStyled>

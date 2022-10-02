@@ -1,5 +1,5 @@
 import { Loading, Recommended } from "components";
-import { useEffect } from "react";
+import { MouseEvent as ReactMouseEvent, SyntheticEvent, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { addToFavotires, removeFavorite } from "store/features/favoritesSlice";
 import { fetchMovieByDetails } from "store/features/moviesDetailsSlice";
@@ -80,18 +80,18 @@ export const DetailsMoviePage = () => {
 
   const isFavorites = favorites.find((newMovie) => newMovie.imdbID === movie.imdbID);
 
-  const isTrends = trends.find((trendMovie: any) => trendMovie.imdbID === imdbID);
+  const isTrends = trends.find((trendMovie) => trendMovie.imdbID === imdbID);
 
   if (+imdbRating > 7 && +year > 2017) {
     dispatch(addToTrends(movie));
   }
 
-  const handleDeleteFavorites = (e: any, ID: any) => {
+  const handleDeleteFavorites = (e: ReactMouseEvent<HTMLButtonElement, MouseEvent>, ID: string) => {
     e.preventDefault();
     dispatch(removeFavorite(ID));
   };
 
-  const handleAddFavorites = (e: any, ID: any) => {
+  const handleAddFavorites = (e: ReactMouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
     dispatch(addToFavotires(movie));
   };
@@ -100,8 +100,8 @@ export const DetailsMoviePage = () => {
     dispatch(fetchMovieByDetails(imdbID));
   }, [dispatch, imdbID]);
 
-  const addDefaultSrc = (ev: any) => {
-    ev.target.src =
+  const addDefaultSrc = (ev: SyntheticEvent<HTMLImageElement>) => {
+    ev.currentTarget.src =
       "https://encrypted-tbn0.gstatic.com/" +
       "images?q=tbn:ANd9GcRoWcWg0E8pSjBNi0TtiZsqu8uD2PAr_K11DA&usqp=CAU";
   };
@@ -130,7 +130,7 @@ export const DetailsMoviePage = () => {
             ) : (
               <FavoritesButton
                 disabled={!isAuth}
-                onClick={(e) => handleAddFavorites(e, movie.imdbID)}
+                onClick={handleAddFavorites}
               >
                 <BookmarkIcon />
               </FavoritesButton>
@@ -164,7 +164,7 @@ export const DetailsMoviePage = () => {
         </DescriptionWrapper>
       </MovieWrapper>
       <h2>Recommended:</h2>
-      <Recommended movie={`${recommended(title)}`} />
+      <Recommended movieTitle={`${recommended(title)}`} />
     </Wrapper>
   );
 };

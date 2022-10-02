@@ -131,7 +131,7 @@ const trendsSlice = createSlice({
   initialState,
   reducers: {
     addToTrends(state, { payload }: PayloadAction<IMovieSearch>) {
-      const result = state.trends.find((movie: any) => movie.imdbID === payload.imdbID);
+      const result = state.trends.find((movie) => movie.imdbID === payload.imdbID);
       if (!result) state.trends.push(payload);
     },
   },

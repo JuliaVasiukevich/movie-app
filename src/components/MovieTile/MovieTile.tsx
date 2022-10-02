@@ -4,13 +4,15 @@ import { Description, MovieItem, Poster, Title, MovieTrendsIcon } from "./styles
 import { motion } from "framer-motion";
 import { useAppSelector } from "store/hooks/hooks";
 import { getTrends } from "store/selectors/trendsSelectors";
+import { SyntheticEvent } from "react";
 
 export const MovieTile = ({ title, poster, type, year, imdbID }: IMovieSearch) => {
   const { trends } = useAppSelector(getTrends);
   const isTrends = trends.find((trendMovie) => trendMovie.imdbID === imdbID);
 
-  const addDefaultSrc = (ev: any) => {
-    ev.target.src =
+  const addDefaultSrc = 
+  (ev: SyntheticEvent<HTMLImageElement, Event>) => {
+    ev.currentTarget.src =
       "https://encrypted-tbn0.gstatic.com/" +
       "images?q=tbn:ANd9GcRoWcWg0E8pSjBNi0TtiZsqu8uD2PAr_K11DA&usqp=CAU";
   };

@@ -12,7 +12,11 @@ import { breakpoint } from "ui";
 import { getNumderOfSlides } from "utils";
 import { IMovieSearch } from "types/movieTypes";
 
-export const MainMovies = ({ movies }: any) => {
+interface IProps {
+  movies: IMovieSearch[]
+}
+
+export const MainMovies = ({ movies }: IProps) => {
   const { width } = useWindowSize();
 
   return (

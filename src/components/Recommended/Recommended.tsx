@@ -15,14 +15,18 @@ import { useWindowSize } from "hooks";
 import { IMovieSearch } from "types/movieTypes";
 import { getNumderOfSlides } from "utils";
 
-export const Recommended = ({ movie }: any) => {
+interface IProps {
+  movieTitle: string
+}
+
+export const Recommended = ({ movieTitle }: IProps) => {
   const dispatch = useAppDispatch();
   const { isLoading, error, movies } = useAppSelector(getMovies);
   const { width } = useWindowSize();
 
   useEffect(() => {
-    dispatch(fetchMovies(movie));
-  }, [dispatch, movie]);
+    dispatch(fetchMovies(movieTitle));
+  }, [dispatch, movieTitle]);
 
   if (isLoading) {
     return <Loading />;
@@ -46,20 +50,21 @@ export const Recommended = ({ movie }: any) => {
           modules={[FreeMode, Navigation]}
           className="mySwiper"
         >
-          {movies?.[movie]?.search.map(({ imdbID, title, poster, type, year }: IMovieSearch) => {
-            return (
-              <SwiperSlide>
-                <MovieTile
-                  key={imdbID}
-                  title={title}
-                  poster={poster}
-                  type={type}
-                  year={year}
-                  imdbID={imdbID}
-                />
-              </SwiperSlide>
-            );
-          })}
+          {movies?.[movieTitle]?.search.map(
+            ({ imdbID, title, poster, type, year }: IMovieSearch) => {
+              return (
+                <SwiperSlide>
+                  <MovieTile
+                    key={imdbID}
+                    title={title}
+                    poster={poster}
+                    type={type}
+                    year={year}
+                    imdbID={imdbID}
+                  />
+                </SwiperSlide>
+              );
+            })}
         </Swiper>
       </MovieList>
     </>
