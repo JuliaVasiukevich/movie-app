@@ -5,7 +5,14 @@ import { clearMovieArray } from "store/features/movieSearchSlice";
 import { IMovieSearch } from "types/movieTypes";
 import { fetchMoviesSearch } from "../../store/features/movieSearchSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks/hooks";
-import { Error, Wrapper, ErrorWrapper, FilterContainer, ErrorFilterContainer } from "./styles";
+import {
+  Error,
+  Wrapper,
+  ErrorWrapper,
+  FilterContainer,
+  ErrorFilterContainer,
+  MovieWrapper,
+} from "./styles";
 import { ParamsList } from "components/ParamsList/ParamsList";
 import { Ghost } from "react-kawaii";
 import { motion } from "framer-motion";
@@ -102,18 +109,20 @@ export const SearchPage = () => {
     <>
       <Wrapper>
         <ParamsList />
-        {movieArray.map(({ imdbID, title, poster, type, year }: IMovieSearch) => {
-          return (
-            <MovieTile
-              key={imdbID}
-              title={title}
-              poster={poster}
-              type={type}
-              year={year}
-              imdbID={imdbID}
-            />
-          );
-        })}
+        <MovieWrapper>
+          {movieArray.map(({ imdbID, title, poster, type, year }: IMovieSearch) => {
+            return (
+              <MovieTile
+                key={imdbID}
+                title={title}
+                poster={poster}
+                type={type}
+                year={year}
+                imdbID={imdbID}
+              />
+            );
+          })}
+        </MovieWrapper>
       </Wrapper>
       <FilterContainer>
         <Filters />

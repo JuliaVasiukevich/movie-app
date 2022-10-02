@@ -29,6 +29,13 @@ const Wrapper = styled.div`
   padding-top: 70px;
 `;
 
+const MovieWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+
+`;
+
+
 const FilterContainer = styled.div`
   background: ${Color.Background_primary};
   box-shadow: ${Color.Background_primary_dark} 0px 29px 29px 0px;
@@ -38,4 +45,4 @@ const ErrorFilterContainer = styled(FilterContainer)`
   height: calc(100vh - 155px);
 `;
 
-export { Error, ErrorWrapper, FilterContainer, ErrorFilterContainer, Wrapper };
+export { Error, ErrorWrapper, FilterContainer, ErrorFilterContainer, Wrapper, MovieWrapper };
