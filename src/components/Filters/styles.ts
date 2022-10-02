@@ -1,13 +1,13 @@
 import styled from "styled-components";
-import { Color, H3 } from "ui";
+import { Color, H3, Screen } from "ui";
 
 const Title = styled(H3)`
-color: ${Color.White};
-margin-bottom: 20px;
+  color: ${Color.White};
+  margin-bottom: 20px;
 `;
 
 const LabelText = styled.div`
-margin-bottom: 10px;
+  margin-bottom: 10px;
 `;
 
 const Form = styled.form`
@@ -17,10 +17,16 @@ const Form = styled.form`
   width: 200px;
   padding-left: 40px;
   padding-top: 0px;
-   display: flex;
+  display: flex;
   flex-direction: column;
   padding: 40px;
   width: 320px;
+
+  ${Screen.MD} {
+   position: fixed;
+   background-color: ${Color.Background_primary};
+   height: calc(100vh - 80px);
+  };
 `;
 
 const Button = styled.button`
@@ -32,6 +38,7 @@ const Button = styled.button`
   color: ${Color.White};
   border: none;
   border-radius: 10px;
+  cursor: pointer;
 `;
 
 export const customStyles: any = {
@@ -44,6 +51,7 @@ export const customStyles: any = {
     marginBottom: "45px",
     padding: "7px",
     textAlign: "center",
+    cursor: "pointer",
   }),
 
   indicatorSeparator: () => ({

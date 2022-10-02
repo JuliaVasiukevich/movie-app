@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { addToSearch } from "store/features/movieSearchSlice";
 import { useAppDispatch } from "store/hooks/hooks";
 import { breakpoint } from "ui";
-import { ROUTE } from "../../routes";
+import { ROUTE } from "routes";
 import { Wrapper, LogoIconHeader, Search } from "./styles";
 
 export const Header = () => {

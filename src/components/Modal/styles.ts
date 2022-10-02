@@ -8,7 +8,7 @@ left:50%;
 transform:translate(-50%, -50%);
 padding: 40px;
 border-radius: 20px;
-z-index: 10;
+z-index: 3;
 background-color: ${Color.Background_primary_dark};
 `;
 
@@ -25,6 +25,7 @@ const Button = styled.button`
   color: ${Color.White};
   border: none;
   border-radius: 10px;
+  cursor: pointer;
 `;
 
 const BlurWrapper = styled.div`

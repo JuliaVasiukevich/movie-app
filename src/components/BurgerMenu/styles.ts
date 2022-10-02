@@ -2,16 +2,17 @@ import styled from "styled-components";
 import { Color } from "ui";
 
 const BurgerIcon = styled.div`
-grid-area: burger;
+  grid-area: burger;
+  cursor: pointer;
 `;
 
 const Absolute = styled.div`
-position: absolute;
-top: 135px;
-left: 0;
-background-color: ${Color.Background_primary};
-height: 100vh;
-padding: 20px;
+  position: absolute;
+  top: 135px;
+  left: 0;
+  background-color: ${Color.Background_primary};
+  height: 100vh;
+  padding: 20px;
 `;
 
 const Wrapper = styled.div`

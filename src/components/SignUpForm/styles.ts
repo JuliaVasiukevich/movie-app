@@ -23,6 +23,7 @@ const Button = styled.button`
   color: ${Color.White};
   border: none;
   border-radius: 10px;
+  cursor: pointer;
 `;
 
 const LabelText = styled.div`

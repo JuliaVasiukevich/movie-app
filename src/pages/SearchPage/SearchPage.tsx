@@ -1,10 +1,10 @@
-import { Filters, MovieTile } from "components";
+import { Filters, MovieTile, ParamsList, BurgerMenu } from "components";
 import { useEffect, useState } from "react";
 import { getMoviesSearch } from "store/selectors/movieSearchSelectors";
 import { clearMovieArray } from "store/features/movieSearchSlice";
 import { IMovieSearch } from "types/movieTypes";
-import { fetchMoviesSearch } from "../../store/features/movieSearchSlice";
-import { useAppDispatch, useAppSelector } from "../../store/hooks/hooks";
+import { fetchMoviesSearch } from "store/features/movieSearchSlice";
+import { useAppDispatch, useAppSelector } from "store/hooks/hooks";
 import {
   Error,
   Wrapper,
@@ -12,18 +12,21 @@ import {
   FilterContainer,
   ErrorFilterContainer,
   MovieWrapper,
+  FilterButton,
 } from "./styles";
-import { ParamsList } from "components/ParamsList/ParamsList";
 import { Ghost } from "react-kawaii";
-import { motion } from "framer-motion";
-import { Color } from "ui/colors";
+import { motion, AnimatePresence } from "framer-motion";
+import { breakpoint, Color } from "ui";
+import { useWindowSize } from "hooks";
 
 export const SearchPage = () => {
+  const { width } = useWindowSize();
   const dispatch = useAppDispatch();
   const { error, moviesSearch, params, movieArray } = useAppSelector(getMoviesSearch);
 
   const [page, setPage] = useState(1);
   const [fetching, setFetching] = useState(true);
+  const [nav, setNav] = useState(false);
 
   useEffect(() => {
     dispatch(clearMovieArray());
@@ -98,9 +101,24 @@ export const SearchPage = () => {
             <Error>Ooopps! No results!</Error>
           </motion.div>
         </ErrorWrapper>
-        <ErrorFilterContainer>
-          <Filters />
-        </ErrorFilterContainer>
+        <FilterContainer>
+          {width && width > breakpoint.MD ? (
+            <Filters />
+          ) : (
+            <FilterButton onClick={() => setNav(!nav)}> Filters </FilterButton>
+          )}
+          <AnimatePresence>
+            {!nav && (
+              <motion.div
+                initial={{ x: 350, y: -180 }}
+                animate={{ x: 0 }}
+                exit={{ x: 350, y: -180 }}
+              >
+                <Filters />
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </FilterContainer>
       </>
     );
   }
@@ -125,7 +143,18 @@ export const SearchPage = () => {
         </MovieWrapper>
       </Wrapper>
       <FilterContainer>
-        <Filters />
+        {width && width > breakpoint.MD ? (
+          <Filters />
+        ) : (
+          <FilterButton onClick={() => setNav(!nav)}> Filters </FilterButton>
+        )}
+        <AnimatePresence>
+          {!nav && (
+            <motion.div initial={{ x: 350, y: -180 }} animate={{ x: 0 }} exit={{ x: 350, y: -180 }}>
+              <Filters />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </FilterContainer>
     </>
   );

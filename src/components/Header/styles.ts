@@ -5,7 +5,7 @@ import { Color, Screen } from "../../ui";
 const Wrapper = styled.div`
   position: sticky;
   top: 0;
-  z-index: 5;
+  z-index: 2;
   display: grid;
   grid-template-columns: 200px 1fr auto auto;
   grid-gap: 1rem;

@@ -5,7 +5,7 @@ import { BurgerIcon, Absolute, Wrapper } from "./styles";
 
 export const BurgerMenu = () => {
   const [nav, setNav] = useState(false);
-  
+
   return (
     <div onClick={() => setNav(!nav)}>
       {nav ? (
@@ -14,7 +14,7 @@ export const BurgerMenu = () => {
             <AiOutlineClose />
           </Wrapper>
           <Absolute>
-            <Navbar />
+            <Navbar isOpen={nav} />
           </Absolute>
         </BurgerIcon>
       ) : (

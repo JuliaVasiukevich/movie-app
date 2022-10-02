@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 import { Navbar, Header } from "../index";
 import { Wrapper, ContentWrapper } from "./styles";
 import { useTheme, useWindowSize } from "hooks";
-import { breakpoint } from "../../ui/breakpoints";
+import { breakpoint } from "ui";
 
 export const MainTemplate = () => {
   const { width } = useWindowSize();

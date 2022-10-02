@@ -1,8 +1,7 @@
 import { useTheme } from "hooks";
-import React from "react";
 import { Link, Outlet } from "react-router-dom";
-import { LogoIcon } from "../../assets";
-import { ROUTE } from "../../routes";
+import { LogoIcon } from "assets";
+import { ROUTE } from "routes";
 import { Footer, Wrapper, WrapperLink } from "./styles";
 
 export const AuthTemplate = () => {

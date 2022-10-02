@@ -1,6 +1,6 @@
+import { motion } from "framer-motion";
 import styled from "styled-components";
-import { Color } from "ui/colors";
-import { H4 } from "ui/typography";
+import { Color, Screen, H4 } from "ui";
 
 const Error = styled(H4)`
   height: 100%;
@@ -19,6 +19,10 @@ const ErrorWrapper = styled.div`
   align-items: center;
   width: calc(100vw - 500px);
   flex-grow: 2;
+
+  ${Screen.MD} {
+    width: auto;
+  }
 `;
 
 const Wrapper = styled.div`
@@ -27,14 +31,32 @@ const Wrapper = styled.div`
   flex-direction: column;
   width: calc(100vw - 500px);
   padding-top: 70px;
+
+  ${Screen.MD} {
+    width: auto;
+  }
 `;
 
 const MovieWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-
 `;
 
+const FilterButton = styled(motion.button)`
+  position: fixed;
+  top: 300px;
+  right: -35px;
+  padding: 8px;
+  border: 1px solid ${Color.White};
+  border-radius: 5px 5px 0 0;
+  transform: rotate(-90deg);
+  transform-origin: top left;
+  background-color: ${Color.Primary};
+  font-size: 20px;
+  color: ${Color.White};
+  cursor: pointer;
+  z-index: 5;
+`;
 
 const FilterContainer = styled.div`
   background: ${Color.Background_primary};
@@ -45,4 +67,12 @@ const ErrorFilterContainer = styled(FilterContainer)`
   height: calc(100vh - 155px);
 `;
 
-export { Error, ErrorWrapper, FilterContainer, ErrorFilterContainer, Wrapper, MovieWrapper };
+export {
+  Error,
+  ErrorWrapper,
+  FilterContainer,
+  ErrorFilterContainer,
+  Wrapper,
+  MovieWrapper,
+  FilterButton,
+};

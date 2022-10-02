@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { ROUTE } from "../../routes";
+import { ROUTE } from "routes";
 import { Button, Form, SignIn, Error, Label, LabelText } from "./styles";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { Input, Modal } from "components";

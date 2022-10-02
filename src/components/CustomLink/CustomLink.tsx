@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 import { useMatch } from "react-router-dom";
-import { ROUTE } from "../../routes";
+import { ROUTE } from "routes";
 import { ActiveLink, BasicLink } from "./styles";
 
 interface IProps {

@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { getMovies } from "store/selectors/movieSelectors";
 import { Loading, MovieTile } from "..";
-import { fetchMovies } from "../../store/features/moviesSlice";
-import { useAppDispatch, useAppSelector } from "../../store/hooks/hooks";
+import { fetchMovies } from "store/features/moviesSlice";
+import { useAppDispatch, useAppSelector } from "store/hooks/hooks";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Navigation } from "swiper";
 import { MovieList, Error } from "./styles";

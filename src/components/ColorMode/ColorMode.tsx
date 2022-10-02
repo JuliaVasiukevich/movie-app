@@ -1,4 +1,4 @@
-import { useTheme } from "../../hooks/useTheme";
+import { useTheme } from "hooks";
 import { Wrapper, Description, Title, Subtitle, Switch, Check, CustomLabel } from "./styles";
 
 export const ColorMode = () => {

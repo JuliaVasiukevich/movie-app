@@ -27,7 +27,6 @@ height: 30px;
 width: 20px;
 padding: 5px;
 border-radius: 5px;
-z-index: 3;
 fill: ${Color.White} ;
 background-color: ${Color.Primary};
 `;

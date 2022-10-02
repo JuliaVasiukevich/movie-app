@@ -16,3 +16,5 @@ export * from "./BurgerMenu/BurgerMenu";
 export * from "./Filters/Filters";
 export * from "./Modal/Modal";
 export * from "./Portal/Portal";
+export * from "./CustomLink/CustomLink";
+export * from "./ParamsList/ParamsList";

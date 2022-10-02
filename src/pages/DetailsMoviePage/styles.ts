@@ -42,6 +42,7 @@ const FavoritesButton = styled.button`
   background-color: rgba(255,0,0,0);
   border: none;
   fill: ${Color.Secondary};
+  cursor: pointer;
 `;
 
 const DisFavoritesButton = styled(FavoritesButton)`
@@ -120,7 +121,6 @@ const MovieTrendsIcon = styled(TrendsIcon)`
   width: 30px;
   padding: 5px;
   border-radius: 5px;
-  z-index: 3;
   fill: ${Color.White} ;
   background-color: ${Color.Primary};
 `;
