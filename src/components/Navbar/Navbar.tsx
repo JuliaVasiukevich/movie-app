@@ -13,13 +13,13 @@ export const Navbar = () => {
   ];
 
   return (
-    <motion.div
-      initial={{ opacity: 0, x: -40 }}
-      animate={{ opacity: 1, x: 0 }}
-      exit={{ opacity: 0, x: -40 }}
-    >
-      <NavigationConteiner>
-        <NavbarList>
+    <NavigationConteiner>
+      <NavbarList>
+        <motion.div
+          initial={{ opacity: 0, x: -40 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -40 }}
+        >
           {navigationItems.map((navigationItem) => {
             return (
               <NavbarItem key={navigationItem.text}>
@@ -29,8 +29,8 @@ export const Navbar = () => {
               </NavbarItem>
             );
           })}
-        </NavbarList>
-      </NavigationConteiner>
-    </motion.div>
+        </motion.div>
+      </NavbarList>
+    </NavigationConteiner>
   );
 };
