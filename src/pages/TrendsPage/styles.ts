@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Screen } from "../../ui";
+import { Screen } from "ui";
 
 const TrendsStyled = styled.div`
 display: flex;

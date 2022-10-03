@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { authBackground } from "../../assets";
+import { authBackground } from "assets";
 
 const Wrapper = styled.div`
   display: flex;

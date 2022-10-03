@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import { Navbar, Header } from "../index";
+import { Navbar, Header } from "components";
 import { Wrapper, ContentWrapper } from "./styles";
 import { useTheme, useWindowSize } from "hooks";
 import { breakpoint } from "ui";

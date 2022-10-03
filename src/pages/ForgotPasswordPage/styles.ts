@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Color, Screen } from "../../ui";
+import { Color, Screen } from "ui";
 
 const Wrapper = styled.div`
   display: flex;

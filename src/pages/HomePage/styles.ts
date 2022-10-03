@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Color, Screen, H3, H2 } from "../../ui";
+import { Color, Screen, H3, H2 } from "ui";
 
 const StyledList = styled.li`
   height: 400px;

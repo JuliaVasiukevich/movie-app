@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Screen } from "./../../ui";
+import { Screen } from "ui";
 
 const MovieList = styled.ul`
   display: flex;

@@ -79,6 +79,8 @@ export const SearchPage = () => {
   //   return <Loading />;
   // }
 
+  //TODO объеденить экраны
+
   if (error) {
     return (
       <>

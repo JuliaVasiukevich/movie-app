@@ -1,4 +1,4 @@
-import { Color, Screen, H1 } from "./../../ui";
+import { Color, Screen, H1 } from "ui";
 import styled from "styled-components";
 import { TrendsIcon } from "assets";
 
@@ -95,7 +95,7 @@ const DataGrid = styled.div`
 `;
 
 const DataName = styled.div`
-color: ${Color.Graphite};
+  color: ${Color.Graphite};
 `;
 
 const DataValue = styled.div`

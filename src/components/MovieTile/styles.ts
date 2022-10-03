@@ -1,11 +1,9 @@
 import { TrendsIcon } from "assets";
 import styled from "styled-components";
-import { Color, Screen } from "ui";
-import { Subtitle } from "ui/typography";
-
+import { Color, Screen, Subtitle } from "ui";
 
 const MovieItem = styled.li`
-position: relative;
+  position: relative;
   display: flex;
   flex-direction: column;
   flex: 0 1 auto;
@@ -20,15 +18,15 @@ position: relative;
 `;
 
 const MovieTrendsIcon = styled(TrendsIcon)`
-position: absolute;
-left: 10px;
-top: 5px;
-height: 30px;
-width: 20px;
-padding: 5px;
-border-radius: 5px;
-fill: ${Color.White} ;
-background-color: ${Color.Primary};
+  position: absolute;
+  left: 10px;
+  top: 5px;
+  height: 30px;
+  width: 20px;
+  padding: 5px;
+  border-radius: 5px;
+  fill: ${Color.White} ;
+  background-color: ${Color.Primary};
 `;
 
 const Poster = styled.img`

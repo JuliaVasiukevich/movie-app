@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Color } from "ui/colors";
+import { Color } from "ui";
 
 // const LogOutButton = styled.button`
 //   padding: 16px;

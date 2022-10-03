@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { Color } from "../../ui/colors";
+import { Color } from "ui";
 
 const BasicLink = styled(Link)`
   &&& {
