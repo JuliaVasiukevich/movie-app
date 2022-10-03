@@ -1,10 +1,13 @@
-import { Filters, MovieTile, ParamsList, BurgerMenu } from "components";
+import { Filters, MovieTile, ParamsList } from "components";
 import { useEffect, useState } from "react";
-import { getMoviesSearch } from "store/selectors/movieSearchSelectors";
-import { clearMovieArray } from "store/features/movieSearchSlice";
+import {
+  getMoviesSearch,
+  clearMovieArray,
+  fetchMoviesSearch,
+  useAppDispatch,
+  useAppSelector,
+} from "store";
 import { IMovieSearch } from "types/movieTypes";
-import { fetchMoviesSearch } from "store/features/movieSearchSlice";
-import { useAppDispatch, useAppSelector } from "store/hooks/hooks";
 import {
   Error,
   Wrapper,

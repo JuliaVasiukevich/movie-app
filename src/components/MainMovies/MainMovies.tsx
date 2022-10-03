@@ -2,15 +2,15 @@ import { MovieTile } from "..";
 import { MovieList } from "./styles";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Navigation } from "swiper";
+import { useWindowSize } from "hooks";
+import { breakpoint } from "ui";
+import { getNumderOfSlides } from "utils";
+import { IMovieSearch } from "types/movieTypes";
 
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import { useWindowSize } from "hooks";
-import { breakpoint } from "ui";
-import { getNumderOfSlides } from "utils";
-import { IMovieSearch } from "types/movieTypes";
 
 interface IProps {
   movies: IMovieSearch[]

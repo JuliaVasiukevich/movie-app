@@ -1,7 +1,6 @@
 import { EmptyFavorites } from "assets";
 import { MovieTile } from "components";
-import { useAppSelector } from "store/hooks/hooks";
-import { getFavorites } from "store/selectors/favoritesSelectors";
+import { useAppSelector, getFavorites } from "store";
 import { FavoritesStyled, FavoritesEmpty } from "./styles";
 
 export const FavoritesPage = () => {

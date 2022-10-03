@@ -2,8 +2,7 @@ import { Link } from "react-router-dom";
 import { IMovieSearch } from "types/movieTypes";
 import { Description, MovieItem, Poster, Title, MovieTrendsIcon } from "./styles";
 import { motion } from "framer-motion";
-import { useAppSelector } from "store/hooks/hooks";
-import { getTrends } from "store/selectors/trendsSelectors";
+import { useAppSelector, getTrends } from "store";
 import { SyntheticEvent } from "react";
 
 export const MovieTile = ({ title, poster, type, year, imdbID }: IMovieSearch) => {

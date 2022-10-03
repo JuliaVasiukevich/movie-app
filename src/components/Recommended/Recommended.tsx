@@ -1,19 +1,17 @@
 import { useEffect } from "react";
-import { getMovies } from "store/selectors/movieSelectors";
-import { Loading, MovieTile } from "..";
-import { fetchMovies } from "store/features/moviesSlice";
-import { useAppDispatch, useAppSelector } from "store/hooks/hooks";
+import { Loading, MovieTile } from "components";
+import { useAppDispatch, getMovies, useAppSelector, fetchMovies } from "store";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Navigation } from "swiper";
 import { MovieList, Error } from "./styles";
+import { useWindowSize } from "hooks";
+import { IMovieSearch } from "types/movieTypes";
+import { getNumderOfSlides } from "utils";
 
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import { useWindowSize } from "hooks";
-import { IMovieSearch } from "types/movieTypes";
-import { getNumderOfSlides } from "utils";
 
 interface IProps {
   movieTitle: string

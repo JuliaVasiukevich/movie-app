@@ -1,8 +1,5 @@
 import { DeleteIcon } from "assets";
-import React from "react";
-import { deleteFilter, FilterKeys } from "store/features/movieSearchSlice";
-import { useAppDispatch, useAppSelector } from "store/hooks/hooks";
-import { getMoviesSearch } from "store/selectors/movieSearchSelectors";
+import { deleteFilter, FilterKeys, useAppDispatch, useAppSelector, getMoviesSearch } from "store";
 import { ParamItem, Wrapper } from "./styles";
 
 export const ParamsList = () => {

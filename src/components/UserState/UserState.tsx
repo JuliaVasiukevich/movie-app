@@ -1,8 +1,7 @@
 import { UserIcon } from "assets";
 import { Link } from "react-router-dom";
 import { ROUTE } from "routes";
-import { useAppSelector } from "store/hooks/hooks";
-import { getUserInfo } from "store/selectors/userSelectors";
+import { useAppSelector, getUserInfo } from "store";
 import { Avatar, User, UserName } from "./styles";
 
 export const UserState = () => {

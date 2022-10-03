@@ -1,13 +1,20 @@
 import { Loading, Recommended } from "components";
 import { MouseEvent as ReactMouseEvent, SyntheticEvent, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { addToFavotires, removeFavorite } from "store/features/favoritesSlice";
-import { fetchMovieByDetails } from "store/features/moviesDetailsSlice";
-import { useAppDispatch, useAppSelector } from "store/hooks/hooks";
-import { getFavorites } from "store/selectors/favoritesSelectors";
-import { getDetailsMovie } from "store/selectors/movieDetailsSelectors";
+import {
+  addToFavotires,
+  removeFavorite,
+  fetchMovieByDetails,
+  useAppDispatch,
+  useAppSelector,
+  getFavorites,
+  getDetailsMovie,
+  getUserInfo,
+  getTrends,
+  addToTrends,
+} from "store";
 import { IMovieDetails, IMovieSearch } from "types/movieTypes";
-import { BookmarkIcon, ShareIcon, IMDbLogo } from "../../assets";
+import { BookmarkIcon, ShareIcon, IMDbLogo } from "assets";
 import { motion } from "framer-motion";
 import {
   Wrapper,
@@ -30,10 +37,7 @@ import {
   DataName,
   DataValue,
 } from "./styles";
-import { getUserInfo } from "store/selectors/userSelectors";
-import { getTrends } from "store/selectors/trendsSelectors";
-import { addToTrends } from "store/features/trendsSlice";
-import { recommended } from "utils/recommended";
+import { recommended } from "utils";
 
 export const DetailsMoviePage = () => {
   const { imdbID = "" } = useParams();
@@ -128,10 +132,7 @@ export const DetailsMoviePage = () => {
                 </motion.div>
               </DisFavoritesButton>
             ) : (
-              <FavoritesButton
-                disabled={!isAuth}
-                onClick={handleAddFavorites}
-              >
+              <FavoritesButton disabled={!isAuth} onClick={handleAddFavorites}>
                 <BookmarkIcon />
               </FavoritesButton>
             )}
@@ -159,6 +160,7 @@ export const DetailsMoviePage = () => {
                   </>
                 );
               }
+              return <></>;
             })}
           </DataGrid>
         </DescriptionWrapper>

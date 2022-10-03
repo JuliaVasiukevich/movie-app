@@ -1,10 +1,8 @@
-import { useNavigate } from "react-router-dom";
 import { Button, Form, Error, Label, LabelText, Wrapper } from "./styles";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { Input, Modal } from "components";
 import { useState } from "react";
-import { useAppDispatch } from "store/hooks/hooks";
-import { resetPassword } from "store/features/userSlice";
+import { useAppDispatch, resetPassword } from "store";
 
 export type SignInValues = {
   email: string;

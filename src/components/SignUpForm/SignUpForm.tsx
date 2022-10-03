@@ -4,8 +4,7 @@ import { Button, Form, SignIn, Error, Label, LabelText } from "./styles";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { Input, Modal } from "components";
 import { useState } from "react";
-import { useAppDispatch } from "store/hooks/hooks";
-import { fetchSignUpUser } from "store/features/userSlice";
+import { useAppDispatch, fetchSignUpUser } from "store";
 
 export type SignUpValues = {
   email: string;
@@ -40,7 +39,7 @@ const validateRules = {
 
 export const SignUpForm = () => {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [, setIsLoading] = useState(false);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [isOpen, toggleModal] = useState(false);

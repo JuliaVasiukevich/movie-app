@@ -1,8 +1,6 @@
 import { MainMovies } from "components";
 import { useEffect, useState } from "react";
-import { fetchMovies } from "store/features/moviesSlice";
-import { useAppDispatch, useAppSelector } from "store/hooks/hooks";
-import { getMovies } from "store/selectors/movieSelectors";
+import { fetchMovies, useAppDispatch, useAppSelector, getMovies } from "store";
 import { StyledList, Error, CategoryList, Title } from "./styles";
 
 export const HomePage = () => {
@@ -40,6 +38,7 @@ export const HomePage = () => {
       setCount((prevState) => prevState + 2);
       setFetching(false);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fetching]);
 
   useEffect(() => {

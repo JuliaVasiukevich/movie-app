@@ -1,7 +1,5 @@
 import { MovieTile } from "components";
-import React from "react";
-import { useAppSelector } from "store/hooks/hooks";
-import { getTrends } from "store/selectors/trendsSelectors";
+import { useAppSelector, getTrends } from "store";
 import { TrendsStyled } from "./styles";
 
 export const TrendsPage = () => {

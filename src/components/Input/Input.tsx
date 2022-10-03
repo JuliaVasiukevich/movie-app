@@ -1,5 +1,4 @@
-import { SignUpValuesKeys, SignUpValues } from "components";
-import { SignInValues, SignInValuesKeys } from "components/SignInForm/SignInForm";
+import { SignUpValuesKeys, SignUpValues, SignInValues, SignInValuesKeys } from "components";
 import { ChangeEvent, KeyboardEventHandler } from "react";
 import { UseFormRegister, ValidationRule } from "react-hook-form";
 import { InputStyled, Wrapper } from "./styles";

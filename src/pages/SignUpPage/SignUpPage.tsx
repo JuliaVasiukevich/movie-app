@@ -1,4 +1,4 @@
-import { SignUpForm } from "../../components";
+import { SignUpForm } from "components";
 import { Wrapper } from "./styles";
 
 export const SignUpPage = () => {

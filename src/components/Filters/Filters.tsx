@@ -1,11 +1,8 @@
-import { Button, Form, Error, Label, Title, LabelText, customStyles } from "./styles";
+import { Button, Form, Label, Title, LabelText, customStyles } from "./styles";
 import Select from "react-select";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { Input } from "components";
-import { useState } from "react";
-import { useAppDispatch } from "store/hooks/hooks";
-import { addYear, addType } from "store/features/movieSearchSlice";
-import { AnimatePresence, motion } from "framer-motion";
+import { useAppDispatch, addYear, addType } from "store";
 export interface IOption {
   value: string;
   label: string;
@@ -23,12 +20,10 @@ export type FiltersValues = {
 };
 
 export const Filters = () => {
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const dispatch = useAppDispatch();
 
   const {
     handleSubmit,
-    formState: { errors },
     control,
     reset,
   } = useForm<FiltersValues>({
@@ -57,7 +52,6 @@ export const Filters = () => {
             return <Input type={"number"} onChange={onChange} value={value} />;
           }}
         />
-        {errors.year && <Error>{errors.year.message}</Error>}
       </Label>
       <Label>
         <LabelText>Type</LabelText>
@@ -68,10 +62,8 @@ export const Filters = () => {
             return <Select onChange={onChange} options={options} styles={customStyles} />;
           }}
         />
-        {errors.type && <Error>{errors.type.message}</Error>}
       </Label>
       <Button type="submit">Show results</Button>
-      {errorMessage && <Error>{errorMessage}</Error>}
     </Form>
   );
 };

@@ -4,8 +4,7 @@ import { Button, Form, SignUp, Error, Label, LabelText } from "./styles";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { Input, Modal } from "components";
 import { useState } from "react";
-import { useAppDispatch } from "store/hooks/hooks";
-import { fetchSignInUser } from "store/features/userSlice";
+import { useAppDispatch, fetchSignInUser } from "store";
 
 export type SignInValues = {
   email: string;

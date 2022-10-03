@@ -1,9 +1,7 @@
-import { ColorMode, Input, Modal } from "../../components";
+import { ColorMode, Input, Modal } from "components";
 import { Form, Setting, Name, Wrapper, Container, Column, Button, LabelText } from "./styles";
-import { useAppDispatch, useAppSelector } from "store/hooks/hooks";
-import { getUserInfo } from "store/selectors/userSelectors";
+import { useAppDispatch, useAppSelector, getUserInfo, updateUserPassword } from "store";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
-import { updateUserPassword } from "store/features/userSlice";
 import { useState } from "react";
 
 export const SettingsPage = () => {
