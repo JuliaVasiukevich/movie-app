@@ -8,7 +8,7 @@ interface IProps {
   isOpen?: boolean;
 }
 
-export const Navbar = ({ isOpen }: IProps) => {
+export const Navbar = (isOpen: IProps) => {
   const navigationItems = [
     { text: "Home", route: ROUTE.HOME, img: <HomeIcon /> },
     { text: "Favorites", route: ROUTE.FAVORITES, img: <FavoriteIcon /> },
@@ -19,8 +19,8 @@ export const Navbar = ({ isOpen }: IProps) => {
   return (
     <NavigationConteiner>
       <NavbarList>
-        <AnimatePresence exitBeforeEnter={true}>
-          {isOpen && (
+        {isOpen && (
+          <AnimatePresence>
             <motion.div
               initial={{ opacity: 0, x: -40 }}
               animate={{ opacity: 1, x: 0 }}
@@ -36,8 +36,8 @@ export const Navbar = ({ isOpen }: IProps) => {
                 );
               })}
             </motion.div>
-          )}
-        </AnimatePresence>
+          </AnimatePresence>
+        )}
       </NavbarList>
     </NavigationConteiner>
   );

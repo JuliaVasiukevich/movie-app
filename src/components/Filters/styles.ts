@@ -15,17 +15,17 @@ const Form = styled.form`
   top: 100px;
   right: 0;
   width: 200px;
-  padding-left: 40px;
-  padding-top: 0px;
+  padding-inline: 40px;
+  padding-top: 30px;
   display: flex;
   flex-direction: column;
-  padding: 40px;
   width: 320px;
+  height: calc(100vh - 155px);
 
   ${Screen.MD} {
    position: fixed;
    background-color: ${Color.Background_primary};
-   height: calc(100vh - 80px);
+   height: calc(100vh - 120px);
   };
 `;
 

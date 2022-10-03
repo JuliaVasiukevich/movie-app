@@ -20,7 +20,7 @@ import trendsReduser from "./features/trendsSlice";
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["favorites", "user", "trends"],
+  whitelist: ["favorites", "trends"],
 };
 
 const rootReducer = combineReducers({

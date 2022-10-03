@@ -26,12 +26,13 @@ export const SearchPage = () => {
 
   const [page, setPage] = useState(1);
   const [fetching, setFetching] = useState(true);
-  const [nav, setNav] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     dispatch(clearMovieArray());
     setPage(1);
     setFetching(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params.title, params.filters.year, params.filters.type]);
 
   useEffect(() => {
@@ -47,6 +48,7 @@ export const SearchPage = () => {
       setPage((prevState) => prevState + 1);
       setFetching(false);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fetching]);
 
   useEffect(() => {
@@ -105,19 +107,21 @@ export const SearchPage = () => {
           {width && width > breakpoint.MD ? (
             <Filters />
           ) : (
-            <FilterButton onClick={() => setNav(!nav)}> Filters </FilterButton>
+            <>
+              <FilterButton onClick={() => setIsOpen(!isOpen)}> Filters </FilterButton>
+              <AnimatePresence>
+                {!isOpen && (
+                  <motion.div
+                    initial={{ x: 350, y: -180 }}
+                    animate={{ x: 0 }}
+                    exit={{ x: 350, y: -180 }}
+                  >
+                    <Filters />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </>
           )}
-          <AnimatePresence>
-            {!nav && (
-              <motion.div
-                initial={{ x: 350, y: -180 }}
-                animate={{ x: 0 }}
-                exit={{ x: 350, y: -180 }}
-              >
-                <Filters />
-              </motion.div>
-            )}
-          </AnimatePresence>
         </FilterContainer>
       </>
     );
@@ -146,15 +150,11 @@ export const SearchPage = () => {
         {width && width > breakpoint.MD ? (
           <Filters />
         ) : (
-          <FilterButton onClick={() => setNav(!nav)}> Filters </FilterButton>
+          <>
+            <FilterButton onClick={() => setIsOpen(!isOpen)}> Filters </FilterButton>
+            <AnimatePresence>{isOpen && <Filters isOpen={isOpen} />}</AnimatePresence>
+          </>
         )}
-        <AnimatePresence>
-          {!nav && (
-            <motion.div initial={{ x: 350, y: -180 }} animate={{ x: 0 }} exit={{ x: 350, y: -180 }}>
-              <Filters />
-            </motion.div>
-          )}
-        </AnimatePresence>
       </FilterContainer>
     </>
   );
