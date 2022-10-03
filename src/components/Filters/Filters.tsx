@@ -22,11 +22,7 @@ export type FiltersValues = {
   year: string;
 };
 
-interface IProps {
-  isOpen?: boolean;
-}
-
-export const Filters = (isOpen: IProps) => {
+export const Filters = () => {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const dispatch = useAppDispatch();
 
@@ -51,39 +47,31 @@ export const Filters = (isOpen: IProps) => {
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
-      {isOpen && (
-        <>
-          <AnimatePresence>
-            <motion.div initial={{ x: 10 }} animate={{ x: 0 }} exit={{ x: 10 }}>
-              <Title> Filters </Title>
-              <Label>
-                <LabelText>Year</LabelText>
-                <Controller
-                  name={"year"}
-                  control={control}
-                  render={({ field: { onChange, value } }) => {
-                    return <Input type={"number"} onChange={onChange} value={value} />;
-                  }}
-                />
-                {errors.year && <Error>{errors.year.message}</Error>}
-              </Label>
-              <Label>
-                <LabelText>Type</LabelText>
-                <Controller
-                  name="type"
-                  control={control}
-                  render={({ field: { onChange, value } }) => {
-                    return <Select onChange={onChange} options={options} styles={customStyles} />;
-                  }}
-                />
-                {errors.type && <Error>{errors.type.message}</Error>}
-              </Label>
-              <Button type="submit">Show results</Button>
-              {errorMessage && <Error>{errorMessage}</Error>}
-            </motion.div>
-          </AnimatePresence>
-        </>
-      )}
+      <Title> Filters </Title>
+      <Label>
+        <LabelText>Year</LabelText>
+        <Controller
+          name={"year"}
+          control={control}
+          render={({ field: { onChange, value } }) => {
+            return <Input type={"number"} onChange={onChange} value={value} />;
+          }}
+        />
+        {errors.year && <Error>{errors.year.message}</Error>}
+      </Label>
+      <Label>
+        <LabelText>Type</LabelText>
+        <Controller
+          name="type"
+          control={control}
+          render={({ field: { onChange, value } }) => {
+            return <Select onChange={onChange} options={options} styles={customStyles} />;
+          }}
+        />
+        {errors.type && <Error>{errors.type.message}</Error>}
+      </Label>
+      <Button type="submit">Show results</Button>
+      {errorMessage && <Error>{errorMessage}</Error>}
     </Form>
   );
 };

@@ -11,7 +11,6 @@ const LabelText = styled.div`
 `;
 
 const Form = styled.form`
-  position: sticky;
   top: 100px;
   right: 0;
   width: 200px;

@@ -8,17 +8,17 @@ export const BurgerMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div onClick={() => setIsOpen(!isOpen)}>
-      <BurgerIcon>
+    <>
+      <BurgerIcon onClick={() => setIsOpen(!isOpen)}>
         <Wrapper>{isOpen ? <AiOutlineClose /> : <AiOutlineMenu />}</Wrapper>
-        <AnimatePresence>
-          {isOpen && (
-            <Absolute>
-              <Navbar isOpen={isOpen} />
-            </Absolute>
-          )}
-        </AnimatePresence>
       </BurgerIcon>
-    </div>
+      <AnimatePresence>
+        {isOpen && (
+          <Absolute>
+            <Navbar isOpen={isOpen} />
+          </Absolute>
+        )}
+      </AnimatePresence>
+    </>
   );
 };

@@ -10,9 +10,9 @@ import {
   Wrapper,
   ErrorWrapper,
   FilterContainer,
-  ErrorFilterContainer,
   MovieWrapper,
   FilterButton,
+  Sticky,
 } from "./styles";
 import { Ghost } from "react-kawaii";
 import { motion, AnimatePresence } from "framer-motion";
@@ -108,18 +108,22 @@ export const SearchPage = () => {
             <Filters />
           ) : (
             <>
-              <FilterButton onClick={() => setIsOpen(!isOpen)}> Filters </FilterButton>
-              <AnimatePresence>
-                {!isOpen && (
-                  <motion.div
-                    initial={{ x: 350, y: -180 }}
-                    animate={{ x: 0 }}
-                    exit={{ x: 350, y: -180 }}
-                  >
-                    <Filters />
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              <FilterButton onClick={() => setIsOpen(!isOpen)}>
+                {isOpen ? "Close filters" : "Open filters"}
+              </FilterButton>
+              <Sticky>
+                <AnimatePresence>
+                  {isOpen && (
+                    <motion.div
+                      initial={{ x: 50, y: -180, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      exit={{ x: 50, y: -180, opacity: 0 }}
+                    >
+                      <Filters />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </Sticky>
             </>
           )}
         </FilterContainer>
@@ -151,8 +155,22 @@ export const SearchPage = () => {
           <Filters />
         ) : (
           <>
-            <FilterButton onClick={() => setIsOpen(!isOpen)}> Filters </FilterButton>
-            <AnimatePresence>{isOpen && <Filters isOpen={isOpen} />}</AnimatePresence>
+            <FilterButton onClick={() => setIsOpen(!isOpen)}>
+              {isOpen ? "Close filters" : "Open filters"}
+            </FilterButton>
+            <Sticky>
+              <AnimatePresence>
+                {isOpen && (
+                  <motion.div
+                    initial={{ x: 50, y: -180, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    exit={{ x: 50, y: -180, opacity: 0 }}
+                  >
+                    <Filters />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </Sticky>
           </>
         )}
       </FilterContainer>

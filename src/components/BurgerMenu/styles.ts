@@ -1,7 +1,8 @@
+import { motion } from "framer-motion";
 import styled from "styled-components";
 import { Color } from "ui";
 
-const BurgerIcon = styled.div`
+const BurgerIcon = styled(motion.div)`
   grid-area: burger;
   cursor: pointer;
 `;
@@ -11,7 +12,7 @@ const Absolute = styled.div`
   top: 135px;
   left: 0;
   background-color: ${Color.Background_primary};
-  height: 100vh;
+  height: calc(100vh - 150px);
   padding: 20px;
 `;
 

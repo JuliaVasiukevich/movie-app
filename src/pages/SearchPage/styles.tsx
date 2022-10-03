@@ -45,7 +45,7 @@ const MovieWrapper = styled.div`
 const FilterButton = styled(motion.button)`
   position: fixed;
   top: 300px;
-  right: -35px;
+  right: -85px;
   padding: 8px;
   border: 1px solid ${Color.White};
   border-radius: 5px 5px 0 0;
@@ -61,10 +61,21 @@ const FilterButton = styled(motion.button)`
 const FilterContainer = styled.div`
   background: ${Color.Background_primary};
   box-shadow: ${Color.Background_primary_dark} 0px 29px 29px 0px;
+
+  ${Screen.MD} {
+    box-shadow: none;
+  }
 `;
 
 const ErrorFilterContainer = styled(FilterContainer)`
   height: calc(100vh - 155px);
+`;
+
+const Sticky = styled.div`
+  position: fixed;
+  top: 200px;
+  right: 0px;
+  width: 200px;
 `;
 
 export {
@@ -75,4 +86,5 @@ export {
   Wrapper,
   MovieWrapper,
   FilterButton,
+  Sticky,
 };

@@ -20,25 +20,28 @@ export const Navbar = (isOpen: IProps) => {
     <NavigationConteiner>
       <NavbarList>
         {isOpen && (
-          <AnimatePresence>
-            <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: 40 }}
-            >
-              {navigationItems.map((navigationItem) => {
-                return (
-                  <NavbarItem key={navigationItem.text}>
-                    <CustomLink to={navigationItem.route}>
-                      {navigationItem.img} {navigationItem.text}
-                    </CustomLink>
-                  </NavbarItem>
-                );
-              })}
-            </motion.div>
-          </AnimatePresence>
+          <>
+            <AnimatePresence>
+              <motion.div
+                initial={{ opacity: 0, x: -40 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -40 }}
+              >
+                {navigationItems.map((navigationItem) => {
+                  return (
+                    <NavbarItem key={navigationItem.text}>
+                      <CustomLink to={navigationItem.route}>
+                        {navigationItem.img} {navigationItem.text}
+                      </CustomLink>
+                    </NavbarItem>
+                  );
+                })}
+              </motion.div>
+            </AnimatePresence>
+          </>
         )}
       </NavbarList>
     </NavigationConteiner>
   );
 };
+
