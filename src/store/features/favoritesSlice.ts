@@ -1,4 +1,4 @@
-import { IMovieSearch } from "./../../types/movieTypes";
+import { IMovieSearch } from "types/movieTypes";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface IFavoritesState {
