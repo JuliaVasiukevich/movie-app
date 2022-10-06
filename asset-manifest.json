@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/movie-app/static/css/main.a21a5a66.css",
-    "main.js": "/movie-app/static/js/main.6a6c0d19.js",
+    "main.js": "/movie-app/static/js/main.7e329907.js",
     "static/media/auth-background.jpg": "/movie-app/static/media/auth-background.1c307d0b55bb182bf805.jpg",
     "static/media/emptyFavorites.svg": "/movie-app/static/media/emptyFavorites.8fda07dcb1b4988a9818a18b200ee966.svg",
     "static/media/logo.svg": "/movie-app/static/media/logo.ef69f378f7796fa43e7162952fc3af4f.svg",
@@ -14,14 +14,15 @@
     "static/media/favorite.svg": "/movie-app/static/media/favorite.d40145d7bb12d981caad1d2191d3f0a4.svg",
     "static/media/bookmark.svg": "/movie-app/static/media/bookmark.500fd0d28b79706224f91110a8b66284.svg",
     "static/media/user.svg": "/movie-app/static/media/user.a3867c46a05515d83bd9fe2a072c9723.svg",
+    "static/media/pencil.svg": "/movie-app/static/media/pencil.e3c555fd46e64b2378c605bfd3c707d1.svg",
     "static/media/share.svg": "/movie-app/static/media/share.242b526d1cb1ef7d8221dbd0f66122b9.svg",
     "static/media/delete.svg": "/movie-app/static/media/delete.2b6143344da6e0aaab82faf876c17b38.svg",
     "static/media/arrow-right.svg": "/movie-app/static/media/arrow-right.e4cf957dcd210fd9ce59f6c64bc2b001.svg",
     "main.a21a5a66.css.map": "/movie-app/static/css/main.a21a5a66.css.map",
-    "main.6a6c0d19.js.map": "/movie-app/static/js/main.6a6c0d19.js.map"
+    "main.7e329907.js.map": "/movie-app/static/js/main.7e329907.js.map"
   },
   "entrypoints": [
     "static/css/main.a21a5a66.css",
-    "static/js/main.6a6c0d19.js"
+    "static/js/main.7e329907.js"
   ]
 }
