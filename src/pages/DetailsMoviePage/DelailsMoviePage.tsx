@@ -1,5 +1,5 @@
 import { Loading, Recommended } from "components";
-import { MouseEvent as ReactMouseEvent, SyntheticEvent, useEffect } from "react";
+import { MouseEvent as SyntheticEvent, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import {
   addToFavotires,
@@ -9,7 +9,6 @@ import {
   useAppSelector,
   getFavorites,
   getDetailsMovie,
-  getUserInfo,
   getTrends,
   addToTrends,
 } from "store";
@@ -29,6 +28,7 @@ import {
   Badge,
   Description,
   DataGrid,
+  GridContains,
   MovieWrapper,
   DisFavoritesButton,
   MovieButton,
@@ -36,8 +36,9 @@ import {
   MovieTrendsIcon,
   DataName,
   DataValue,
+  Error,
 } from "./styles";
-import { recommended } from "utils";
+import { recommended, shareTelegram } from "utils";
 
 export const DetailsMoviePage = () => {
   const { imdbID = "" } = useParams();
@@ -45,7 +46,6 @@ export const DetailsMoviePage = () => {
   const { isLoading, error, details } = useAppSelector(getDetailsMovie);
   const { favorites } = useAppSelector(getFavorites);
   const { trends } = useAppSelector(getTrends);
-  const { isAuth } = useAppSelector(getUserInfo);
 
   const {
     title,
@@ -75,28 +75,25 @@ export const DetailsMoviePage = () => {
   ];
 
   const movie: IMovieSearch = {
-    poster: poster,
-    title: title,
-    type: type,
-    year: year,
-    imdbID: imdbID,
+    poster,
+    title,
+    type,
+    year,
+    imdbID,
   };
 
-  const isFavorites = favorites.find((newMovie) => newMovie.imdbID === movie.imdbID);
-
+  const isFavorites = favorites.find((newMovie) => newMovie.imdbID === imdbID);
   const isTrends = trends.find((trendMovie) => trendMovie.imdbID === imdbID);
 
   if (+imdbRating > 7 && +year > 2017) {
     dispatch(addToTrends(movie));
   }
 
-  const handleDeleteFavorites = (e: ReactMouseEvent<HTMLButtonElement, MouseEvent>, ID: string) => {
-    e.preventDefault();
-    dispatch(removeFavorite(ID));
+  const handleDeleteFavorites = () => {
+    dispatch(removeFavorite(imdbID));
   };
 
-  const handleAddFavorites = (e: ReactMouseEvent<HTMLButtonElement, MouseEvent>) => {
-    e.preventDefault();
+  const handleAddFavorites = () => {
     dispatch(addToFavotires(movie));
   };
 
@@ -115,7 +112,7 @@ export const DetailsMoviePage = () => {
   }
 
   if (error) {
-    return <div>{error}</div>;
+    return <Error>{error}</Error>;
   }
 
   return (
@@ -126,18 +123,18 @@ export const DetailsMoviePage = () => {
           <PosterImg src={poster} onError={addDefaultSrc} alt={`poster ${title}`} />
           <MovieButton>
             {isFavorites ? (
-              <DisFavoritesButton onClick={(e) => handleDeleteFavorites(e, movie.imdbID)}>
+              <DisFavoritesButton onClick={() => handleDeleteFavorites()}>
                 <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                   <BookmarkIcon />
                 </motion.div>
               </DisFavoritesButton>
             ) : (
-              <FavoritesButton disabled={!isAuth} onClick={handleAddFavorites}>
+              <FavoritesButton onClick={handleAddFavorites}>
                 <BookmarkIcon />
               </FavoritesButton>
             )}
             <ShareButton>
-              <ShareIcon />
+              <ShareIcon onClick={shareTelegram} />
             </ShareButton>
           </MovieButton>
         </ImgWrapper>
@@ -155,12 +152,12 @@ export const DetailsMoviePage = () => {
             {dataArray.map(({ value, field }) => {
               if (value && value !== "N/A") {
                 return (
-                  <>
+                  <GridContains key={field}>
                     <DataName>{field}</DataName> <DataValue>{value}</DataValue>
-                  </>
+                  </GridContains>
                 );
               }
-              return <></>;
+              return <GridContains key={field} />;
             })}
           </DataGrid>
         </DescriptionWrapper>

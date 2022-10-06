@@ -29,10 +29,6 @@ export interface IFilters {
   [FilterKeys.YEAR]?: number;
 }
 
-// interface IMovie {
-//   [title: string]: IMovieAPI;
-// }
-
 const initialState: MoviesState = {
   moviesSearch: {
     response: false,
@@ -88,6 +84,9 @@ const moviesSearchSlice = createSlice({
     deleteFilter(state, { payload }: PayloadAction<FilterKeys>) {
       delete state.params.filters[payload];
     },
+    deleteAllFilters(state) {
+      state.params.filters = {};
+    },
   },
   extraReducers(builder) {
     builder.addCase(fetchMoviesSearch.pending, (state) => {
@@ -111,4 +110,4 @@ export default moviesSearchSlice.reducer;
 export { fetchMoviesSearch };
 
 export const { addToSearch, clearMovieArray, addYear, addType,
-  deleteFilter } = moviesSearchSlice.actions;
+  deleteFilter, deleteAllFilters } = moviesSearchSlice.actions;

@@ -1,6 +1,5 @@
-import { Link } from "react-router-dom";
 import { IMovieSearch } from "types/movieTypes";
-import { Description, MovieItem, Poster, Title, MovieTrendsIcon } from "./styles";
+import { Description, MovieItem, Poster, Title, MovieTrendsIcon, MovieLink } from "./styles";
 import { motion } from "framer-motion";
 import { useAppSelector, getTrends } from "store";
 import { SyntheticEvent } from "react";
@@ -24,7 +23,7 @@ export const MovieTile = ({ title, poster, type, year, imdbID }: IMovieSearch) =
       exit={{ opacity: 0 }}
     >
       <MovieItem>
-        <Link to={`/movies/${imdbID}`}>
+        <MovieLink to={`/movies/${imdbID}`}>
           <motion.div whileHover={{ scale: 1.1 }}>
             <>
               {isTrends && <MovieTrendsIcon />}
@@ -35,7 +34,7 @@ export const MovieTile = ({ title, poster, type, year, imdbID }: IMovieSearch) =
           <Description>
             {type} ☉ {year}
           </Description>
-        </Link>
+        </MovieLink>
       </MovieItem>
     </motion.div>
   );

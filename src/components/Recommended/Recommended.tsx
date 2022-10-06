@@ -14,7 +14,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 interface IProps {
-  movieTitle: string
+  movieTitle: string;
 }
 
 export const Recommended = ({ movieTitle }: IProps) => {
@@ -51,7 +51,7 @@ export const Recommended = ({ movieTitle }: IProps) => {
           {movies?.[movieTitle]?.search.map(
             ({ imdbID, title, poster, type, year }: IMovieSearch) => {
               return (
-                <SwiperSlide>
+                <SwiperSlide key={imdbID}>
                   <MovieTile
                     key={imdbID}
                     title={title}
@@ -62,7 +62,8 @@ export const Recommended = ({ movieTitle }: IProps) => {
                   />
                 </SwiperSlide>
               );
-            })}
+            },
+          )}
         </Swiper>
       </MovieList>
     </>

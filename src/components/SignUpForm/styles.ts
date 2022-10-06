@@ -24,6 +24,10 @@ const Button = styled.button`
   border: none;
   border-radius: 10px;
   cursor: pointer;
+
+  :hover{
+    filter: grayscale(0.75);
+  }
 `;
 
 const LabelText = styled.div`
@@ -41,7 +45,7 @@ position: relative;
 const Error = styled.p`
 position: absolute;
 top: 85px;
-  color: ${Color.Error};
+color: ${Color.Error};
 `;
 
 export { Form, Button, Label, SignIn, Error, LabelText };

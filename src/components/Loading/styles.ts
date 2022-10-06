@@ -22,4 +22,10 @@ const Spinner = styled.div`
   }
 `;
 
-export { Spinner };
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+`;
+
+export { Spinner, Wrapper };

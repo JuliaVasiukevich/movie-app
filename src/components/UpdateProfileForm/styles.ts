@@ -7,14 +7,14 @@ const Form = styled.form`
   flex-grow: 1;
 
   ${Screen.S} {
-  flex-direction:column;
+  flex-direction: column;
 }
 `;
 
 const Button = styled.button`
-  width: 100%;
+  width: 200px;
   padding: 16px;
-  margin-top: 20px;
+  margin-left: 20px;
   background-color: ${Color.Primary};
   color: ${Color.White};
   border: none;
@@ -24,15 +24,17 @@ const Button = styled.button`
   :hover{
     filter: grayscale(0.75);
   }
-`;
 
-const Column = styled.div`
-  flex-grow: 1;
-  margin: 5px;
+  ${Screen.S} {
+    width: 100%;
+    margin-left: 0px;
+    margin-top: 10px;
+}
 `;
 
 const LabelText = styled.div`
-  margin-block: 10px;
+  padding-block: 16px;
+  margin-right: 10px;
 `;
 
 const Error = styled.p`
@@ -40,4 +42,4 @@ const Error = styled.p`
   color: ${Color.Error};
 `;
 
-export { Form, Column, Button, LabelText, Error };
+export { Form, Button, LabelText, Error };

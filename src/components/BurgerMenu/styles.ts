@@ -9,11 +9,15 @@ const BurgerIcon = styled(motion.div)`
 
 const Absolute = styled.div`
   position: absolute;
-  top: 135px;
+  top: 125px;
   left: 0;
+  height: calc(100vh - 165px);
+  padding: 0px;
+`;
+
+const Backdround = styled(motion.div)`
   background-color: ${Color.Background_primary};
-  height: calc(100vh - 150px);
-  padding: 20px;
+  height: calc(100vh - 130px);
 `;
 
 const Wrapper = styled.div`
@@ -30,4 +34,4 @@ const Wrapper = styled.div`
   margin-right: 0.3rem;
 `;
 
-export { BurgerIcon, Absolute, Wrapper };
+export { BurgerIcon, Absolute, Wrapper, Backdround };

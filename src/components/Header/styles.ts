@@ -26,7 +26,7 @@ const Wrapper = styled.div`
 
 const LogoIconHeader = styled(LogoIcon)`
  ${Screen.MD} {
-   width: 200px;
+    width: 150px;
     grid-area: logo;
   }
 `;

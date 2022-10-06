@@ -56,6 +56,10 @@ const FilterButton = styled(motion.button)`
   color: ${Color.White};
   cursor: pointer;
   z-index: 5;
+
+  :hover{
+    filter: grayscale(0.75);
+  }
 `;
 
 const FilterContainer = styled.div`

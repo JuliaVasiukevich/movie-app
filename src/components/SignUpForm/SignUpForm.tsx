@@ -18,7 +18,7 @@ export enum SignUpValuesKeys {
 
 const validateRules = {
   password: {
-    requared: "Password is requared !",
+    requared: "Password is requared!",
     minLength: {
       value: 6,
       message: "Password must be at least 6 characters",
@@ -29,7 +29,7 @@ const validateRules = {
     },
   },
   email: {
-    requared: "Email is requared !",
+    requared: "Email is requared!",
     pattern: {
       value: /^[\w-\\.]+@([\w-]+\.)+[\w-]{2,4}$/g,
       message: "Please enter a valid email",

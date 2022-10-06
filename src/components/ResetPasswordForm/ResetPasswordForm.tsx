@@ -2,7 +2,7 @@ import { Input, Modal } from "components";
 import { useState } from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { useAppSelector, getUserInfo, useAppDispatch, updateUserPassword } from "store";
-import { Form, Column, Button, LabelText } from "./styles";
+import { Form, Column, Button, LabelText, Error } from "./styles";
 
 export const ResetPasswordForm = () => {
   const { email } = useAppSelector(getUserInfo);
@@ -17,7 +17,12 @@ export const ResetPasswordForm = () => {
 
   const dispatch = useAppDispatch();
 
-  const { handleSubmit, reset, control } = useForm<PasswordValues>({
+  const {
+    handleSubmit,
+    reset,
+    control,
+    formState: { errors },
+  } = useForm<PasswordValues>({
     defaultValues: {
       newPassword: "",
       currentPassword: "",
@@ -56,6 +61,20 @@ export const ResetPasswordForm = () => {
     }
   };
 
+  const validateRules = {
+    newPassword: {
+      requared: "Password is requared!",
+      minLength: {
+        value: 6,
+        message: "Password must be at least 6 characters",
+      },
+      maxLength: {
+        value: 20,
+        message: "Password must be at most 20 characters",
+      },
+    },
+  };
+
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <Column>
@@ -72,11 +91,13 @@ export const ResetPasswordForm = () => {
         <LabelText> New password:</LabelText>
         <Controller
           name={"newPassword"}
+          rules={validateRules.newPassword}
           control={control}
           render={({ field: { onChange, value } }) => {
             return <Input type={"password"} onChange={onChange} value={value} />;
           }}
         />
+        {errors.newPassword && <Error>{errors.newPassword.message}</Error>}
         <LabelText> Repeat password:</LabelText>
         <Controller
           name={"repeatPassword"}

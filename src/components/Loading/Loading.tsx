@@ -1,6 +1,10 @@
 import React from "react";
-import { Spinner } from "./styles";
+import { Spinner, Wrapper } from "./styles";
 
 export const Loading = () => {
-  return <Spinner />;
+  return (
+    <Wrapper>
+      <Spinner />
+    </Wrapper>
+  );
 };

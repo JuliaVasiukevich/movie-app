@@ -13,7 +13,7 @@ export const ParamsList = () => {
     <Wrapper>
       {Object.entries(params.filters).map((filter) => {
         return (
-          <ParamItem>
+          <ParamItem key={filter[0]}>
             <span>{`${filter[0]}: ${filter[1]}`} </span>
             <DeleteIcon onClick={() => handleClick(filter[0] as FilterKeys)} />
           </ParamItem>

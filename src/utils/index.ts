@@ -1,5 +1,4 @@
-import { getFirebaseMessage } from "./fireBaseError";
-import { getNumderOfSlides } from "./slides";
+export * from "./fireBaseError";
+export * from "./slides";
 export * from "./recommended";
-
-export { getFirebaseMessage, getNumderOfSlides };
+export * from "./shareTelegram";

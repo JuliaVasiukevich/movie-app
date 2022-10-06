@@ -1,4 +1,4 @@
-import { Color, Screen, H1 } from "ui";
+import { Color, Screen, H1, H3 } from "ui";
 import styled from "styled-components";
 import { TrendsIcon } from "assets";
 
@@ -9,6 +9,10 @@ const Wrapper = styled.div`
 
   ${Screen.MD} {
     padding-inline: 30px;
+  }
+
+  ${Screen.S} {
+    padding-inline: 0px;
   }
 `;
 
@@ -43,6 +47,10 @@ const FavoritesButton = styled.button`
   border: none;
   fill: ${Color.Secondary};
   cursor: pointer;
+
+  :hover{
+    filter: grayscale(0.75);
+  }
 `;
 
 const DisFavoritesButton = styled(FavoritesButton)`
@@ -94,6 +102,10 @@ const DataGrid = styled.div`
   margin-bottom: 40px;
 `;
 
+const GridContains = styled.div`
+  display: contents;
+`;
+
 const DataName = styled.div`
   color: ${Color.Graphite};
 `;
@@ -111,6 +123,7 @@ const MovieButton = styled.div`
 `;
 
 const ShareButton = styled(FavoritesButton)`
+  fill: ${Color.Secondary};
 `;
 
 const MovieTrendsIcon = styled(TrendsIcon)`
@@ -126,6 +139,10 @@ const MovieTrendsIcon = styled(TrendsIcon)`
 `;
 
 
+const Error = styled(H3)`
+  color: ${Color.Error};
+`;
+
 export {
   Wrapper, ImgWrapper, PosterImg,
   FavoritesButton, DescriptionWrapper,
@@ -135,5 +152,6 @@ export {
   MovieWrapper, DisFavoritesButton,
   MovieButton, ShareButton,
   MovieTrendsIcon, Badge,
-  DataName, DataValue
+  DataName, DataValue,
+  GridContains, Error
 };

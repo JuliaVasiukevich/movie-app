@@ -1,4 +1,4 @@
-import { EmptyFavorites } from "assets";
+import { EmptyFavoritesIcon } from "assets";
 import { MovieTile } from "components";
 import { useAppSelector, getFavorites } from "store";
 import { FavoritesStyled, FavoritesEmpty } from "./styles";
@@ -8,7 +8,7 @@ export const FavoritesPage = () => {
   if (favorites.length === 0) {
     return (
       <FavoritesEmpty>
-        <EmptyFavorites />
+        <EmptyFavoritesIcon />
       </FavoritesEmpty>
     );
   } else {

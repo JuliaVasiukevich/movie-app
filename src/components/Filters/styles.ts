@@ -11,6 +11,7 @@ const LabelText = styled.div`
 `;
 
 const Form = styled.form`
+  position: sticky;
   top: 100px;
   right: 0;
   width: 200px;
@@ -31,13 +32,20 @@ const Form = styled.form`
 const Button = styled.button`
   width: 100%;
   padding: 16px;
-  margin-top: 20px;
-  margin-bottom: 32px;
+  margin-block: 20px;
   background-color: ${Color.Primary};
   color: ${Color.White};
   border: none;
   border-radius: 10px;
   cursor: pointer;
+
+  :hover{
+    filter: grayscale(0.75);
+  }
+`;
+
+const DeleteButton = styled(Button)`
+  background-color: ${Color.Graphite};
 `;
 
 export const customStyles: any = {
@@ -61,7 +69,6 @@ export const customStyles: any = {
     padding: "7px",
     background: Color.Background_primary_dark,
   }),
-
 };
 
 const SignUp = styled.div`
@@ -76,5 +83,5 @@ const Error = styled.p`
 `;
 
 export {
-  Form, Button, Title, Label, SignUp, Error, LabelText
+  Form, Button, DeleteButton, Title, Label, SignUp, Error, LabelText
 };

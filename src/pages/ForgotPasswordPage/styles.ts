@@ -30,6 +30,10 @@ const Button = styled.button`
   border: none;
   border-radius: 10px;
   cursor: pointer;
+
+  :hover{
+    filter: grayscale(0.75);
+  }
 `;
 
 const LabelText = styled.div`

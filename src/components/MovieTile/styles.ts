@@ -1,4 +1,5 @@
 import { TrendsIcon } from "assets";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Color, Screen, Subtitle } from "ui";
 
@@ -12,7 +13,8 @@ const MovieItem = styled.li`
   color: ${Color.Secondary};
 
   ${Screen.S} {
-    width: 300px;
+    width: 80vw;
+    min-width: 80vw;
     align-items: center;
   };
 `;
@@ -27,6 +29,13 @@ const MovieTrendsIcon = styled(TrendsIcon)`
   border-radius: 5px;
   fill: ${Color.White} ;
   background-color: ${Color.Primary};
+
+  ${Screen.S} {
+    left: 30px;
+    top: 10px;
+    height: 40px;
+    width: 30px;
+  };
 `;
 
 const Poster = styled.img`
@@ -54,5 +63,9 @@ const Title = styled(Subtitle)`
 `;
 const Description = styled(Subtitle)``;
 
-export { MovieItem, Poster, Title, Description, MovieTrendsIcon };
+const MovieLink = styled(Link)`
+position: relative;
+`
+
+export { MovieItem, Poster, Title, Description, MovieTrendsIcon, MovieLink };
 

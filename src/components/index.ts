@@ -19,3 +19,4 @@ export * from "./Portal/Portal";
 export * from "./CustomLink/CustomLink";
 export * from "./ParamsList/ParamsList";
 export * from "./ResetPasswordForm/ResetPasswordForm";
+export * from "./UpdateProfileForm/UpdateProfileForm";

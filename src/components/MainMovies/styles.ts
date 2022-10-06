@@ -24,6 +24,10 @@ const NextButton = styled.button`
   border: none;
   border-radius: 10px;
   cursor: pointer;
+
+  :hover{
+    filter: grayscale(0.75);
+  }
 `;
 
 export { MovieList, NextButton };

@@ -22,7 +22,7 @@ const CategoryList = styled.ul`
   padding-inline: 40px;
 
   ${Screen.S} {
-    padding-inline: 30px;
+    padding-inline: 0px;
   }
 `;
 

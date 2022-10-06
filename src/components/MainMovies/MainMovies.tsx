@@ -13,12 +13,11 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 interface IProps {
-  movies: IMovieSearch[]
+  movies: IMovieSearch[];
 }
 
 export const MainMovies = ({ movies }: IProps) => {
   const { width } = useWindowSize();
-
   return (
     <MovieList>
       {width && width > breakpoint.S ? (
@@ -35,7 +34,7 @@ export const MainMovies = ({ movies }: IProps) => {
         >
           {movies?.map((movie: IMovieSearch) => {
             return (
-              <SwiperSlide>
+              <SwiperSlide key={movie.imdbID}>
                 <MovieTile key={movie.imdbID} {...movie} />
               </SwiperSlide>
             );

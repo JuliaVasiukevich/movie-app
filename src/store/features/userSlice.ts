@@ -7,7 +7,8 @@ import {
   updatePassword,
   reauthenticateWithCredential,
   EmailAuthProvider,
-  User
+  User,
+  updateEmail
 } from "firebase/auth";
 import { getFirebaseMessage } from "utils";
 import { FirebaseError, FirebaseErrorCode } from "utils/fireBaseError";
@@ -81,6 +82,27 @@ export const resetPassword = createAsyncThunk<void, { email: string }, { rejectV
   },
 );
 
+export const updateUserEmail = createAsyncThunk<{ userEmail: string },
+  { newEmail: string; },
+  { rejectValue: FirebaseError }>(
+    "user/updateUserEmail",
+    async ({ newEmail }, { rejectWithValue }) => {
+      const auth = getAuth();
+      const user = auth.currentUser as User;
+      const userEmail = newEmail;
+
+      try {
+        await updateEmail(user, newEmail);
+        return { userEmail };
+
+      } catch (error) {
+        const firebaseError = error as { code: FirebaseErrorCode };
+
+        return rejectWithValue(getFirebaseMessage(firebaseError.code));
+      }
+    },
+  );
+
 export const updateUserPassword = createAsyncThunk<void, {
   email: string;
   currentPassword: string;
@@ -89,10 +111,9 @@ export const updateUserPassword = createAsyncThunk<void, {
   "user/updateUserPassword",
   async ({ newPassword, currentPassword }, { rejectWithValue }) => {
     const auth = getAuth();
-    
     const user = auth.currentUser as User;
     const credential = EmailAuthProvider.credential(user.email as string, currentPassword);
-    
+
     if (user)
       try {
         await reauthenticateWithCredential(user, credential);
@@ -159,7 +180,6 @@ const userSlice = createSlice({
     builder.addCase(resetPassword.rejected, (state, { payload }) => {
       if (payload) {
         state.isPendingAuth = false;
-        // state.error = payload;
       }
     });
     builder.addCase(updateUserPassword.pending, (state) => {
@@ -173,7 +193,20 @@ const userSlice = createSlice({
     builder.addCase(updateUserPassword.rejected, (state, { payload }) => {
       if (payload) {
         state.isPendingAuth = false;
-        // state.error = payload;
+      }
+    });
+    builder.addCase(updateUserEmail.pending, (state) => {
+      state.isPendingAuth = true;
+      state.error = null;
+    });
+    builder.addCase(updateUserEmail.fulfilled, (state, { payload }) => {
+      state.isPendingAuth = false;
+      state.email = payload.userEmail;
+      state.error = null;
+    });
+    builder.addCase(updateUserEmail.rejected, (state, { payload }) => {
+      if (payload) {
+        state.isPendingAuth = false;
       }
     });
 
