@@ -1,4 +1,3 @@
-import { DeleteIcon } from "assets";
 import styled from "styled-components";
 import { Color, Screen, H2 } from "ui";
 

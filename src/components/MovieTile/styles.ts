@@ -64,8 +64,8 @@ const Title = styled(Subtitle)`
 const Description = styled(Subtitle)``;
 
 const MovieLink = styled(Link)`
-position: relative;
-`
+  position: relative;
+`;
 
 export { MovieItem, Poster, Title, Description, MovieTrendsIcon, MovieLink };
 

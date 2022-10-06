@@ -2,7 +2,7 @@ import { Input, Modal } from "components";
 import { useState } from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { useAppSelector, getUserInfo, useAppDispatch, updateUserEmail } from "store";
-import { Form, Button, LabelText } from "./styles";
+import { Form, Button, LabelText, Error } from "./styles";
 
 interface IProps {
   toggleProfileOpen: () => void;
@@ -49,14 +49,10 @@ export const UpdateProfileForm = ({ toggleProfileOpen }: IProps) => {
 
   const validateRules = {
     newEmail: {
-      requared: "Password is requared!",
-      minLength: {
-        value: 6,
-        message: "Password must be at least 6 characters",
-      },
-      maxLength: {
-        value: 20,
-        message: "Password must be at most 20 characters",
+      requared: "Email is requared!",
+      pattern: {
+        value: /^[\w-\\.]+@([\w-]+\.)+[\w-]{2,4}$/g,
+        message: "Please enter a valid email",
       },
     },
   };
@@ -67,10 +63,12 @@ export const UpdateProfileForm = ({ toggleProfileOpen }: IProps) => {
       <Controller
         name={"newEmail"}
         control={control}
+        rules={validateRules.newEmail}
         render={({ field: { onChange, value } }) => {
           return <Input type={"text"} onChange={onChange} value={value} />;
         }}
       />
+      {errors.newEmail && <Error>{errors.newEmail.message}</Error>}
       <Button type="submit"> submit </Button>
       {isOpen && <Modal toggleModal={toggleModal} message={errorMessage} />}
     </Form>
