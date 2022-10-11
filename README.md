@@ -7,7 +7,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="src/assets/images/logo.png" alt="Logo" width="80" height="80">
+    <img src="./src/assets/images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Movie app</h3>
@@ -106,7 +106,7 @@ If you are not a registered user and go to the favorites or settings tab, you wi
 
 If you don't have an account yet, go to the tab - sign up. If you have forgotten your password, click forgot password.
 
-![image](https://prnt.sc/jMHU3LR1R_Ud)
+![image](./image%20for%20READme1.png)
 
 After registration or authorization, you can finally go to your favorite movies, if there is something there. While the user does not have favorite movies.
 
