@@ -11,7 +11,7 @@ export const MainTemplate = () => {
   return (
     <Wrapper>
       <Header />
-      <ContentWrapper style={{ display: "flex" }}>
+      <ContentWrapper>
         {width && width > breakpoint.MD ? (
           <>
             <Navbar /> <Outlet />
