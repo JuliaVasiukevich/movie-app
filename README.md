@@ -49,8 +49,6 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
  It is a movie search application based on an existing API. 
  * You can log in, register and change password and your email.
  * Favorite movies are stored in localStorage.
@@ -153,6 +151,7 @@ Don't forget to give the project a star! Thanks again!
 ## Contact
 
 Julia Vasiukevich - juliavasiukevich@gmail.com
+<br />
 [telegram](https://t.me/Julia_Vasiukevich)
 
 Project Link: [https://github.com/JuliaVasiukevich/movie-app](https://github.com/JuliaVasiukevich/movie-app)
