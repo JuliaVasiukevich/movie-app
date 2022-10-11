@@ -95,7 +95,7 @@ Use the `npm i` to install all libraries.
 
 When you open the application, you will find yourself on homepage with various categories. Each category has a slider of 10 films. As you scroll the page, new categories will be added.
 
-![image](http://g.recordit.co/UmpXtyWvlD.gif)
+![image](http://g.recordit.co/dvPNFwqKOu.gif)
 
 If you are not a registered user and go to the favorites or settings tab, you will be automatically redirected to the login tab.
 
