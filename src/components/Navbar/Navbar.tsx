@@ -4,10 +4,10 @@ import { FavoriteIcon, HomeIcon, SettingsIcon, TrendsIcon } from "assets";
 import { CustomLink } from "components";
 
 interface IProps {
-  isOpen?: boolean;
+  toggleOpen?: () => void;
 }
 
-export const Navbar = ({ isOpen }: IProps) => {
+export const Navbar = ({ toggleOpen }: IProps) => {
   const navigationItems = [
     { text: "Home", route: ROUTE.HOME, img: <HomeIcon /> },
     { text: "Favorites", route: ROUTE.FAVORITES, img: <FavoriteIcon /> },
@@ -20,7 +20,7 @@ export const Navbar = ({ isOpen }: IProps) => {
       <NavbarList>
         {navigationItems.map((navigationItem) => {
           return (
-            <NavbarItem key={navigationItem.text}>
+            <NavbarItem key={navigationItem.text} onClick={toggleOpen}>
               <CustomLink to={navigationItem.route}>
                 {navigationItem.img} {navigationItem.text}
               </CustomLink>

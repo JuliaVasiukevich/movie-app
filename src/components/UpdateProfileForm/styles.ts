@@ -14,7 +14,7 @@ const Form = styled.form`
 const Button = styled.button`
   width: 200px;
   padding: 16px;
-  margin-left: 20px;
+  margin-inline: 20px;
   background-color: ${Color.Primary};
   color: ${Color.White};
   border: none;
@@ -27,8 +27,7 @@ const Button = styled.button`
 
   ${Screen.S} {
     width: 100%;
-    margin-left: 0px;
-    margin-top: 10px;
+    margin: 10px 0 10px;
 }
 `;
 
@@ -38,7 +37,6 @@ const LabelText = styled.div`
 `;
 
 const Error = styled.p`
-  position: absolute;
   color: ${Color.Error};
 `;
 

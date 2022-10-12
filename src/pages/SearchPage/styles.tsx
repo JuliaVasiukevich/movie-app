@@ -46,16 +46,16 @@ const FilterButton = styled(motion.button)`
   position: fixed;
   top: 300px;
   right: -85px;
+  z-index: 5;
+  font-size: 16px;
   padding: 8px;
+  background-color: ${Color.Primary};
+  color: ${Color.White};
   border: 1px solid ${Color.White};
   border-radius: 5px 5px 0 0;
   transform: rotate(-90deg);
   transform-origin: top left;
-  background-color: ${Color.Primary};
-  font-size: 20px;
-  color: ${Color.White};
   cursor: pointer;
-  z-index: 5;
 
   :hover{
     filter: grayscale(0.75);

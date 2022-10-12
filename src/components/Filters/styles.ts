@@ -14,11 +14,10 @@ const Form = styled.form`
   position: sticky;
   top: 100px;
   right: 0;
-  width: 200px;
-  padding-inline: 40px;
-  padding-top: 30px;
   display: flex;
   flex-direction: column;
+  padding-inline: 40px;
+  padding-top: 30px;
   width: 320px;
   height: calc(100vh - 155px);
 
@@ -50,14 +49,14 @@ const DeleteButton = styled(Button)`
 
 export const customStyles: any = {
   control: () => ({
-    width: "100%",
     display: "flex",
-    background: Color.Background_primary_dark,
-    color: Color.White,
-    borderRadius: "10px",
+    width: "100%",
     marginBottom: "45px",
     padding: "7px",
     textAlign: "center",
+    background: Color.Background_primary_dark,
+    color: Color.White,
+    borderRadius: "10px",
     cursor: "pointer",
   }),
 

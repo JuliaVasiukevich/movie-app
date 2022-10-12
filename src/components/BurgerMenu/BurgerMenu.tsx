@@ -6,10 +6,13 @@ import { BurgerIcon, Absolute, Wrapper, Backdround } from "./styles";
 
 export const BurgerMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const toggleOpen = () => {
+    setIsOpen(!isOpen);
+  };
 
   return (
     <>
-      <BurgerIcon onClick={() => setIsOpen(!isOpen)}>
+      <BurgerIcon onClick={toggleOpen}>
         <Wrapper>{isOpen ? <AiOutlineClose /> : <AiOutlineMenu />}</Wrapper>
       </BurgerIcon>
       <Absolute>
@@ -20,7 +23,7 @@ export const BurgerMenu = () => {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -40 }}
             >
-              <Navbar isOpen={isOpen} />
+              <Navbar toggleOpen={toggleOpen} />
             </Backdround>
           )}
         </AnimatePresence>

@@ -9,13 +9,6 @@ const InputStyled = styled.input`
   border: none;
   color: ${Color.White};
 
-//TODO раскомментить, сделать что-то
-  /* :active,
-  :hover,
-  :focus {
-    outline: 0;
-    outline-offset: 0;
-  } */
 `;
 
 const Wrapper = styled.div``;

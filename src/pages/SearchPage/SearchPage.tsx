@@ -75,12 +75,6 @@ export const SearchPage = () => {
     }
   };
 
-  // if (isLoading) {
-  //   return <Loading />;
-  // }
-
-  //TODO объеденить экраны
-
   if (error) {
     return (
       <>
